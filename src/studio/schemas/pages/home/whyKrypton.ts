@@ -1,33 +1,23 @@
-import { SiReasonstudios } from "react-icons/si";
+import { SiReasonstudios } from 'react-icons/si';
 export default {
-  name: "homePage.whyKrypton",
-  type: "object",
-  title: "Why Krypton",
+  name: 'homePage.whyKrypton',
+  type: 'object',
+  title: 'Why Krypton',
   fields: [
     {
-      name: "title",
-      title: "Title",
-      type: "string",
-    },
-    {
-      name: "cards",
-      title: "Cards",
-      type: "array",
-      of: [
-        {
-          type: "featureCard",
-        },
-      ],
+      name: 'title',
+      title: 'Title',
+      type: 'string',
     },
   ],
   preview: {
     select: {
-      title: "title",
+      title: 'title',
     },
     prepare({ title }: IPrepare) {
       return {
         title,
-        subtitle: "Why Krypton",
+        subtitle: 'Why Krypton',
         media: SiReasonstudios,
       };
     },
