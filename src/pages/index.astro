@@ -3,9 +3,18 @@ import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
 import Hero from '@/components/pages/home/Hero.astro';
 import type { HomePageData } from '@/lib/types/homePage';
+import { picture } from 'astro-sanity-picture';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
+  flowDiagram[]{
+    ...,
+    ${picture('icon')}
+  },
+  businessSolutions[]{
+    ...,
+    ${picture('icon')}
+  }
 }`;
 
 const data = await getPageData<HomePageData>(query);
