@@ -1,0 +1,53 @@
+{
+  "name": "any-tech",
+  "type": "module",
+  "version": "1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && tsc --noEmit && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^6.2.4",
+    "@astrojs/partytown": "^1.2.0",
+    "@astrojs/prefetch": "^0.2.1",
+    "@astrojs/react": "^2.1.2",
+    "@astrojs/svelte": "^2.1.1",
+    "@astrojs/tailwind": "^3.1.2",
+    "@fontsource/montserrat": "^4.5.14",
+    "@sanity/client": "^6.0.1",
+    "@sanity/document-internationalization": "2.0.0-studio-v3-plugin-v2.10",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.10.0",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
+    "astro": "^2.3.4",
+    "astro-portabletext": "^0.8.0",
+    "astro-robots-txt": "^0.5.0",
+    "astro-sanity-picture": "^0.1.6",
+    "groq": "^3.10.0",
+    "ky": "^0.33.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "4.8.0",
+    "react-is": "^18.2.0",
+    "sanity": "^3.10.0",
+    "styled-components": "^5.3.10",
+    "svelte": "^3.58.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.59.2",
+    "eslint": "^8.39.0",
+    "eslint-plugin-astro": "^0.26.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "0.8.0",
+    "prettier-plugin-svelte": "^2.10.0"
+  }
+}

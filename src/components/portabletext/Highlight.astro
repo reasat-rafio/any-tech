@@ -1,0 +1,14 @@
+---
+export type { Props } from "astro-portabletext/types";
+const props = Astro.props;
+---
+
+{props.isInline ? (
+  <span class="text-theme-primary">
+    <slot />
+  </span>
+) : (
+  <div class="text-theme-primary">
+    <slot />
+  </div>
+)}

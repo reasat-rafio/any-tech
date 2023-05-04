@@ -1,0 +1,15 @@
+---
+import { Block } from "astro-portabletext/components";
+export type Props = Parameters<typeof Block>[0];
+const props = Astro.props;
+---
+
+{props.node.style === "h4" ? (
+  <h4 class="text-theme-secondary text-head-4 mb-5">
+    <slot />
+  </h4>
+) : (
+  <Block {...props}>
+    <slot />
+  </Block>
+)}

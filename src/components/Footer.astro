@@ -1,0 +1,57 @@
+---
+import PortableText from "@/components/common/PortableText.astro";
+import { urlForSanityImage } from "@/lib/helpers";
+import type { FooterProps, FooterLinks, FooterContent } from "@/lib/types/site";
+const { footerContents, footerLogo, footerCopyRight } =
+  Astro.props as FooterProps;
+
+function isFooterLinks(item: FooterLinks | FooterContent): item is FooterLinks {
+  return item._type === "footerLinks";
+}
+---
+
+<footer class="bg-theme-dark text-white">
+  <div
+    class="grid md:grid-cols-4 md:justify-start border-b-2 border-solid py-[70px] px-5 border-theme-primary md:flex-row gap-10"
+  >
+    <div class="w-full md:w-auto md:basis-1/5 col-span-1">
+      <img
+        src={urlForSanityImage(footerLogo).url()}
+        alt="Krypton logo"
+        class="w-[270px] object-contain h-auto md:w-[300px] mx-auto"
+      />
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 pb-5 col-span-3">
+      {footerContents.map((content) =>
+        isFooterLinks(content) ? (
+          <div class="text-theme-body">
+            <div class="mb-[21px] text-lg md:text-xl">{content.title}</div>
+            <ul class="flex flex-col">
+              {(content as FooterLinks).links.map((link) => (
+                <li>
+                  <a
+									rel="prefetch"
+                    href={link.href}
+                    class="hover:text-theme-primary md:text-body-p text-res-body-p"
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div class="text-theme-body">
+            <div class="mb-[21px] text-lg md:text-xl">{content.title}</div>
+            <div>
+              <PortableText value={content.description} />
+            </div>
+          </div>
+        )
+      )}
+    </div>
+  </div>
+  <div class="text-center px-5 md:py-[40px] py-[30px] font-sans">
+    <PortableText value={footerCopyRight} />
+  </div>
+</footer>

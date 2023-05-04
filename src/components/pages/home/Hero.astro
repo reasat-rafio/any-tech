@@ -1,0 +1,26 @@
+---
+import PortableText from "@/components/common/PortableText.astro";
+import type { Hero } from "@/lib/types/homePage";
+
+const { title, contentList } = Astro.props as Hero;
+---
+
+<section>
+  <h2
+    class="text-white text-[15px] md:text-[40px] drop-shadow-[2px_0px_23px_rgba(0,0,0,1)] whitespace-pre-wrap text-center py-[220px]"
+  >
+    {title}
+  </h2>
+  {contentList.map(({ title, description }) => (
+    <div class="grid md:grid-cols-2 items-center">
+      <div class="h-full grid place-items-center">
+        <h2 class="text-white font-normal drop-shadow-[0_0_10px_rgba(43,43,43,.69)] text-center font-Montserrat leading-none py-[90px]">
+          {title}
+        </h2>
+      </div>
+      <div class="bg-theme-primary px-[50px] py-[30px] md:px-[104px] md:py-[57px] text-white font-Roboto">
+        <PortableText value={description} />
+      </div>
+    </div>
+  ))}
+</section>

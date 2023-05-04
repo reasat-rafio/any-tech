@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/types/*": ["src/lib/types/*"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "exactOptionalPropertyTypes": false
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "extends": "astro/tsconfigs/strictest"
+}

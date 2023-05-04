@@ -1,0 +1,16 @@
+---
+export type { Props } from "astro-portabletext/types";
+const props = Astro.props;
+const markDef = props.node.markDef;
+---
+
+<a
+  rel="prefetch"
+  class:list={[
+    markDef.hoverEffect &&
+      "hover:text-[#3a3a3a] transition-colors duration-200 ease-linear",
+    markDef.highlight && "text-theme-primary",
+  ]}
+  href={markDef?.href}
+  ><slot></slot>
+</a>

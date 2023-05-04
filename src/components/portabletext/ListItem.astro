@@ -1,0 +1,11 @@
+---
+import { ListItem } from "astro-portabletext/components";
+import type { ListItemProps } from "astro-portabletext/components";
+import PrimaryBullet from "./PrimaryBullet.astro";
+export type Props = ListItemProps;
+
+const props = Astro.props;
+const Cmp = props.node.listItem === "primaryBullet" ? PrimaryBullet : ListItem;
+---
+
+<Cmp {...props}><slot></slot></Cmp>

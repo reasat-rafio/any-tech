@@ -1,0 +1,9 @@
+---
+export type { Props } from "astro-portabletext/types";
+const props = Astro.props;
+const markDef = props.node.markDef;
+---
+
+<span class="inline-block" style={{ paddingLeft: `${markDef.paddingLeft}px` }}
+  ><slot></slot>
+</span>

@@ -1,0 +1,24 @@
+---
+import Link from "./Link.astro";
+import { Mark } from "astro-portabletext/components";
+import Highlight from "./Highlight.astro";
+import Styled from "./Styled.astro";
+export type Props = Parameters<typeof Mark>[0];
+const props = Astro.props;
+let Cmp;
+switch (props.node.markType) {
+  case "highlight":
+    Cmp = Highlight;
+    break;
+  case "link":
+    Cmp = Link;
+    break;
+  case "styled":
+    Cmp = Styled;
+    break;
+  default:
+    Cmp = Mark;
+}
+---
+
+<Cmp {...props}><slot></slot></Cmp>

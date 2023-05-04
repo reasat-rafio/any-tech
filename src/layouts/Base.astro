@@ -1,0 +1,28 @@
+---
+import "@fontsource/montserrat";
+import BaseMeta from "@/components/common/BaseMeta.astro";
+import GoogleAnalytics from "@/components/GoogleAnalytics.astro";
+
+export interface Props {
+  seo?: BaseMetaData;
+  favicon: string;
+}
+
+const { seo, favicon } = Astro.props;
+---
+
+<html class="font-sans" lang="en">
+  <head>
+    <BaseMeta {...seo} />
+    <GoogleAnalytics />
+    <!-- some other scripts comes here -->
+    <link rel="icon" type="image/png" href={favicon} />
+  </head>
+  <body class="overflow-x-hidden">
+    <slot name="header"></slot>
+    <main>
+      <slot></slot>
+    </main>
+    <slot name="footer"></slot>
+  </body>
+</html>

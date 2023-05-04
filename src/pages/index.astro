@@ -1,0 +1,45 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getPageData } from "@/lib/helpers";
+import Hero from "@/components/pages/home/Hero.astro";
+import WhyKrypton from "../components/pages/home/WhyKrypton.astro";
+import Missions from "@/components/pages/home/Missions.astro";
+import Business from "@/components/pages/home/Business.astro";
+import type { HomePageData } from "@/lib/types/homePage";
+import SanityPicture, { picture } from "astro-sanity-picture";
+
+const query = `*[_type == 'homePage'][0] {
+  ...,
+  ${picture("mainBgImage")}
+}`;
+
+const data = await getPageData<HomePageData>(query);
+const { page, site } = data;
+const { sections, seo, mainBgImage } = page;
+---
+
+<Layout seo={seo} site={site}>
+  <SanityPicture
+    img={{ style: { height: "100vh" }, alt: mainBgImage.alt }}
+    class="fixed -z-10 inset-0 min-h-screen"
+    src={mainBgImage}
+  />
+  {sections.map((section) => {
+    switch (section._type) {
+      case "homePage.hero":
+        return <Hero {...section} />
+      case "homePage.whyKrypton":
+        return (
+          <div class="bg-white">
+            <WhyKrypton {...section} />
+          </div>
+        )
+      case "homePage.mission":
+        return <Missions {...section} />
+      case "homePage.business":
+        return <Business {...section} />
+      default:
+        return null
+    }
+  })}
+</Layout>

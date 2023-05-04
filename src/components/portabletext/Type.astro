@@ -1,0 +1,22 @@
+---
+import Image from "./Image.astro";
+import Break from "./Break.astro";
+import type { Props as ComponentProps } from "astro-portabletext/types";
+export type Props = ComponentProps<any>;
+const props = Astro.props;
+let Cmp: ((_props: Props) => any) | undefined;
+switch (props.node._type) {
+  case "image":
+    Cmp = Image;
+    break;
+  case "break":
+    Cmp = Break;
+    break;
+  default:
+    break;
+}
+---
+
+{Cmp && 
+  <Cmp {...props}><slot></slot></Cmp>
+}

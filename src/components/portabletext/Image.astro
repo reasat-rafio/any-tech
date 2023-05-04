@@ -1,0 +1,13 @@
+---
+import SanityPicture from "astro-sanity-picture";
+type Props = {
+  node: SanityImage;
+};
+const { node } = Astro.props;
+---
+
+<SanityPicture
+  img={{ sizes: "(min-width:768px) 60vw, 100vw", alt: node.alt }}
+  src={node}
+  class=" w-full h-full md:aspect-video mx-auto"
+/>
