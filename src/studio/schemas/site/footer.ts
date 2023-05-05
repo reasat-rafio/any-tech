@@ -1,10 +1,8 @@
 import { MdLink } from 'react-icons/md';
-import { BsFillFileEarmarkTextFill } from 'react-icons/bs';
 
 export default [
   {
     group: 'footer',
-    title: 'Footer Contents',
     type: 'array',
     name: 'footerContents',
     of: [
@@ -36,31 +34,16 @@ export default [
           },
         },
       },
+    ],
+  },
+  {
+    group: 'footer',
+    type: 'array',
+    name: 'socialLinks',
+    of: [
       {
-        type: 'object',
-        name: 'footerContent',
-        fields: [
-          {
-            name: 'title',
-            type: 'string',
-            title: 'Title',
-          },
-          {
-            name: 'description',
-            type: 'blockContent',
-          },
-        ],
-        preview: {
-          select: {
-            title: 'title',
-          },
-          prepare({ title }: IPrepare) {
-            return {
-              title: title,
-              media: BsFillFileEarmarkTextFill,
-            };
-          },
-        },
+        type: 'iconLink',
+        name: 'iconLink',
       },
     ],
   },
@@ -69,5 +52,16 @@ export default [
     type: 'blockContent',
     name: 'footerCopyRight',
     title: 'Footer CopyRight',
+  },
+  {
+    group: 'footer',
+    type: 'array',
+    name: 'footerBottomLinks',
+    of: [
+      {
+        type: 'link',
+        name: 'link',
+      },
+    ],
   },
 ];
