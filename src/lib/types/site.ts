@@ -1,10 +1,6 @@
-import type { SanityDimensionedImage } from "astro-sanity-picture";
+import type { SanityDimensionedImage } from 'astro-sanity-picture';
 
 export interface SiteData {
-  cookie: {
-      btn : string;
-      message : string;
-  };
   seo: {
     ogImage: SanityDimensionedImage;
     favicon: string;
@@ -31,15 +27,10 @@ export interface FooterLinks {
   title: string;
   links: Link[];
 }
-
-export interface FooterContent {
-  _type: string;
-  title: string;
-  description: PortableText[];
-}
-
 export interface FooterProps {
-  footerContents: (FooterLinks | FooterContent)[];
-  footerLogo: SanityDimensionedImage;
+  logo: SanityDimensionedImage;
+  footerContents: FooterLinks[];
+  socialLinks: iconLink[];
   footerCopyRight: PortableText[];
+  footerBottomLinks: Link[];
 }
