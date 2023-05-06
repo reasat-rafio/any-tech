@@ -4,23 +4,31 @@ import { getPageData } from '@/lib/helpers';
 import Hero from '@/components/pages/home/Hero.astro';
 import type { HomePageData } from '@/lib/types/homePage';
 import { picture } from 'astro-sanity-picture';
-import LegacyToEfficiency from '@/components/pages/home/LegacyToEfficiency.astro';
+import LegacyToEfficiency from '@/components/pages/home/legacy/LegacyToEfficiency.astro';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
-  flowDiagram[]{
+  sections[]{
     ...,
-    ${picture('icon')}
-  },
-  businessSolutions[]{
-    ...,
-    ${picture('icon')}
+    flowDiagram[]{
+      _key,
+      name,
+      platform,
+      root,
+      "iconUrl": icon.asset->url,
+    },
+    businessSolutions[]{
+      ...,
+      ${picture('icon')}
+    }
   }
 }`;
 
 const data = await getPageData<HomePageData>(query);
 const { page, site } = data;
 const { sections, seo } = page;
+
+console.log(sections);
 ---
 
 <Layout seo={seo} site={site}>

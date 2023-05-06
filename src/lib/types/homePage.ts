@@ -66,10 +66,9 @@ interface BusinessSolution {
 }
 
 export interface FlowDiagram {
-  _type: string;
   _key: string;
   name: string;
   platform: string;
   root: boolean;
-  icon: SanityAsset;
+  iconUrl: string;
 }

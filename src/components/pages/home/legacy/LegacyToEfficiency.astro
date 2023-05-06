@@ -1,0 +1,22 @@
+---
+import PortableText from '@/components/PortableText.astro';
+import FlowDiagram from '@/components/pages/home/legacy/FlowDiagram.svelte';
+
+import type { LegacyToEfficiencyData } from '@/lib/types/homePage';
+const { title, subtitle, flowDiagram, description, businessSolutions } =
+  Astro.props as LegacyToEfficiencyData;
+---
+
+<section class="container grid grid-cols-12 gap-x-14">
+  <div class="space-y-[26px] col-span-7">
+    <h2 class="text-[#1F80F0] uppercase text-[24px] font-bold">{title}</h2>
+    <!-- TODO Update the prettier config so it doesnt add any extra whitespace -->
+    <!-- prettier-ignore -->
+    <h3 class="text-[64px] text-[#121212] font-semibold leading-[78px] whitespace-pre-line">{subtitle}</h3>
+    <div class="text-[16px] text-[#164377] leading-[25.6px]">
+      <PortableText value={description} />
+    </div>
+  </div>
+
+  <FlowDiagram class="col-span-5" {flowDiagram} />
+</section>
