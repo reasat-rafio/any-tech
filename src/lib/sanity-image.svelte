@@ -3,8 +3,7 @@
   import type { SanityAsset } from '@sanity/image-url/lib/types/types';
   import { onMount } from 'svelte';
   export let image: SanityAsset;
-  export let maxWidth = 1200;
-  export let draggable = true;
+  export let maxWidth = 600;
   export let alt: string | undefined = undefined;
   $: dimensions = image?.asset?._ref?.split('-')[2];
   $: [width, height] = dimensions.split('x').map(Number);
@@ -23,7 +22,6 @@
   <img
     loading="lazy"
     {src}
-    {draggable}
     alt={alt || image?.alt || 'image'}
     class:loaded
     class={$$props.class}

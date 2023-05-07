@@ -17,10 +17,6 @@ const query = `*[_type == 'homePage'][0] {
       root,
       "iconUrl": icon.asset->url,
     },
-    businessSolutions[]{
-      ...,
-      ${picture('icon')}
-    }
   }
 }`;
 

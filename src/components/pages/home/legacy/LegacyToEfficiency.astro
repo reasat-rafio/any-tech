@@ -32,5 +32,9 @@ const { title, subtitle, flowDiagram, description, businessSolutions } =
     </section>
   </div>
 
-  {!!businessSolutions?.length && <BusinessSolution {businessSolutions} />}
+  {
+    !!businessSolutions?.length && (
+      <BusinessSolution client:load {businessSolutions} />
+    )
+  }
 </section>
