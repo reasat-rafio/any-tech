@@ -1,6 +1,8 @@
 <script lang="ts">
   import SanityImage from '@/lib/sanity-image.svelte';
   import type { BusinessSolution } from '@/lib/types/homePage';
+  import { PortableText } from '@portabletext/svelte';
+
   export let businessSolutions: BusinessSolution[];
 
   let selectedSolution = businessSolutions[0];
@@ -28,8 +30,7 @@
   {#if selectedSolution}
     <article>
       <h4>{selectedSolution.title}</h4>
-      <!-- <PortableText /> -->
-      <!-- <p>{selectedSolution.description}</p> -->
+      <PortableText value={selectedSolution.description} />
       {#if selectedSolution?.link}
         <a href={selectedSolution.link.href}> {selectedSolution.link.title}</a>
       {/if}
