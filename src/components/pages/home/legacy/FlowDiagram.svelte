@@ -12,7 +12,7 @@
   );
 </script>
 
-<!-- ? This component uses a gradient that is 150px in height, and since it is positioned absolutely, we need to set a margin-top of 45px to ensure that the component is properly positioned and does not overflow its container. -->
+<!-- ? This component uses a gradient that is 90px in height, and since it is positioned absolutely, we need to set a margin-top of 45px to ensure that the component is properly positioned and does not overflow its container. -->
 <div
   class="flex relative items-center justify-center flex-col-reverse lg:flex-row mt-[45px] lg:mt-0 h-full"
 >
