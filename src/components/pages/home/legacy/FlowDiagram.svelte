@@ -17,17 +17,14 @@
       >
         <div
           style="filter: drop-shadow(0px 10px 13px #D5EEFF);"
-          class="flex justify-center items-center flex-col rounded-full w-[150px] h-[150px] bg-white"
+          class="flex justify-center items-center flex-col rounded-full w-[150px] h-[150px] bg-white space-y-1"
         >
-          <svg class="h-[50px]" xmlns="http://www.w3.org/2000/svg">
-            <foreignObject width="100%" height="100%">
-              <iframe
-                title={name}
-                src={iconUrl}
-                style="width: 100%; height: 100%;"
-              />
-            </foreignObject>
-          </svg>
+          <object
+            class="h-[50px]"
+            title={name}
+            type="image/svg+xml"
+            data={iconUrl}
+          />
           <span>{name}</span>
         </div>
         <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
@@ -64,15 +61,12 @@
         style="filter: drop-shadow(0px 10px 13px #D5EEFF);"
         class="flex justify-center items-center flex-col rounded-full w-[150px] h-[150px] bg-white z-20 relative"
       >
-        <svg class="h-[50px]" xmlns="http://www.w3.org/2000/svg">
-          <foreignObject width="100%" height="100%">
-            <iframe
-              title={rootItem?.name}
-              src={rootItem?.iconUrl}
-              style="width: 100%; height: 100%;"
-            />
-          </foreignObject>
-        </svg>
+        <object
+          class="h-[50px]"
+          title={rootItem?.name}
+          type="image/svg+xml"
+          data={rootItem?.iconUrl}
+        />
         <span class="z-20 relative">{rootItem?.name}</span>
       </div>
       <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
