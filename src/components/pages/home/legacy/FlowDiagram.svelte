@@ -4,31 +4,38 @@
   import Bottom from './lines-svg/bottom.svelte';
 
   export let flowDiagram: FlowDiagram[];
+
   const [rootItem, ...rest] = flowDiagram.sort(
     (a, b) => Number(b.root === true) - Number(a.root === true)
   );
 </script>
 
-<section class="{$$props.class} items-center justify-center relative">
-  <div class="flex-1 flex flex-col justify-center items-center">
+<!-- ? This component uses a gradient that is 150px in height, and since it is positioned absolutely, we need to set a margin-top of 75px to ensure that the component is properly positioned and does not overflow its container. -->
+<div
+  class="flex relative items-center justify-center flex-col-reverse lg:flex-row mt-[75px] lg:mt-0 h-full"
+>
+  <div
+    class="flex-1 flex lg:flex-col justify-center items-center space-x-[70%] lg:space-x-0 mt-10 lg:mt-0"
+  >
     {#each rest as { name, platform, iconUrl }}
       <div
-        class="flex justify-center items-center flex-col first: last:translate-y-[calc(10%+14px)]"
+        class="flex justify-center items-center flex-col first:lg:translate-y-[calc(10%-14px)] last:lg:translate-y-[calc(10%+14px)]"
       >
         <div
           style="filter: drop-shadow(0px 10px 13px #D5EEFF);"
-          class="flex justify-center items-center flex-col rounded-full w-[150px] h-[150px] bg-white space-y-1"
+          class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white space-y-1"
         >
           <object
-            class="h-[50px]"
+            class="lg:h-[50px] h-[30px]"
             title={name}
             type="image/svg+xml"
             data={iconUrl}
           />
-          <span>{name}</span>
+          <span class="text-xs lg:text-base text-center">{name}</span>
         </div>
         <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
-        <span class="text-[#71A0B4] font-semibold text-[12px] mt-[14px]"
+        <span
+          class="text-[#71A0B4] font-semibold lg:text-[12px] text-[9px] mt-[14px] text-center"
           >{platform}</span
         >
       </div>
@@ -36,20 +43,20 @@
   </div>
 
   <!-- Root Item Container -->
-  <div class="flex-1 relative">
+  <div class="flex-1 relative overflow-visible">
     <!-- Gradients  -->
     <div
       style="background: linear-gradient(180deg, #f0faff 0%, rgba(240, 250, 255, 0) 165.93%);"
-      class="absolute top-0 right-1/2 translate-x-1/2 w-[150px] h-[150px] rounded-full scale-[2.25] -z-20 origin-center"
+      class="absolute top-0 right-1/2 translate-x-1/2 lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] rounded-full lg:scale-[2.25] scale-[2] -z-20 origin-center"
     />
     <div
       style="background: linear-gradient(180deg, #e5f6ff 0%, rgba(240, 250, 255, 0) 52.3%);"
-      class="absolute top-0 right-1/2 w-[150px] h-[150px] rounded-full -z-10 origin-center translate-x-1/2 scale-125"
+      class="absolute top-0 right-1/2 lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] rounded-full -z-10 origin-center translate-x-1/2 scale-125"
     />
 
     <!-- Indicator lines -->
     <div
-      class="absolute top-1/2 right-1/2 -translate-y-[calc(50%+14px)] translate-x-[5%] w-[60%] space-y-[35%]"
+      class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] translate-x-[5%] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
     >
       <Top />
       <Bottom />
@@ -59,20 +66,23 @@
     <div class="flex flex-col justify-center items-center">
       <div
         style="filter: drop-shadow(0px 10px 13px #D5EEFF);"
-        class="flex justify-center items-center flex-col rounded-full w-[150px] h-[150px] bg-white z-20 relative"
+        class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white z-20 relative"
       >
         <object
-          class="h-[50px]"
+          class="lg:h-[50px] h-[30px]"
           title={rootItem?.name}
           type="image/svg+xml"
           data={rootItem?.iconUrl}
         />
-        <span class="z-20 relative">{rootItem?.name}</span>
+        <span class="z-20 relative text-xs lg:text-base text-center"
+          >{rootItem?.name}</span
+        >
       </div>
       <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
-      <span class="text-[#71A0B4] font-semibold text-[12px] mt-[14px]"
+      <span
+        class="text-[#71A0B4] font-semibold lg:text-[12px] text-[9px] mt-[14px] text-center"
         >{rootItem?.platform}</span
       >
     </div>
   </div>
-</section>
+</div>

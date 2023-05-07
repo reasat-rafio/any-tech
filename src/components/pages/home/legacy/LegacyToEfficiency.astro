@@ -17,11 +17,15 @@ const { title, subtitle, flowDiagram, description, businessSolutions } =
     <!-- TODO Update the prettier config so it doesnt add any extra whitespace -->
     <!-- prettier-ignore -->
     <h3 class="lg:text-[64px] text-[40px] text-[#121212] font-semibold lg:leading-[78px] leading-[49px] whitespace-pre-line">{subtitle}</h3>
-    <!-- <FlowDiagram class="" {flowDiagram} /> -->
+    <div class="lg:absolute lg:-z-50 lg:-top-[10000%] lg:invisible">
+      <FlowDiagram {flowDiagram} />
+    </div>
     <div class="lg:text-[16px] text-[14px] text-[#164377] leading-[160%]">
       <PortableText value={description} />
     </div>
   </div>
 
-  <FlowDiagram class="lg:col-span-6 hidden lg:flex" {flowDiagram} />
+  <section class="lg:col-span-6 hidden lg:block">
+    <FlowDiagram {flowDiagram} />
+  </section>
 </section>
