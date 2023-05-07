@@ -55,7 +55,7 @@ export interface LegacyToEfficiencyData {
   subtitle: string;
 }
 
-interface BusinessSolution {
+export interface BusinessSolution {
   _type: string;
   _key: string;
   description: PortableTextBlock;
