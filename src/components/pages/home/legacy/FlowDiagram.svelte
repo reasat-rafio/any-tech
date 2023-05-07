@@ -2,6 +2,8 @@
   import type { FlowDiagram } from '@/lib/types/homePage';
   import Top from './lines-svg/top.svelte';
   import Bottom from './lines-svg/bottom.svelte';
+  import Left from './lines-svg/left.svelte';
+  import Right from './lines-svg/right.svelte';
 
   export let flowDiagram: FlowDiagram[];
 
@@ -10,12 +12,12 @@
   );
 </script>
 
-<!-- ? This component uses a gradient that is 150px in height, and since it is positioned absolutely, we need to set a margin-top of 75px to ensure that the component is properly positioned and does not overflow its container. -->
+<!-- ? This component uses a gradient that is 150px in height, and since it is positioned absolutely, we need to set a margin-top of 45px to ensure that the component is properly positioned and does not overflow its container. -->
 <div
-  class="flex relative items-center justify-center flex-col-reverse lg:flex-row mt-[75px] lg:mt-0 h-full"
+  class="flex relative items-center justify-center flex-col-reverse lg:flex-row mt-[45px] lg:mt-0 h-full"
 >
   <div
-    class="flex-1 flex lg:flex-col justify-center items-center space-x-[70%] lg:space-x-0 mt-10 lg:mt-0"
+    class="flex-1 flex lg:flex-col justify-center items-center space-x-[50%] lg:space-x-0 mt-3 lg:mt-0"
   >
     {#each rest as { name, platform, iconUrl }}
       <div
@@ -60,6 +62,12 @@
     >
       <Top />
       <Bottom />
+    </div>
+    <div
+      class="lg:hidden absolute bottom-0 right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
+    >
+      <Left />
+      <Right />
     </div>
 
     <!-- Item -->
