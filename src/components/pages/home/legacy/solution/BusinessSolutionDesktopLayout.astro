@@ -1,0 +1,55 @@
+---
+import PortableText from '@/components/PortableText.astro';
+import type { BusinessSolution } from '@/lib/types/homePage';
+import SanityPicture from 'astro-sanity-picture';
+const { businessSolutions } = Astro.props as {
+  businessSolutions: BusinessSolution[];
+};
+---
+
+<section class="md:grid hidden xl:grid-cols-3 md:grid-cols-2 gap-10 mt-10">
+  {
+    businessSolutions.map(({ title, name, icon, description, link }) => (
+      <article>
+        <div
+          class="rounded-[18px] flex items-center space-x-[8px] py-[8px] px-[15px] w-fit"
+          style="box-shadow: 0px 2.8603px 4.00442px rgba(31, 128, 240, 0.18);"
+        >
+          <SanityPicture
+            img={{ style: { width: '19px' }, alt: `${name} icon` }}
+            src={icon}
+          />
+
+          <span>{name}</span>
+        </div>
+        <h4 class="my-[31px] text-[32px] font-semibold leading-[39.01px]">
+          {title}
+        </h4>
+        <div class="text-[#164377] leading-[160%] text-[16px]">
+          <PortableText value={description} />
+        </div>
+
+        {!!link && (
+          <a
+            class="text-[#1F80F0] font-semibold text-[18px] flex items-center space-x-[8px] mt-[26px]"
+            href={link?.href}
+          >
+            <span>{link?.title}</span>
+            <svg
+              width="6"
+              height="9"
+              viewBox="0 0 6 9"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.25 4.73804L2.0625 7.92554C1.82812 8.15991 1.47656 8.15991 1.26562 7.92554L0.726562 7.40991C0.515625 7.17554 0.515625 6.82397 0.726562 6.61304L3 4.36304L0.726562 2.0896C0.515625 1.87866 0.515625 1.5271 0.726562 1.29272L1.26562 0.753662C1.47656 0.542725 1.82812 0.542725 2.0625 0.753662L5.25 3.94116C5.46094 4.17554 5.46094 4.5271 5.25 4.73804Z"
+                fill="#1F80F0"
+              />
+            </svg>
+          </a>
+        )}
+      </article>
+    ))
+  }
+</section>

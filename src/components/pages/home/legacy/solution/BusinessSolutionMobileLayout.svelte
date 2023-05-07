@@ -7,7 +7,7 @@
   let selectedSolution = businessSolutions[0];
 </script>
 
-<div class="md:hidden block space-y-[24px]">
+<section class="md:hidden block space-y-[24px]">
   <div class="grid grid-cols-3 gap-[9px] mt-10">
     {#each businessSolutions as solution}
       <button
@@ -60,4 +60,4 @@
       {/if}
     </article>
   {/if}
-</div>
+</section>

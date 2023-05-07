@@ -1,9 +1,10 @@
 ---
 import PortableText from '@/components/PortableText.astro';
 import FlowDiagram from '@/components/pages/home/legacy/FlowDiagram.svelte';
-
 import type { LegacyToEfficiencyData } from '@/lib/types/homePage';
-import BusinessSolution from './solution/BusinessSolution.svelte';
+import BusinessSolutionMobileLayout from './solution/BusinessSolutionMobileLayout.svelte';
+import BusinessSolutionDesktopLayout from './solution/BusinessSolutionDesktopLayout.astro';
+
 const { title, subtitle, flowDiagram, description, businessSolutions } =
   Astro.props as LegacyToEfficiencyData;
 ---
@@ -34,7 +35,10 @@ const { title, subtitle, flowDiagram, description, businessSolutions } =
 
   {
     !!businessSolutions?.length && (
-      <BusinessSolution client:load {businessSolutions} />
+      <>
+        <BusinessSolutionMobileLayout client:load {businessSolutions} />
+        <BusinessSolutionDesktopLayout {businessSolutions} />
+      </>
     )
   }
 </section>
