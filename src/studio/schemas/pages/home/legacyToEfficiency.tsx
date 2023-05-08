@@ -44,23 +44,23 @@ const legacyToEfficiency = {
           type: 'object',
           fields: [
             {
-              name: 'icon',
+              name: 'logo',
               type: 'image',
-              description: 'Only SVGs allowed.',
-              options: {
-                accept: '.svg',
-              },
               validation: (Rule: Rule) => Rule.required(),
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Alternative Text',
+                  description: 'Important for SEO and accessibility',
+                  type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+              ],
             },
             {
               name: 'root',
               type: 'boolean',
               initialValue: false,
-            },
-            {
-              name: 'name',
-              type: 'string',
-              validation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'platform',
@@ -70,10 +70,8 @@ const legacyToEfficiency = {
           ],
           preview: {
             select: {
-              title: 'name',
-              isRoot: 'root',
-              subtitle: 'platform',
-              media: 'icon',
+              media: 'logo',
+              title: 'platform',
             },
             prepare: ({
               title,
