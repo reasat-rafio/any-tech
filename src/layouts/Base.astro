@@ -1,5 +1,6 @@
 ---
 import '@fontsource/montserrat';
+import '@fontsource/source-sans-pro';
 import BaseMeta from '@/components/BaseMeta.astro';
 import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 
@@ -17,14 +18,6 @@ const { seo, favicon } = Astro.props;
     <GoogleAnalytics />
     <!-- some other scripts comes here -->
     <link rel="icon" type="image/png" href={favicon} />
-
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+Pro:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body class="overflow-x-hidden">
     <slot name="header" />

@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: ['./src/**/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -32,6 +31,7 @@ module.exports = {
         blue: {
           primary: '#1F80F0',
           secondary: '#164377',
+          crystal: '#71A0B4',
         },
         black: '#121212',
         orange: '#FE8B53',
@@ -51,6 +51,7 @@ module.exports = {
         'body-p': ['16px', { lineHeight: '26px', fontWeight: '400' }],
         'body-p2': ['13px', { lineHeight: '16.34px', fontWeight: '400' }],
         link: ['18px', { lineHeight: '23px', fontWeight: '600' }],
+        tiny: ['12px', { lineHeight: '19px', fontWeight: '600' }],
         'res-head-1': [
           '64px',
           { lineHeight: '64px', letterSpacing: '-0.02em', fontWeight: '600' },
@@ -62,7 +63,8 @@ module.exports = {
         ],
         'res-head-4': ['24px', { lineHeight: '29px', fontWeight: '600' }],
         'res-body-p': ['14px', { lineHeight: '22px', fontWeight: '400' }],
-        'link-res': ['16px', { lineHeight: '20px', fontWeight: '600' }],
+        'res-link': ['16px', { lineHeight: '20px', fontWeight: '600' }],
+        'res-tiny': ['9px', { lineHeight: '14px', fontWeight: '600' }],
       },
       gridTemplateColumns: {
         fluid: 'repeat(auto-fill, minmax(300px, 1fr))',
