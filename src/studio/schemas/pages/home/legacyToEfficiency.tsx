@@ -72,17 +72,10 @@ const legacyToEfficiency = {
             select: {
               media: 'logo',
               title: 'platform',
+              isRoot: 'root',
             },
-            prepare: ({
-              title,
-              isRoot,
-              subtitle,
-              media,
-            }: {
-              [key: string]: string;
-            }) => ({
-              title: `${title} ${!!isRoot ? ' | isRoot' : ''}`,
-              subtitle,
+            prepare: ({ title, isRoot, media }: { [key: string]: string }) => ({
+              title: `${title} ${!!isRoot ? ' | Root' : ''}`,
               media,
             }),
           },
@@ -99,19 +92,20 @@ const legacyToEfficiency = {
           type: 'object',
           fields: [
             {
-              name: 'icon',
+              name: 'logo',
               type: 'image',
-              options: {
-                accept: '.svg',
-              },
-              description: 'Only SVGs allowed.',
               validation: (Rule: Rule) => Rule.required(),
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Alternative Text',
+                  description: 'Important for SEO and accessibility',
+                  type: 'string',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+              ],
             },
-            {
-              name: 'name',
-              type: 'string',
-              validation: (Rule: Rule) => Rule.required(),
-            },
+
             {
               name: 'title',
               type: 'string',
@@ -128,7 +122,7 @@ const legacyToEfficiency = {
             select: {
               title: 'title',
               subtile: 'description',
-              media: 'icon',
+              media: 'logo',
             },
           },
         },

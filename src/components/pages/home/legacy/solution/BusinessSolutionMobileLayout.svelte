@@ -28,16 +28,16 @@
       <button
         on:click={() => setNewSolution(solution)}
         class="{selectedSolution?._key === solution._key
-          ? 'bg-blue-primary text-white'
-          : 'bg-white'} rounded-xl flex justify-center items-center space-x-[8px] py-[8px] px-[15px] shadow-button-secondary"
+          ? 'bg-blue-primary '
+          : 'bg-white'} rounded-xl flex justify-center items-center py-[8px] px-[15px] shadow-button-secondary"
       >
         <SanityImage
-          class="w-[10px]"
-          alt="{solution.name} icon"
-          image={solution.icon}
+          class="{selectedSolution?._key === solution._key &&
+            'brightness-0 invert'} h-full w-full object-contain max-w-[80px]"
+          alt="{solution.logo.alt} icon"
+          image={solution.logo}
           maxWidth={20}
         />
-        <span class="text-xs">{solution.name}</span>
       </button>
     {/each}
   </div>

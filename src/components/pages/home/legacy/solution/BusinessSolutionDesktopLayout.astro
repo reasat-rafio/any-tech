@@ -11,15 +11,14 @@ const { businessSolutions } = Astro.props as {
   class="mt-[95px] hidden gap-[30px] md:grid md:grid-cols-2 xl:grid-cols-3"
 >
   {
-    businessSolutions.map(({ title, name, icon, description, link }) => (
+    businessSolutions.map(({ title, logo, description, link }) => (
       <article>
-        <div class="flex w-fit items-center space-x-[8px] rounded-md px-[15px] py-[8px] shadow-button-secondary">
+        <div class="flex w-fit rounded-md px-[15px] py-[8px] shadow-button-secondary">
           <SanityPicture
-            img={{ style: { width: '19px' }, alt: `${name} icon` }}
-            src={icon}
+            class="h-full max-w-[100px] object-contain"
+            img={{ alt: logo.alt }}
+            src={logo}
           />
-
-          <span>{name}</span>
         </div>
         <h3 class="my-[31px] font-Montserrat text-head-3">{title}</h3>
         <div class="text-res-body-p text-blue-secondary lg:text-body-p">

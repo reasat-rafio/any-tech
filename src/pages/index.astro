@@ -3,7 +3,6 @@ import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
 import Hero from '@/components/pages/home/Hero.astro';
 import type { HomePageData } from '@/lib/types/homePage';
-import { picture } from 'astro-sanity-picture';
 import LegacyToEfficiency from '@/components/pages/home/legacy/LegacyToEfficiency.astro';
 
 const query = `*[_type == 'homePage'][0] {
@@ -12,10 +11,9 @@ const query = `*[_type == 'homePage'][0] {
     ...,
     flowDiagram[]{
       _key,
-      name,
       platform,
       root,
-      "iconUrl": icon.asset->url,
+      logo
     },
   }
 }`;

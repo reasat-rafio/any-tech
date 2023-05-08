@@ -60,15 +60,13 @@ export interface BusinessSolution {
   _key: string;
   description: PortableTextBlock;
   title: string;
-  icon: SanityAsset;
+  logo: SanityAsset;
   link?: Link;
-  name: string;
 }
 
 export interface FlowDiagram {
   _key: string;
-  name: string;
+  logo: SanityAsset;
   platform: string;
   root: boolean;
-  iconUrl: string;
 }

@@ -6,6 +6,7 @@
   import RightLine from './lines-svg/RightLine.svelte';
   import { onMount } from 'svelte';
   import { timeline, inView } from 'motion';
+  import SanityImage from '@/lib/sanity-image.svelte';
 
   export let flowDiagram: FlowDiagram[];
 
@@ -48,20 +49,19 @@
   <div
     class="flex-1 flex lg:flex-col justify-center items-center space-x-[50%] lg:space-x-0 mt-3 lg:mt-0"
   >
-    {#each rest as { name, platform, iconUrl }}
+    {#each rest as { platform, logo }}
       <div
         class="flex justify-center items-center flex-col first:lg:translate-y-[calc(10%-14px)] last:lg:translate-y-[calc(10%+14px)]"
       >
         <div
           class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white space-y-1 drop-shadow-ellipse"
         >
-          <object
-            class="lg:h-[50px] h-[30px]"
-            title={name}
-            type="image/svg+xml"
-            data={iconUrl}
+          <SanityImage
+            class="h-[50%] object-contain"
+            image={logo}
+            alt={logo.alt}
+            maxWidth={50}
           />
-          <span class="text-xs lg:text-base text-center">{name}</span>
         </div>
         <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
         <span
@@ -105,25 +105,24 @@
     </div>
 
     <!-- Item -->
-    <div class="flex flex-col justify-center items-center">
-      <div
-        class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white z-20 relative drop-shadow-ellipse"
-      >
-        <object
-          class="lg:h-[50px] h-[30px]"
-          title={rootItem?.name}
-          type="image/svg+xml"
-          data={rootItem?.iconUrl}
-        />
-        <span class="z-20 relative text-xs lg:text-base text-center"
-          >{rootItem?.name}</span
+    {#if rootItem}
+      <div class="flex flex-col justify-center items-center">
+        <div
+          class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white z-20 relative drop-shadow-ellipse"
+        >
+          <SanityImage
+            class="h-[50%] object-contain"
+            image={rootItem.logo}
+            alt={rootItem.logo.alt}
+            maxWidth={50}
+          />
+        </div>
+        <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
+        <span
+          class="text-blue-crystal lg:text-tiny text-res-tiny mt-[14px] text-center"
+          >{rootItem.platform}</span
         >
       </div>
-      <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
-      <span
-        class="text-blue-crystal lg:text-tiny text-res-tiny mt-[14px] text-center"
-        >{rootItem?.platform}</span
-      >
-    </div>
+    {/if}
   </div>
 </div>
