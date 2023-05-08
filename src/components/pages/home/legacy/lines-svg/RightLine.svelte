@@ -20,6 +20,14 @@
     >
       <stop stop-color="#00E9EA" stop-opacity="0" />
       <stop offset="1" stop-color="#1F80F0" />
+      <animate
+        attributeName="x1"
+        dur="7s"
+        repeatCount="indefinite"
+        values="126.598;100;50;25;0;25;50;100;126.598"
+        keyTimes="0;0.1;0.3;0.5;0.6;0.7;0.9;0.95;1"
+        keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;"
+      />
     </linearGradient>
   </defs>
 </svg>

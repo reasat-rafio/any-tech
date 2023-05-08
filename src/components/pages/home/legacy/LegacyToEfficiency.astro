@@ -20,7 +20,7 @@ const { title, subtitle, flowDiagram, description, businessSolutions } =
       <h2
         class="whitespace-pre-line font-Montserrat text-res-head-2 text-black lg:text-head-2">{subtitle}</h2>
       <div class="lg:invisible lg:absolute lg:-top-[10000%] lg:-z-50">
-        <FlowDiagram {flowDiagram} />
+        <FlowDiagram client:load {flowDiagram} />
       </div>
       <div class="text-res-body-p text-blue-secondary lg:text-body-p">
         <PortableText value={description} />
@@ -28,7 +28,7 @@ const { title, subtitle, flowDiagram, description, businessSolutions } =
     </section>
 
     <section class="hidden lg:col-span-6 lg:block">
-      <FlowDiagram {flowDiagram} />
+      <FlowDiagram client:load {flowDiagram} />
     </section>
   </div>
 

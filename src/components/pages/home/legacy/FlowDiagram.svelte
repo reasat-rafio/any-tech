@@ -1,19 +1,46 @@
 <script lang="ts">
   import type { FlowDiagram } from '@/lib/types/homePage';
-  import Top from './lines-svg/top.svelte';
-  import Bottom from './lines-svg/bottom.svelte';
-  import Left from './lines-svg/left.svelte';
-  import Right from './lines-svg/right.svelte';
+  import TopLine from './lines-svg/TopLine.svelte';
+  import BottomLine from './lines-svg/BottomLine.svelte';
+  import LeftLine from './lines-svg/LeftLine.svelte';
+  import RightLine from './lines-svg/RightLine.svelte';
+  import { onMount } from 'svelte';
+  import { timeline, inView } from 'motion';
 
   export let flowDiagram: FlowDiagram[];
+
+  let containerRef: HTMLDivElement;
+  let bigGradientRef: HTMLDivElement;
+  let smallGradientRef: HTMLDivElement;
 
   const [rootItem, ...rest] = flowDiagram.sort(
     (a, b) => Number(b.root === true) - Number(a.root === true)
   );
+
+  onMount(() => {
+    inView(containerRef, () => {
+      timeline(
+        [
+          [
+            smallGradientRef,
+            { x: '50%', opacity: [0, 1], scale: [0, 1.25] },
+            { x: { duration: 0 } },
+          ],
+          [
+            bigGradientRef,
+            { x: '50%', scale: [0, 2], opacity: [0, 1] },
+            { x: { duration: 0 } },
+          ],
+        ],
+        { duration: 0.8 }
+      );
+    });
+  });
 </script>
 
 <!-- ? This component uses a gradient that is 90px in height, and since it is positioned absolutely, we need to set a margin-top of 45px to ensure that the component is properly positioned and does not overflow its container. -->
 <div
+  bind:this={containerRef}
   class="flex relative items-center justify-center flex-col-reverse lg:flex-row mt-[45px] lg:mt-0 h-full"
 >
   <div
@@ -47,12 +74,14 @@
   <div class="flex-1 relative overflow-visible">
     <!-- Gradients  -->
     <div
+      bind:this={bigGradientRef}
       style="background: linear-gradient(180deg, #f0faff 0%, rgba(240, 250, 255, 0) 165.93%);"
-      class="absolute top-0 right-1/2 translate-x-1/2 lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] rounded-full lg:scale-[2.25] scale-[2] -z-20 origin-center"
+      class="absolute top-0 right-1/2 lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] rounded-full -z-20 origin-center opacity-0"
     />
     <div
+      bind:this={smallGradientRef}
       style="background: linear-gradient(180deg, #e5f6ff 0%, rgba(240, 250, 255, 0) 52.3%);"
-      class="absolute top-0 right-1/2 lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] rounded-full -z-10 origin-center translate-x-1/2 scale-125"
+      class="absolute top-0 right-1/2 lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] rounded-full -z-10 origin-center opacity-0"
     />
 
     <!-- Indicator lines -->
@@ -60,15 +89,15 @@
     <div
       class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
     >
-      <Top />
-      <Bottom />
+      <TopLine />
+      <BottomLine />
     </div>
     <!-- Mobile -->
     <div
       class="lg:hidden absolute bottom-0 translate-y-[10%] right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
     >
-      <Left />
-      <Right />
+      <LeftLine />
+      <RightLine />
     </div>
 
     <!-- Item -->
