@@ -2,9 +2,22 @@
   import SanityImage from '@/lib/sanity-image.svelte';
   import type { BusinessSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
+  import { animate } from 'motion';
 
   export let businessSolutions: BusinessSolution[];
   let selectedSolution = businessSolutions[0];
+  let articleContainerRef: HTMLElement;
+
+  const setNewSolution = (solution: BusinessSolution) => {
+    selectedSolution = solution;
+
+    if (articleContainerRef)
+      animate(
+        articleContainerRef,
+        { opacity: [0, 1] },
+        { easing: 'ease-in-out' }
+      );
+  };
 </script>
 
 <section
@@ -13,7 +26,7 @@
   <div class="grid grid-cols-3 gap-[9.5px] mb-[24px]">
     {#each businessSolutions as solution}
       <button
-        on:click={() => (selectedSolution = solution)}
+        on:click={() => setNewSolution(solution)}
         class="{selectedSolution?._key === solution._key
           ? 'bg-blue-primary text-white'
           : 'bg-white'} rounded-xl flex justify-center items-center space-x-[8px] py-[8px] px-[15px] shadow-button-secondary"
@@ -30,7 +43,7 @@
   </div>
 
   {#if selectedSolution}
-    <article class="">
+    <article bind:this={articleContainerRef}>
       <h3 class="text-black text-res-head-3 font-Montserrat mb-[16px]">
         {selectedSolution.title}
       </h3>
