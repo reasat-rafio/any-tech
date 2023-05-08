@@ -10,6 +10,7 @@
   export let flowDiagram: FlowDiagram[];
 
   let containerRef: HTMLDivElement;
+  let indicatorLineContainerRef: HTMLDivElement;
   let bigGradientRef: HTMLDivElement;
   let smallGradientRef: HTMLDivElement;
 
@@ -31,8 +32,9 @@
             { x: '50%', scale: [0, 2], opacity: [0, 1] },
             { x: { duration: 0 } },
           ],
+          [indicatorLineContainerRef, { opacity: [0, 1] }, { at: 0.5 }],
         ],
-        { duration: 0.8 }
+        { duration: 2 }
       );
     });
   });
@@ -85,19 +87,21 @@
     />
 
     <!-- Indicator lines -->
-    <!-- Desktop -->
-    <div
-      class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
-    >
-      <TopLine />
-      <BottomLine />
-    </div>
-    <!-- Mobile -->
-    <div
-      class="lg:hidden absolute bottom-0 translate-y-[10%] right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
-    >
-      <LeftLine />
-      <RightLine />
+    <div bind:this={indicatorLineContainerRef}>
+      <!-- Desktop -->
+      <div
+        class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
+      >
+        <TopLine />
+        <BottomLine />
+      </div>
+      <!-- Mobile -->
+      <div
+        class="lg:hidden absolute bottom-0 translate-y-[10%] right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
+      >
+        <LeftLine />
+        <RightLine />
+      </div>
     </div>
 
     <!-- Item -->
