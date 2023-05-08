@@ -74,10 +74,8 @@ module.exports = {
         image: '0px 23px 30px rgba(22, 67, 119, 0.39)',
       },
       boxShadow: {
-        button: {
-          primary: '0px 3px 3px rgba(16, 62, 117, 0.37)',
-          secondary: '0px 5px 7px rgba(31, 128, 240, 0.18)',
-        },
+				'button-primary': '0px 3px 3px rgba(16, 62, 117, 0.37)',
+				'button-secondary': '0px 5px 7px rgba(31, 128, 240, 0.18)',
         card: '0px 16px 21px rgba(207, 233, 247, 0.47)',
       },
     },
