@@ -22,6 +22,9 @@ dependencies:
   '@fontsource/montserrat':
     specifier: ^4.5.14
     version: 4.5.14
+  '@fontsource/source-sans-pro':
+    specifier: ^4.5.11
+    version: 4.5.11
   '@sanity/client':
     specifier: ^6.0.1
     version: 6.0.1
@@ -1179,6 +1182,10 @@ packages:
 
   /@fontsource/montserrat@4.5.14:
     resolution: {integrity: sha512-fTvrteVzuFUePhr4QYBGoK8G/YHLJ3IhF1HhKg0AxcFvZajJT7rM7ULdmKLSd2PkX44R3aaFZq1zDbmjbGGI+w==}
+    dev: false
+
+  /@fontsource/source-sans-pro@4.5.11:
+    resolution: {integrity: sha512-f7iw44q1EjBv3MNcHCGAgrW/QVyweaEouFsJzykPhTOGnZFSwFJRISToXornOmuAy7xUUGiVdqOLiykgZoYB8A==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.8:
