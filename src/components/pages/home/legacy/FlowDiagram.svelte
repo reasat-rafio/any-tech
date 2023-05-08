@@ -56,14 +56,16 @@
     />
 
     <!-- Indicator lines -->
+    <!-- Desktop -->
     <div
-      class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] translate-x-[5%] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
+      class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
     >
       <Top />
       <Bottom />
     </div>
+    <!-- Mobile -->
     <div
-      class="lg:hidden absolute bottom-0 right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
+      class="lg:hidden absolute bottom-0 translate-y-[10%] right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
     >
       <Left />
       <Right />
