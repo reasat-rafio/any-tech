@@ -13,62 +13,59 @@ const {
 import SanityPicture from 'astro-sanity-picture';
 ---
 
-<footer class="">
-  <div class="">
-    <SanityPicture src={logo} />
-  </div>
-  <div>
-    {
-      socialLinks.map(({ icon, href }) => (
-        <div class="text-theme-body">
-          <a
-            href={href}
-            class="hover:text-theme-primary md:text-body-p text-res-body-p"
-          >
-            <SanityPicture src={icon} />
-          </a>
+<footer class="bg-[#103E75]">
+  <div class="container pt-[48px] pb-[33px]">
+    <div class="grid grid-cols-[1fr_3fr] gap-[30px]">
+      <div>
+        <SanityPicture class="w-[200px]" lqip={{ enabled: false }} src={logo} />
+        <div class="flex mt-[48px]">
+          {
+            socialLinks.map(({ icon, href }) => (
+              <a href={href} class="mr-3">
+                <SanityPicture class="h-[17px]" src={icon} />
+              </a>
+            ))
+          }
         </div>
-      ))
-    }
-  </div>
-  <div class="grid md:grid-cols-3 gap-10 pb-5 col-span-3">
-    {
-      footerContents.map((content) => (
-        <div class="text-theme-body">
-          <div class="mb-[21px] text-lg md:text-xl">{content.title}</div>
-          <ul class="flex flex-col">
-            {content.links.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="hover:text-theme-primary md:text-body-p text-res-body-p"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-  </div>
+      </div>
+      <div class="grid grid-cols-3 gap-[30px]">
+        {
+          footerContents.map((content) => (
+            <div class="text-body-p2 text-white font-SansPro">
+              <div class="mb-3 pb-3 border-b border-blue-primary">
+                {content.title}
+              </div>
+              <ul class="space-y-3">
+                {content.links.map((link) => (
+                  <li>
+                    <a href={link.href} class="">
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
 
-  <div class="">
-    <PortableText value={footerCopyRight} />
-    <div>
-      {
-        footerBottomLinks.map(({ title, href }) => (
-          <div class="text-theme-body">
-            <a
-              href={href}
-              class="hover:text-theme-primary md:text-body-p text-res-body-p"
-            >
-              {title}
-            </a>
-            `.`
-          </div>
-        ))
-      }
+    <div
+      class="mt-9 flex justify-between items-center font-SansPro text-res-body-p lg:text-body-p text-blue-primary"
+    >
+      <PortableText value={footerCopyRight} />
+      <div class="flex items-center">
+        {
+          footerBottomLinks.map(({ title, href }, index) => (
+            <div>
+              {index !== 0 && '.'}
+              <a href={href} class="pl-[12px] mr-[14px]">
+                {title}
+              </a>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </footer>

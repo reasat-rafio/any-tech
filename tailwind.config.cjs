@@ -49,6 +49,7 @@ module.exports = {
         ],
         'head-4': ['32px', { lineHeight: '39px', fontWeight: '600' }],
         'body-p': ['16px', { lineHeight: '26px', fontWeight: '400' }],
+        'body-p2': ['13px', { lineHeight: '16.34px', fontWeight: '400' }],
         link: ['18px', { lineHeight: '23px', fontWeight: '600' }],
         'res-head-1': [
           '64px',
