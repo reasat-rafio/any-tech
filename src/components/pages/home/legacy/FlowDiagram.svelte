@@ -24,8 +24,7 @@
         class="flex justify-center items-center flex-col first:lg:translate-y-[calc(10%-14px)] last:lg:translate-y-[calc(10%+14px)]"
       >
         <div
-          style="filter: drop-shadow(0px 10px 13px #D5EEFF);"
-          class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white space-y-1"
+          class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white space-y-1 drop-shadow-ellipse"
         >
           <object
             class="lg:h-[50px] h-[30px]"
@@ -37,7 +36,7 @@
         </div>
         <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
         <span
-          class="text-[#71A0B4] font-semibold lg:text-[12px] text-[9px] mt-[14px] text-center"
+          class="text-blue-crystal lg:text-tiny text-res-tiny mt-[14px] text-center"
           >{platform}</span
         >
       </div>
@@ -73,8 +72,7 @@
     <!-- Item -->
     <div class="flex flex-col justify-center items-center">
       <div
-        style="filter: drop-shadow(0px 10px 13px #D5EEFF);"
-        class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white z-20 relative"
+        class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white z-20 relative drop-shadow-ellipse"
       >
         <object
           class="lg:h-[50px] h-[30px]"
@@ -88,7 +86,7 @@
       </div>
       <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
       <span
-        class="text-[#71A0B4] font-semibold lg:text-[12px] text-[9px] mt-[14px] text-center"
+        class="text-blue-crystal lg:text-tiny text-res-tiny mt-[14px] text-center"
         >{rootItem?.platform}</span
       >
     </div>

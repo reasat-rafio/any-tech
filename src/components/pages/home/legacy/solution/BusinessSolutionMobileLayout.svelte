@@ -7,15 +7,16 @@
   let selectedSolution = businessSolutions[0];
 </script>
 
-<section class="md:hidden block space-y-[24px]">
-  <div class="grid grid-cols-3 gap-[9px] mt-10">
+<section
+  class="md:hidden block space-y-[24px] pt-[24px] border-t border-lavender"
+>
+  <div class="grid grid-cols-3 gap-[9.5px] mb-[24px]">
     {#each businessSolutions as solution}
       <button
         on:click={() => (selectedSolution = solution)}
-        style="box-shadow: 0px 2.8603px 4.00442px rgba(31, 128, 240, 0.18);"
         class="{selectedSolution?._key === solution._key
-          ? 'bg-[#1F80F0] text-white'
-          : 'bg-white'} rounded-[18px] flex justify-center items-center space-x-[8px] py-[8px] px-[15px]"
+          ? 'bg-blue-primary text-white'
+          : 'bg-white'} rounded-xl flex justify-center items-center space-x-[8px] py-[8px] px-[15px] shadow-button-secondary"
       >
         <SanityImage
           class="w-[10px]"
@@ -29,16 +30,16 @@
   </div>
 
   {#if selectedSolution}
-    <article class="space-y-[24px]">
-      <h4 class="text-[#121212] text-[24px] font-semibold leading-[29px]">
+    <article class="">
+      <h3 class="text-black text-res-head-3 font-Montserrat mb-[16px]">
         {selectedSolution.title}
-      </h4>
-      <div class="text-[#164377] leading-[160%] text-[14px]">
+      </h3>
+      <div class="text-blue-secondary text-res-body-p mb-[24px]">
         <PortableText value={selectedSolution.description} />
       </div>
       {#if selectedSolution?.link}
         <a
-          class="text-[#1F80F0] font-semibold text-[16px] flex items-center space-x-[8px]"
+          class="text-blue-primary text-res-link flex items-center space-x-[8px]"
           href={selectedSolution.link.href}
         >
           <span>

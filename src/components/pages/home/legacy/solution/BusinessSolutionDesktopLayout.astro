@@ -7,14 +7,13 @@ const { businessSolutions } = Astro.props as {
 };
 ---
 
-<section class="md:grid hidden xl:grid-cols-3 md:grid-cols-2 gap-10 mt-10">
+<section
+  class="mt-[95px] hidden gap-[30px] md:grid md:grid-cols-2 xl:grid-cols-3"
+>
   {
     businessSolutions.map(({ title, name, icon, description, link }) => (
       <article>
-        <div
-          class="rounded-[18px] flex items-center space-x-[8px] py-[8px] px-[15px] w-fit"
-          style="box-shadow: 0px 2.8603px 4.00442px rgba(31, 128, 240, 0.18);"
-        >
+        <div class="flex w-fit items-center space-x-[8px] rounded-md px-[15px] py-[8px] shadow-button-secondary">
           <SanityPicture
             img={{ style: { width: '19px' }, alt: `${name} icon` }}
             src={icon}
@@ -22,16 +21,14 @@ const { businessSolutions } = Astro.props as {
 
           <span>{name}</span>
         </div>
-        <h4 class="my-[31px] text-[32px] font-semibold leading-[39.01px]">
-          {title}
-        </h4>
-        <div class="text-[#164377] leading-[160%] text-[16px]">
+        <h3 class="my-[31px] font-Montserrat text-head-3">{title}</h3>
+        <div class="text-res-body-p text-blue-secondary lg:text-body-p">
           <PortableText value={description} />
         </div>
 
         {!!link && (
           <a
-            class="text-[#1F80F0] font-semibold text-[18px] flex items-center space-x-[8px] mt-[26px]"
+            class="mt-[26px] flex items-center space-x-[8px] text-link text-blue-primary"
             href={link?.href}
           >
             <span>{link?.title}</span>
