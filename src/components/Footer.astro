@@ -1,59 +1,77 @@
 ---
 import PortableText from '@/components/PortableText.astro';
-import { urlForSanityImage } from '@/lib/helpers';
-import type { FooterProps, FooterLinks, FooterContent } from '@/lib/types/site';
-const { footerContents, footerLogo, footerCopyRight } =
-  Astro.props as FooterProps;
+import type { FooterProps } from '@/lib/types/site';
 
-function isFooterLinks(item: FooterLinks | FooterContent): item is FooterLinks {
-  return item._type === 'footerLinks';
-}
+type Props = FooterProps;
+const {
+  footerContents,
+  logo,
+  footerCopyRight,
+  socialLinks,
+  footerBottomLinks,
+} = Astro.props;
+import SanityPicture from 'astro-sanity-picture';
 ---
 
-<footer class="bg-theme-dark text-white">
-  <div
-    class="grid md:grid-cols-4 md:justify-start border-b-2 border-solid py-[70px] px-5 border-theme-primary md:flex-row gap-10"
-  >
-    <div class="w-full md:w-auto md:basis-1/5 col-span-1">
-      <img
-        src={urlForSanityImage(footerLogo).url()}
-        alt="Krypton logo"
-        class="w-[270px] object-contain h-auto md:w-[300px] mx-auto"
-      />
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 pb-5 col-span-3">
-      {
-        footerContents.map((content) =>
-          isFooterLinks(content) ? (
-            <div class="text-theme-body">
-              <div class="mb-[21px] text-lg md:text-xl">{content.title}</div>
-              <ul class="flex flex-col">
-                {(content as FooterLinks).links.map((link) => (
+<footer class="bg-[#103E75]">
+  <div class="py-10 lg:container lg:pb-[33px] lg:pt-[48px]">
+    <div class="grid-cols-[1fr_3fr] gap-[30px] lg:grid">
+      <div
+        class="items-center justify-between border-b border-blue-primary max-lg:container max-lg:mb-7 max-lg:flex max-lg:pb-9 lg:flex-col lg:border-none"
+      >
+        <SanityPicture
+          img={{ class: '!w-[100px] !lg:w-[200px] !object-contain' }}
+          lqip={{ enabled: false }}
+          src={logo}
+        />
+        <div class="flex lg:mt-[48px]">
+          {
+            socialLinks?.map(({ icon, href }) => (
+              <a href={href} class="mr-3">
+                <SanityPicture class="h-[17px]" src={icon} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="grid-cols-3 gap-[30px] max-lg:container lg:grid">
+        {
+          footerContents.map((content) => (
+            <div class="font-SansPro text-body-p2 text-white max-lg:mb-10">
+              <div class="mb-3 border-b border-blue-primary pb-[15px] lg:pb-3">
+                {content.title}
+              </div>
+              <ul class="space-y-3">
+                {content.links.map((link) => (
                   <li>
-                    <a
-                      rel="prefetch"
-                      href={link.href}
-                      class="hover:text-theme-primary md:text-body-p text-res-body-p"
-                    >
+                    <a href={link.href} class="">
                       {link.title}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-          ) : (
-            <div class="text-theme-body">
-              <div class="mb-[21px] text-lg md:text-xl">{content.title}</div>
-              <div>
-                <PortableText value={content.description} />
-              </div>
-            </div>
-          )
-        )
-      }
+          ))
+        }
+      </div>
     </div>
-  </div>
-  <div class="text-center px-5 md:py-[40px] py-[30px] font-sans">
-    <PortableText value={footerCopyRight} />
+
+    <div
+      class="mt-7 flex flex-col items-center justify-between border-t border-blue-primary font-SansPro text-res-body-p text-blue-primary max-lg:container max-lg:pt-4 lg:mt-9 lg:flex-row lg:border-none lg:text-body-p"
+    >
+      <PortableText value={footerCopyRight} />
+      <div class="flex items-center">
+        {
+          footerBottomLinks?.map(({ title, href }, index) => (
+            <div>
+              {index !== 0 && '.'}
+              <a href={href} class="mr-[14px] pl-[12px]">
+                {title}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </footer>

@@ -2,8 +2,8 @@ import {
   SanityImageDimensions,
   SanityImageWithAssetStub,
   SanityReference,
-} from "@sanity/image-url/lib/types/types";
-import type { SanityDimensionedImage } from "astro-sanity-picture/src/types";
+} from '@sanity/image-url/lib/types/types';
+import type { SanityDimensionedImage } from 'astro-sanity-picture/src/types';
 
 declare global {
   interface PortableText {
@@ -16,6 +16,12 @@ declare global {
 
   interface Link {
     title: string;
+    href: string;
+    _key: string;
+  }
+
+  interface iconLink {
+    icon: SanityImage;
     href: string;
     _key: string;
   }

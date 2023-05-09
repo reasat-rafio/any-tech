@@ -1,10 +1,10 @@
-import { pageQuery } from "@/utils/query";
-import groq from "groq";
-import { sanityClient } from "@/utils/sanity";
-import imageUrlBuilder from "@sanity/image-url";
-import type { QueryParams } from "sanity";
-import type { SiteData } from "@/lib/types/site";
-import type { SanityDimensionedImage } from "astro-sanity-picture";
+import { pageQuery } from '@/lib/query';
+import groq from 'groq';
+import { sanityClient } from '@/utils/sanity';
+import imageUrlBuilder from '@sanity/image-url';
+import type { QueryParams } from 'sanity';
+import type { SiteData } from '@/lib/types/site';
+import type { SanityDimensionedImage } from 'astro-sanity-picture';
 
 export const withDimensions = (img: string) => groq`${img} {
   ...,
@@ -36,5 +36,5 @@ export async function getPageData<T>(
 export const imageBuilder = imageUrlBuilder(sanityClient);
 
 export function urlForSanityImage(source: SanityDimensionedImage) {
-  return imageBuilder.image(source).auto("format");
+  return imageBuilder.image(source).auto('format');
 }

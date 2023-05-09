@@ -8,7 +8,10 @@ const query = `*[_type == 'homePage'][0] {
   ...,
 }`;
 
-const data = await getPageData<HomePageData>(query);
+const data = await getPageData<HomePageData>(query, {
+  locale: 'en-SG',
+  defaultLocale: 'en-SG',
+});
 const { page, site } = data;
 const { sections, seo } = page;
 ---
