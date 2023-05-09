@@ -1,5 +1,5 @@
 <script lang="ts">
-  // update vaiant here
+  // update variant here
   export let icon: 'ChevronRight';
   export let airaLabel = 'icon';
   export let className = '';
