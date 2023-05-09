@@ -1,0 +1,18 @@
+---
+export interface Props {
+  // update vaiant here
+  icon: 'ChevronRight';
+  airaLabel?: string;
+  className?: string;
+}
+
+const { icon, airaLabel = 'icon', className = '' } = Astro.props as Props;
+---
+
+<object
+  class={className}
+  aria-label={airaLabel}
+  type="image/svg+xml"
+  data={`/icons/${icon}.svg`}
+  >Your borwser doesn't support SVG
+</object>

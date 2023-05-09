@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/Icon.astro';
 import PortableText from '@/components/PortableText.astro';
 import type { BusinessSolution } from '@/lib/types/homePage';
 import SanityPicture from 'astro-sanity-picture';
@@ -31,18 +32,7 @@ const { businessSolutions } = Astro.props as {
             href={link?.href}
           >
             <span>{link?.title}</span>
-            <svg
-              width="6"
-              height="9"
-              viewBox="0 0 6 9"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.25 4.73804L2.0625 7.92554C1.82812 8.15991 1.47656 8.15991 1.26562 7.92554L0.726562 7.40991C0.515625 7.17554 0.515625 6.82397 0.726562 6.61304L3 4.36304L0.726562 2.0896C0.515625 1.87866 0.515625 1.5271 0.726562 1.29272L1.26562 0.753662C1.47656 0.542725 1.82812 0.542725 2.0625 0.753662L5.25 3.94116C5.46094 4.17554 5.46094 4.5271 5.25 4.73804Z"
-                fill="#1F80F0"
-              />
-            </svg>
+            <Icon icon="ChevronRight" />
           </a>
         )}
       </article>
