@@ -1,0 +1,41 @@
+---
+import Icon from '@/components/Icon.astro';
+import PortableText from '@/components/PortableText.astro';
+import type { BusinessSolution } from '@/lib/types/homePage';
+import SanityPicture from 'astro-sanity-picture';
+const { businessSolutions } = Astro.props as {
+  businessSolutions: BusinessSolution[];
+};
+---
+
+<section
+  class="mt-[95px] hidden gap-[30px] md:grid md:grid-cols-2 xl:grid-cols-3"
+>
+  {
+    businessSolutions.map(({ title, logo, description, link }) => (
+      <article>
+        <div class="flex w-fit rounded-md px-[15px] py-[8px] shadow-button-secondary">
+          <SanityPicture
+            class="h-full max-w-[100px] object-contain"
+            img={{ alt: logo.alt }}
+            src={logo}
+          />
+        </div>
+        <h3 class="my-[31px] font-Montserrat text-head-3">{title}</h3>
+        <div class="text-res-body-p text-blue-secondary lg:text-body-p">
+          <PortableText value={description} />
+        </div>
+
+        {!!link && (
+          <a
+            class="mt-[26px] flex items-center space-x-[8px] text-link text-blue-primary"
+            href={link?.href}
+          >
+            <span>{link?.title}</span>
+            <Icon icon="ChevronRight" />
+          </a>
+        )}
+      </article>
+    ))
+  }
+</section>

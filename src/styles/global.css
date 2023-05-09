@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply font-SansPro;
+  }
+}
+
 @layer utilities {
   .bg-clip-even {
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
@@ -24,7 +30,7 @@
       clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 100%);
     }
   }
-    .page-container {
-    @apply max-w-[1140px] mx-auto;
+  .page-container {
+    @apply mx-auto max-w-[1140px];
   }
 }
