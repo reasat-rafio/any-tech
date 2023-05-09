@@ -26,7 +26,7 @@ import SanityPicture from 'astro-sanity-picture';
         />
         <div class="flex lg:mt-[48px]">
           {
-            socialLinks.map(({ icon, href }) => (
+            socialLinks?.map(({ icon, href }) => (
               <a href={href} class="mr-3">
                 <SanityPicture class="h-[17px]" src={icon} />
               </a>
@@ -62,7 +62,7 @@ import SanityPicture from 'astro-sanity-picture';
       <PortableText value={footerCopyRight} />
       <div class="flex items-center">
         {
-          footerBottomLinks.map(({ title, href }, index) => (
+          footerBottomLinks?.map(({ title, href }, index) => (
             <div>
               {index !== 0 && '.'}
               <a href={href} class="mr-[14px] pl-[12px]">

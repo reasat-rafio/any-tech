@@ -1,10 +1,12 @@
 import { MdLink } from 'react-icons/md';
+import type { Rule } from 'sanity';
 
 export default [
   {
     group: 'footer',
     type: 'array',
     name: 'footerContents',
+    validation: (Rule: Rule) => Rule.required().min(1).length(3),
     of: [
       {
         type: 'object',
@@ -14,11 +16,13 @@ export default [
             name: 'title',
             type: 'string',
             title: 'Title',
+            validation: (Rule: Rule) => Rule.required(),
           },
           {
             name: 'links',
             type: 'array',
             title: 'Links',
+            validation: (Rule: Rule) => Rule.required().min(1),
             of: [{ type: 'link' }],
           },
         ],
@@ -52,6 +56,7 @@ export default [
     type: 'blockContent',
     name: 'footerCopyRight',
     title: 'Footer CopyRight',
+    validation: (Rule: Rule) => Rule.required(),
   },
   {
     group: 'footer',
