@@ -32,6 +32,6 @@ declare global {
     title?: string;
     description?: string;
     url?: string;
-    image?: string;
+    seoImage?: SanityDimensionedImage;
   }
 }

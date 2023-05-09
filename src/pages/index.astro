@@ -24,8 +24,6 @@ const data = await getPageData<HomePageData>(query, {
 });
 const { page, site } = data;
 const { sections, seo } = page;
-
-console.log(sections);
 ---
 
 <Layout seo={seo} site={site}>
