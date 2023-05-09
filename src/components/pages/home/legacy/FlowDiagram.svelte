@@ -1,9 +1,11 @@
 <script lang="ts">
   import type { FlowDiagram } from '@/lib/types/homePage';
-  import TopLine from './lines-svg/TopLine.svelte';
-  import BottomLine from './lines-svg/BottomLine.svelte';
-  import LeftLine from './lines-svg/LeftLine.svelte';
-  import RightLine from './lines-svg/RightLine.svelte';
+
+  import TopLine from '/icons/diagram-lines/TopLine.svg';
+  import LeftLine from '/icons/diagram-lines/LeftLine.svg';
+  import RightLine from '/icons/diagram-lines/RightLine.svg';
+  import BottomLine from '/icons/diagram-lines/BottomLine.svg';
+
   import { onMount } from 'svelte';
   import { timeline, inView } from 'motion';
   import SanityImage from '@/lib/sanity-image.svelte';
@@ -92,15 +94,31 @@
       <div
         class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
       >
-        <TopLine />
-        <BottomLine />
+        <object
+          aria-label="gradient-line"
+          type="image/svg+xml"
+          data={TopLine}
+        />
+        <object
+          aria-label="gradient-line"
+          type="image/svg+xml"
+          data={BottomLine}
+        />
       </div>
       <!-- Mobile -->
       <div
-        class="lg:hidden absolute bottom-0 translate-y-[10%] right-1/2 flex translate-x-1/2 space-x-[35%] scale-150"
+        class="lg:hidden absolute bottom-0 translate-y-[15%] right-1/2 flex w-full justify-center items-center translate-x-1/2 space-x-[35%]"
       >
-        <LeftLine />
-        <RightLine />
+        <object
+          aria-label="gradient-line"
+          type="image/svg+xml"
+          data={LeftLine}
+        />
+        <object
+          aria-label="gradient-line"
+          type="image/svg+xml"
+          data={RightLine}
+        />
       </div>
     </div>
 
