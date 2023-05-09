@@ -14,11 +14,17 @@ import SanityPicture from 'astro-sanity-picture';
 ---
 
 <footer class="bg-[#103E75]">
-  <div class="container pt-[48px] pb-[33px]">
-    <div class="grid grid-cols-[1fr_3fr] gap-[30px]">
-      <div>
-        <SanityPicture class="w-[200px]" lqip={{ enabled: false }} src={logo} />
-        <div class="flex mt-[48px]">
+  <div class="py-10 lg:container lg:pb-[33px] lg:pt-[48px]">
+    <div class="grid-cols-[1fr_3fr] gap-[30px] lg:grid">
+      <div
+        class="items-center justify-between border-b border-blue-primary max-lg:container max-lg:mb-7 max-lg:flex max-lg:pb-9 lg:flex-col lg:border-none"
+      >
+        <SanityPicture
+          img={{ class: '!w-[100px] !lg:w-[200px] !object-contain' }}
+          lqip={{ enabled: false }}
+          src={logo}
+        />
+        <div class="flex lg:mt-[48px]">
           {
             socialLinks.map(({ icon, href }) => (
               <a href={href} class="mr-3">
@@ -28,11 +34,11 @@ import SanityPicture from 'astro-sanity-picture';
           }
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-[30px]">
+      <div class="grid-cols-3 gap-[30px] max-lg:container lg:grid">
         {
           footerContents.map((content) => (
-            <div class="text-body-p2 text-white font-SansPro">
-              <div class="mb-3 pb-3 border-b border-blue-primary">
+            <div class="font-SansPro text-body-p2 text-white max-lg:mb-10">
+              <div class="mb-3 border-b border-blue-primary pb-[15px] lg:pb-3">
                 {content.title}
               </div>
               <ul class="space-y-3">
@@ -51,7 +57,7 @@ import SanityPicture from 'astro-sanity-picture';
     </div>
 
     <div
-      class="mt-9 flex justify-between items-center font-SansPro text-res-body-p lg:text-body-p text-blue-primary"
+      class="mt-7 flex flex-col items-center justify-between border-t border-blue-primary font-SansPro text-res-body-p text-blue-primary max-lg:container max-lg:pt-4 lg:mt-9 lg:flex-row lg:border-none lg:text-body-p"
     >
       <PortableText value={footerCopyRight} />
       <div class="flex items-center">
@@ -59,7 +65,7 @@ import SanityPicture from 'astro-sanity-picture';
           footerBottomLinks.map(({ title, href }, index) => (
             <div>
               {index !== 0 && '.'}
-              <a href={href} class="pl-[12px] mr-[14px]">
+              <a href={href} class="mr-[14px] pl-[12px]">
                 {title}
               </a>
             </div>
