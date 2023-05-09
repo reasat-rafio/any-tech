@@ -1,12 +1,12 @@
 import { MdLink } from 'react-icons/md';
-import { BsFillFileEarmarkTextFill } from 'react-icons/bs';
+import type { Rule } from 'sanity';
 
 export default [
   {
     group: 'footer',
-    title: 'Footer Contents',
     type: 'array',
     name: 'footerContents',
+    validation: (Rule: Rule) => Rule.required().min(1).length(3),
     of: [
       {
         type: 'object',
@@ -16,11 +16,13 @@ export default [
             name: 'title',
             type: 'string',
             title: 'Title',
+            validation: (Rule: Rule) => Rule.required(),
           },
           {
             name: 'links',
             type: 'array',
             title: 'Links',
+            validation: (Rule: Rule) => Rule.required().min(1),
             of: [{ type: 'link' }],
           },
         ],
@@ -36,31 +38,16 @@ export default [
           },
         },
       },
+    ],
+  },
+  {
+    group: 'footer',
+    type: 'array',
+    name: 'socialLinks',
+    of: [
       {
-        type: 'object',
-        name: 'footerContent',
-        fields: [
-          {
-            name: 'title',
-            type: 'string',
-            title: 'Title',
-          },
-          {
-            name: 'description',
-            type: 'blockContent',
-          },
-        ],
-        preview: {
-          select: {
-            title: 'title',
-          },
-          prepare({ title }: IPrepare) {
-            return {
-              title: title,
-              media: BsFillFileEarmarkTextFill,
-            };
-          },
-        },
+        type: 'iconLink',
+        name: 'iconLink',
       },
     ],
   },
@@ -69,5 +56,17 @@ export default [
     type: 'blockContent',
     name: 'footerCopyRight',
     title: 'Footer CopyRight',
+    validation: (Rule: Rule) => Rule.required(),
+  },
+  {
+    group: 'footer',
+    type: 'array',
+    name: 'footerBottomLinks',
+    of: [
+      {
+        type: 'link',
+        name: 'link',
+      },
+    ],
   },
 ];

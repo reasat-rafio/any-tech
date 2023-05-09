@@ -50,6 +50,7 @@ module.exports = {
           { lineHeight: '30px', fontWeight: '700', letterSpacing: '0.16em' },
         ],
         'body-p': ['16px', { lineHeight: '26px', fontWeight: '400' }],
+        'body-p2': ['13px', { lineHeight: '16.34px', fontWeight: '400' }],
         link: ['18px', { lineHeight: '23px', fontWeight: '600' }],
         tiny: ['12px', { lineHeight: '19px', fontWeight: '600' }],
         'res-head-1': [

@@ -5,10 +5,11 @@ import Footer from '@/components/Footer.astro';
 import type { SiteLayout } from '@/lib/types/site';
 import { setSanityPictureDefaults } from 'astro-sanity-picture';
 import { imageBuilder } from '@/lib/helpers';
+import { Debug } from 'astro/components';
 
 type Props = SiteLayout;
 const { site, seo } = Astro.props;
-const { header, footer, cookie } = site;
+const { header, footer } = site;
 
 setSanityPictureDefaults({ imageUrlBuilder: imageBuilder });
 ---
@@ -21,5 +22,5 @@ setSanityPictureDefaults({ imageUrlBuilder: imageBuilder });
     client:load
   /> -->
   <slot />
-  <!-- <Footer slot="footer" {...footer} /> -->
+  <Footer slot="footer" {...footer} />
 </Base>
