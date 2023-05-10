@@ -1,9 +1,13 @@
-<script lang="ts">
+---
+export interface Props {
   // update variant here
-  export let icon: 'ChevronRight';
-  export let airaLabel = 'icon';
-  export let className = '';
-</script>
+  icon: IconVariants;
+  airaLabel?: string;
+  className?: string;
+}
+
+const { icon, airaLabel = 'icon', className = '' } = Astro.props;
+---
 
 <object
   class={className}

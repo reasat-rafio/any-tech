@@ -34,4 +34,6 @@ declare global {
     url?: string;
     image?: string;
   }
+
+  type IconVariants = 'ChevronRight';
 }

@@ -1,8 +1,11 @@
 ---
-import Icon from '@/components/Icon.astro';
 import PortableText from '@/components/PortableText.astro';
 import type { BusinessSolution } from '@/lib/types/homePage';
 import SanityPicture from 'astro-sanity-picture';
+import Link from '@/components/ui/Link.svelte';
+import H3 from '@/components/ui/h3.svelte';
+import Description from '@/components/ui/Description.svelte';
+
 const { businessSolutions } = Astro.props as {
   businessSolutions: BusinessSolution[];
 };
@@ -21,19 +24,15 @@ const { businessSolutions } = Astro.props as {
             src={logo}
           />
         </div>
-        <h3 class="my-[31px] font-Montserrat text-head-3">{title}</h3>
-        <div class="text-res-body-p text-blue-secondary lg:text-body-p">
+        <H3 class="my-[31px]">{title}</H3>
+        <Description>
           <PortableText value={description} />
-        </div>
+        </Description>
 
         {!!link && (
-          <a
-            class="mt-[26px] flex items-center space-x-[8px] text-link text-blue-primary"
-            href={link?.href}
-          >
-            <span>{link?.title}</span>
-            <Icon icon="ChevronRight" />
-          </a>
+          <Link class="mt-[26px]" href={link?.href}>
+            {link?.title}
+          </Link>
         )}
       </article>
     ))
