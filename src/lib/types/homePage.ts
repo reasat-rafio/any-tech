@@ -70,3 +70,19 @@ export interface FlowDiagram {
   platform: string;
   root: boolean;
 }
+
+export interface EasyBanking {
+  title: string;
+  subtitle: string;
+  description: PortableTextBlock;
+  integratedTechnologyFlow: IntegratedTechnologyFlow[];
+}
+export interface IntegratedTechnologyFlow {
+  service: string;
+  _type: string;
+  name: string;
+  _key: string;
+  platform: string;
+  description: PortableTextBlock;
+  link?: Link;
+}

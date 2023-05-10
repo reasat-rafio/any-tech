@@ -1,7 +1,7 @@
 <script lang="ts">
   import Description from '@/components/ui/Description.svelte';
   import Link from '@/components/ui/Link.svelte';
-  import H3 from '@/components/ui/h3.svelte';
+  import H3 from '@/components/ui/H3.svelte';
   import SanityImage from '@/lib/sanity-image.svelte';
   import type { BusinessSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';

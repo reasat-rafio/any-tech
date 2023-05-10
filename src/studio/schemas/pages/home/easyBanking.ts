@@ -48,15 +48,22 @@ const easyBanking = {
               type: 'text',
               validation: (Rule: Rule) => Rule.required(),
             },
+            {
+              name: 'description',
+              type: 'array',
+              of: [{ type: 'block' }],
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            { name: 'link', type: 'link' },
           ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'platform',
+            },
+          },
         },
       ],
-      preview: {
-        select: {
-          title: 'name',
-          subtitle: 'platform',
-        },
-      },
     },
   ],
 };
