@@ -39,12 +39,12 @@
   bind:this={sectionRef}
   class="relative"
 >
-  {#each integratedTechnologyFlow as technology, index}
+  {#each integratedTechnologyFlow as technology, index (technology._key)}
     <Technology
       {technology}
       index={index + 1}
       activeItemIndex={activeItemIndex + 1}
-      length={integratedTechnologyFlow.length}
+      cardCount={integratedTechnologyFlow.length}
     />
   {/each}
 </div>

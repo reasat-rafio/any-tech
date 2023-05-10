@@ -9,7 +9,7 @@
 
   export let index: number;
   export let activeItemIndex: number;
-  export let length: number;
+  export let cardCount: number;
   export let technology: IntegratedTechnologyFlow;
   const { description, name, platform, link } = technology;
 
@@ -18,8 +18,6 @@
   let techRef: HTMLDivElement;
 
   const animation = (el: HTMLDivElement, index: number) => {
-    console.log({ y: 50 - index * spacing, z: 50 - index });
-
     animate(el, {
       y: `-${50 - index * spacing}%`,
       scale: 1 - index * 0.05,
@@ -28,48 +26,35 @@
 
   $: {
     if (techRef) {
-      //   if (index === activeItemIndex) {
-      //     rootElRef.style.zIndex = `${
-      //       +rootElRef.style.zIndex + index * length - 1
-      //     }`;
-      //     animate(
-      //       techRef,
-      //       { y: '-50%', scale: 1, opacity: 1 },
-      //       { easing: 'ease-in-out', duration: 0.5 }
-      //     );
-      //   } else {
-      //     rootElRef.style.zIndex = `${50 - index * length - 1}`;
-      //     animate(
-      //       techRef,
-      //       {
-      //         y: `-${50 - index * spacing}%`,
-      //         scale: 1 - index * 0.05,
-      //         opacity: 0.85,
-      //       },
-      //       { duration: 0.3 }
-      //     );
-      //   }
+      if (index < activeItemIndex) {
+        // Go down
+        rootElRef.style.zIndex = `${50 - 4}`;
+        animate(techRef, {
+          y: `-${50 - (cardCount - index) * spacing}%`,
+          scale: 1 - (cardCount - index) * 0.05,
+        });
+      } else {
+        // Go top
+        rootElRef.style.zIndex = `${50 - (index - 1)}`;
+        animate(techRef, {
+          y: `-${50 - (index - activeItemIndex) * spacing}%`,
+          scale: [0, 1 - (index - activeItemIndex) * 0.05],
+        });
+      }
     }
   }
 </script>
 
 <div
   bind:this={rootElRef}
-  style="z-index: {50 - index};  margin-top: calc(25% - {length *
+  style="z-index: {50 - index};  margin-top: calc(25% - {cardCount *
     spacing}px + {spacing / 2}%); top:calc(50% - {spacing}%);"
   class="sticky"
 >
   <div
     bind:this={techRef}
     use:animation={index}
-    class="px-[66px] py-[64px] shadow-card-light rounded-lg grid grid-cols-2 gap-[76px] left-0 absolute {index ===
-    1
-      ? 'bg-red-300'
-      : index === 2
-      ? 'bg-yellow-400'
-      : index === 3
-      ? 'bg-green-500'
-      : 'bg-purple-800'}"
+    class="px-[66px] py-[64px] shadow-card-light rounded-lg grid grid-cols-2 gap-[76px] left-0 absolute bg-white"
   >
     <div class="space-y-[26px]">
       <H5>{name}</H5>
