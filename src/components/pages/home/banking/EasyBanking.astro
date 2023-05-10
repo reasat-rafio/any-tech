@@ -17,11 +17,18 @@ const { title, subtitle, description, integratedTechnologyFlow } =
     <article class="space-y-article">
       <H5>{title}</H5>
       <H2>{subtitle}</H2>
+      <IntegratedTechnologyFlow
+        class="block lg:hidden"
+        {integratedTechnologyFlow}
+      />
       <Description>
         <PortableText value={description} />
       </Description>
     </article>
 
-    <IntegratedTechnologyFlow {integratedTechnologyFlow} />
+    <IntegratedTechnologyFlow
+      class="hidden lg:block"
+      {integratedTechnologyFlow}
+    />
   </div>
 </section>
