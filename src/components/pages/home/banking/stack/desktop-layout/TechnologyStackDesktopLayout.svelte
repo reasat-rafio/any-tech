@@ -7,6 +7,8 @@
   let windowHeight = 0;
   let activeItemIndex = 0;
 
+  console.log(integratedTechnologyFlow);
+
   const getActiveItem = () => {
     let itemLength =
       window.scrollY + window.innerHeight <= sectionRef.offsetTop

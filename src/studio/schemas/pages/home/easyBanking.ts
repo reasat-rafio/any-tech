@@ -55,6 +55,22 @@ const easyBanking = {
               validation: (Rule: Rule) => Rule.required(),
             },
             { name: 'link', type: 'link' },
+            {
+              name: 'colors',
+              type: 'object',
+              fields: [
+                {
+                  name: 'from',
+                  type: 'color',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+                {
+                  name: 'to',
+                  type: 'color',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+              ],
+            },
           ],
           preview: {
             select: {

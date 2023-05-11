@@ -85,4 +85,36 @@ export interface IntegratedTechnologyFlow {
   platform: string;
   description: PortableTextBlock;
   link?: Link;
+  colors: Colors;
+}
+
+interface Colors {
+  from: Color;
+  to: Color;
+}
+
+interface Color {
+  hsv: Hsl;
+  rgb: RGB;
+  hsl: Hsl;
+  alpha: number;
+  _type: string;
+  hex: string;
+}
+
+interface Hsl {
+  h: number;
+  l?: number;
+  a: number;
+  s: number;
+  _type: string;
+  v?: number;
+}
+
+interface RGB {
+  g: number;
+  _type: string;
+  a: number;
+  b: number;
+  r: number;
 }
