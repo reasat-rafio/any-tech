@@ -11,6 +11,7 @@
   export let activeItemIndex: number;
   export let cardCount: number;
   export let technology: IntegratedTechnologyFlow;
+
   const { description, name, platform, link } = technology;
 
   let spacingFactor = 10;

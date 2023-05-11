@@ -88,7 +88,7 @@ export interface IntegratedTechnologyFlow {
   colors: Colors;
 }
 
-interface Colors {
+export interface Colors {
   from: Color;
   to: Color;
 }
