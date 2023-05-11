@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { animate } from 'motion';
+  import { timeline } from 'motion';
   import H5 from '@/components/ui/H5.svelte';
   import H3 from '@/components/ui/H3.svelte';
   import Description from '@/components/ui/Description.svelte';
@@ -13,47 +13,58 @@
   export let technology: IntegratedTechnologyFlow;
   const { description, name, platform, link } = technology;
 
-  let spacing = 10;
-  let rootElRef: HTMLDivElement;
+  let spacingFactor = 10;
+  let rootRef: HTMLDivElement;
   let techRef: HTMLDivElement;
-
-  const animation = (el: HTMLDivElement, index: number) => {
-    animate(el, {
-      y: `-${50 - index * spacing}%`,
-      scale: 1 - index * 0.05,
-    });
-  };
+  let scale = 0;
+  let previousActiveItemIndex = 0;
+  let scrollDirection: 'down' | 'up' = 'down';
+  const scaleOrder = Array.from(
+    { length: cardCount },
+    (_, index) => 1 - index * 0.1
+  ).reverse();
+  $: offset = ((index - activeItemIndex + cardCount) % cardCount) + 1;
+  $: zIndex = cardCount - offset;
+  $: translateY = offset === 0 ? -50 : -50 - offset * -10;
+  $: {
+    const scaleIndex = (scaleOrder.length - offset) % scaleOrder.length;
+    scale = scaleOrder[scaleIndex] as number;
+  }
 
   $: {
-    if (techRef) {
-      if (index < activeItemIndex) {
-        // Go down
-        rootElRef.style.zIndex = `${50 - 4}`;
-        animate(techRef, {
-          y: `-${50 - (cardCount - index) * spacing}%`,
-          scale: 1 - (cardCount - index) * 0.05,
-        });
-      } else {
-        // Go top
-        rootElRef.style.zIndex = `${50 - (index - 1)}`;
-        animate(techRef, {
-          y: `-${50 - (index - activeItemIndex) * spacing}%`,
-          scale: [0, 1 - (index - activeItemIndex) * 0.05],
-        });
-      }
+    if (activeItemIndex > previousActiveItemIndex) scrollDirection = 'down';
+    else if (activeItemIndex < previousActiveItemIndex) scrollDirection = 'up';
+
+    previousActiveItemIndex = activeItemIndex;
+  }
+  $: if (techRef) {
+    if (scrollDirection === 'down')
+      timeline(
+        [
+          [techRef, { y: `${translateY}%`, opacity: [0.9, 1] }],
+          [techRef, { scale: scale }],
+          [rootRef, { zIndex: zIndex }, { at: 0.2 }],
+        ],
+        { duration: 0.7 }
+      );
+    else {
+      timeline([
+        [techRef, { scale: scale }],
+        [rootRef, { zIndex: zIndex }, { at: 0.05 }],
+        [techRef, { y: `${translateY}%` }],
+      ]);
     }
   }
 </script>
 
 <div
-  bind:this={rootElRef}
-  style="z-index: {50 - index};  margin-top: calc(25% - {cardCount *
-    spacing}px + {spacing / 2}%); top:calc(50% - {spacing}%);"
+  bind:this={rootRef}
+  style="margin-top: calc(25% - {cardCount * spacingFactor}px + {spacingFactor /
+    2}%); top:calc(50% - {spacingFactor}%);"
   class="sticky"
 >
   <div
     bind:this={techRef}
-    use:animation={index}
     class="px-[66px] py-[64px] shadow-card-light rounded-lg grid grid-cols-2 gap-[76px] left-0 absolute bg-white"
   >
     <div class="space-y-[26px]">

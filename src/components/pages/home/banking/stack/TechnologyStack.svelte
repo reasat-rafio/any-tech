@@ -35,7 +35,8 @@
 
 <svelte:window bind:innerHeight={windowHeight} on:scroll={windowScrollAction} />
 <div
-  style="height: {integratedTechnologyFlow.length * 100}vh;"
+  style="height: {integratedTechnologyFlow.length *
+    100}vh; margin-bottom: {integratedTechnologyFlow.length * 50}px"
   bind:this={sectionRef}
   class="relative"
 >
