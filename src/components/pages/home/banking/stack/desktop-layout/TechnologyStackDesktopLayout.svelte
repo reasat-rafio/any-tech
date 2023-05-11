@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { IntegratedTechnologyFlow } from '@/lib/types/homePage';
-
   import Technology from './Technology.svelte';
 
   export let integratedTechnologyFlow: IntegratedTechnologyFlow[];
@@ -36,9 +35,9 @@
 <svelte:window bind:innerHeight={windowHeight} on:scroll={windowScrollAction} />
 <div
   style="height: {integratedTechnologyFlow.length *
-    100}vh; margin-bottom: {integratedTechnologyFlow.length * 50}px"
+    100}vh; margin-bottom: {integratedTechnologyFlow.length * 100}px"
   bind:this={sectionRef}
-  class="relative"
+  class="{$$props.class} relative"
 >
   {#each integratedTechnologyFlow as technology, index (technology._key)}
     <Technology

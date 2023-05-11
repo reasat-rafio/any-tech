@@ -14,7 +14,7 @@
   const { description, name, platform, link } = technology;
 
   let spacingFactor = 10;
-  let rootRef: HTMLDivElement;
+  let rootRef: HTMLElement;
   let techRef: HTMLDivElement;
   let scale = 0;
   let previousActiveItemIndex = 0;
@@ -43,9 +43,9 @@
         [
           [techRef, { y: `${translateY}%`, opacity: [0.9, 1] }],
           [techRef, { scale: scale }],
-          [rootRef, { zIndex: zIndex }, { at: 0.2 }],
+          [rootRef, { zIndex: zIndex }, { at: 0.3 }],
         ],
-        { duration: 0.7 }
+        { duration: 0.8 }
       );
     else {
       timeline([
@@ -57,10 +57,10 @@
   }
 </script>
 
-<div
+<article
   bind:this={rootRef}
-  style="margin-top: calc(25% - {cardCount * spacingFactor}px + {spacingFactor /
-    2}%); top:calc(50% - {spacingFactor}%);"
+  style="margin-top: calc(25% - {cardCount *
+    spacingFactor}px); top:calc(50% - {spacingFactor}%);"
   class="sticky"
 >
   <div
@@ -85,4 +85,4 @@
       class="h-full w-full rounded-md"
     />
   </div>
-</div>
+</article>
