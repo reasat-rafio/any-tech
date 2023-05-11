@@ -5,13 +5,14 @@ import H2 from '@/components/ui/H2.svelte';
 import H5 from '@/components/ui/H5.svelte';
 import type { EasyBanking } from '@/lib/types/homePage';
 import IntegratedTechnologyFlow from './flow/IntegratedTechnologyFlow.svelte';
-import TechnologyStack from './stack/TechnologyStack.svelte';
+import TechnologyStackMobileLayout from './stack/TechnologyStackMobileLayout.svelte';
+import TechnologyStackDesktopLayout from './stack/desktop-layout/TechnologyStackDesktopLayout.svelte';
 
 const { title, subtitle, description, integratedTechnologyFlow } =
   Astro.props as EasyBanking;
 ---
 
-<section class="container py-[300px]">
+<section class="container py-[48px] lg:py-[128px]">
   <div
     class="grid grid-cols-1 pb-[24px] lg:grid-cols-2 lg:gap-x-[30px] lg:pb-0"
   >
@@ -33,5 +34,19 @@ const { title, subtitle, description, integratedTechnologyFlow } =
     />
   </div>
 
-  <TechnologyStack client:load {integratedTechnologyFlow} />
+  {
+    !!integratedTechnologyFlow.length && (
+      <>
+        <TechnologyStackDesktopLayout
+          class="hidden lg:block"
+          client:load
+          {integratedTechnologyFlow}
+        />
+        <TechnologyStackMobileLayout
+          class="lg:hidden"
+          {integratedTechnologyFlow}
+        />
+      </>
+    )
+  }
 </section>

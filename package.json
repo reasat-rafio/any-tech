@@ -21,6 +21,7 @@
     "@fontsource/source-sans-pro": "^4.5.11",
     "@portabletext/svelte": "^2.0.0",
     "@sanity/client": "^6.0.1",
+    "@sanity/color-input": "^3.0.2",
     "@sanity/document-internationalization": "2.0.0-studio-v3-plugin-v2.10",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.10.0",
