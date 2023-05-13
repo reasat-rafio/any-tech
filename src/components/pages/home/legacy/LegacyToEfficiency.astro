@@ -1,15 +1,14 @@
 ---
 import PortableText from '@/components/PortableText.astro';
-import FlowDiagram from '@/components/pages/home/legacy/FlowDiagram.svelte';
-import type { LegacyToEfficiencyData } from '@/lib/types/homePage';
-import BusinessSolutionMobileLayout from './solution/BusinessSolutionMobileLayout.svelte';
-import BusinessSolutionDesktopLayout from './solution/BusinessSolutionDesktopLayout.astro';
+import type { LegacyToEfficiency as Props } from '@/lib/types/homePage';
 import H5 from '@/components/ui/H5.svelte';
 import H2 from '@/components/ui/H2.svelte';
 import Description from '@/components/ui/Description.svelte';
+import Diagram from './Diagram.svelte';
+import SolutionMobileLayout from './solution/SolutionMobileLayout.svelte';
+import SolutionDesktopLayout from './solution/SolutionDesktopLayout.astro';
 
-const { title, subtitle, flowDiagram, description, businessSolutions } =
-  Astro.props as LegacyToEfficiencyData;
+const { title, subtitle, diagram, description, solutions } = Astro.props;
 ---
 
 <section class="container">
@@ -17,24 +16,32 @@ const { title, subtitle, flowDiagram, description, businessSolutions } =
     <article class="space-y-article">
       <H5>{title}</H5>
       <H2>{subtitle}</H2>
-      <div class="lg:invisible lg:absolute lg:-top-[10000%] lg:-z-50">
-        <FlowDiagram client:load {flowDiagram} />
-      </div>
+      {
+        !!diagram?.length && (
+          <div class="lg:invisible lg:absolute lg:-top-[10000%] lg:-z-50">
+            <Diagram client:load {diagram} />
+          </div>
+        )
+      }
       <Description>
         <PortableText value={description} />
       </Description>
     </article>
 
-    <section class="hidden lg:block">
-      <FlowDiagram client:load {flowDiagram} />
-    </section>
+    {
+      !!diagram?.length && (
+        <section class="hidden lg:block">
+          <Diagram client:load {diagram} />
+        </section>
+      )
+    }
   </div>
 
   {
-    !!businessSolutions?.length && (
+    !!solutions?.length && (
       <>
-        <BusinessSolutionMobileLayout client:load {businessSolutions} />
-        <BusinessSolutionDesktopLayout {businessSolutions} />
+        <SolutionMobileLayout client:load {solutions} />
+        <SolutionDesktopLayout {solutions} />
       </>
     )
   }

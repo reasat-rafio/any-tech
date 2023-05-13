@@ -1,4 +1,4 @@
-import { FcMoneyTransfer, FcServices } from 'react-icons/fc';
+import { FcMoneyTransfer, FcServices, FcFlashOn } from 'react-icons/fc';
 import type { Rule } from 'sanity';
 
 const easyBanking = {
@@ -24,12 +24,12 @@ const easyBanking = {
     },
 
     {
-      name: 'integratedTechnologyFlow',
+      name: 'diagram',
       type: 'array',
       validation: (Rule: Rule) => Rule.length(4),
       of: [
         {
-          name: 'technology',
+          name: 'item',
           type: 'object',
           icon: FcServices,
           fields: [
@@ -48,6 +48,53 @@ const easyBanking = {
               type: 'text',
               validation: (Rule: Rule) => Rule.required(),
             },
+            {
+              name: 'colors',
+              type: 'object',
+              fields: [
+                {
+                  name: 'from',
+                  type: 'color',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+                {
+                  name: 'to',
+                  type: 'color',
+                  validation: (Rule: Rule) => Rule.required(),
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              title: 'name',
+              subtitle: 'platform',
+            },
+          },
+        },
+      ],
+    },
+    {
+      name: 'solutions',
+      type: 'array',
+      validation: (Rule: Rule) => Rule.required(),
+      of: [
+        {
+          name: 'solution',
+          type: 'object',
+          icon: FcFlashOn,
+          fields: [
+            {
+              name: 'name',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'platform',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+
             {
               name: 'description',
               type: 'array',

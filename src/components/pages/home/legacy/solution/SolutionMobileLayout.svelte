@@ -3,15 +3,15 @@
   import Link from '@/components/ui/Link.svelte';
   import H3 from '@/components/ui/H3.svelte';
   import SanityImage from '@/lib/sanity-image.svelte';
-  import type { BusinessSolution } from '@/lib/types/homePage';
+  import type { EfficiencySolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { animate } from 'motion';
 
-  export let businessSolutions: BusinessSolution[];
-  let selectedSolution = businessSolutions[0];
+  export let solutions: EfficiencySolution[];
+  let selectedSolution = solutions[0];
   let articleContainerRef: HTMLElement;
 
-  const setNewSolution = (solution: BusinessSolution) => {
+  const setNewSolution = (solution: EfficiencySolution) => {
     selectedSolution = solution;
 
     if (articleContainerRef)
@@ -27,7 +27,7 @@
   class="md:hidden block space-y-[24px] pt-[24px] border-t border-lavender"
 >
   <div class="grid grid-cols-3 gap-[9.5px] mb-[24px]">
-    {#each businessSolutions as solution}
+    {#each solutions as solution}
       <button
         on:click={() => setNewSolution(solution)}
         class="{selectedSolution?._key === solution._key

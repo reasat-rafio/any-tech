@@ -5,12 +5,12 @@
   import Description from '@/components/ui/Description.svelte';
   import { PortableText } from '@portabletext/svelte';
   import Link from '@/components/ui/Link.svelte';
-  import type { IntegratedTechnologyFlow } from '@/lib/types/homePage';
+  import type { BankingSolution } from '@/lib/types/homePage';
 
   export let index: number;
   export let activeItemIndex: number;
   export let cardCount: number;
-  export let technology: IntegratedTechnologyFlow;
+  export let technology: BankingSolution;
 
   const { description, name, platform, link } = technology;
 

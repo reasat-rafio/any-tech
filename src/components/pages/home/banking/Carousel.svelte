@@ -3,12 +3,12 @@
   import H3 from '@/components/ui/H3.svelte';
   import H5 from '@/components/ui/H5.svelte';
   import Link from '@/components/ui/Link.svelte';
-  import type { IntegratedTechnologyFlow } from '@/lib/types/homePage';
+  import type { BankingSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   import '@splidejs/svelte-splide/css';
 
-  export let integratedTechnologyFlow: IntegratedTechnologyFlow[];
+  export let solutions: BankingSolution[];
 </script>
 
 <div class={$$props.class}>
@@ -16,7 +16,7 @@
     options={{ arrows: false, pagination: false, autoplay: true, speed: 1500 }}
     aria-label="Integrated Technologies"
   >
-    {#each integratedTechnologyFlow as { name, description, platform, link }}
+    {#each solutions as { name, description, platform, link }}
       <SplideSlide>
         <article class="p-[24px] space-y-[24px]">
           <H5>{name}</H5>

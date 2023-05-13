@@ -1,13 +1,13 @@
 ---
 import PortableText from '@/components/PortableText.astro';
-import type { BusinessSolution } from '@/lib/types/homePage';
+import type { EfficiencySolution } from '@/lib/types/homePage';
 import SanityPicture from 'astro-sanity-picture';
 import Link from '@/components/ui/Link.svelte';
 import H3 from '@/components/ui/H3.svelte';
 import Description from '@/components/ui/Description.svelte';
 
-const { businessSolutions } = Astro.props as {
-  businessSolutions: BusinessSolution[];
+const { solutions } = Astro.props as {
+  solutions: EfficiencySolution[];
 };
 ---
 
@@ -15,7 +15,7 @@ const { businessSolutions } = Astro.props as {
   class="mt-[95px] hidden gap-[30px] md:grid md:grid-cols-2 xl:grid-cols-3"
 >
   {
-    businessSolutions.map(({ title, logo, description, link }) => (
+    solutions.map(({ title, logo, description, link }) => (
       <article>
         <div class="flex w-fit rounded-md px-[15px] py-[8px] shadow-button-secondary">
           <SanityPicture

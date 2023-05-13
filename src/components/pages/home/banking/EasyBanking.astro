@@ -3,13 +3,12 @@ import PortableText from '@/components/PortableText.astro';
 import Description from '@/components/ui/Description.svelte';
 import H2 from '@/components/ui/H2.svelte';
 import H5 from '@/components/ui/H5.svelte';
-import type { EasyBanking } from '@/lib/types/homePage';
-import IntegratedTechnologyFlow from './flow/IntegratedTechnologyFlow.svelte';
-import TechnologyStackMobileLayout from './stack/TechnologyStackMobileLayout.svelte';
-import TechnologyStackDesktopLayout from './stack/desktop-layout/TechnologyStackDesktopLayout.svelte';
+import type { EasyBanking as Props } from '@/lib/types/homePage';
+import Diagram from './diagram/Diagram.svelte';
+import StackCards from './stack/StackCards.svelte';
+import Carousel from './Carousel.svelte';
 
-const { title, subtitle, description, integratedTechnologyFlow } =
-  Astro.props as EasyBanking;
+const { title, subtitle, description, diagram, solutions } = Astro.props;
 ---
 
 <section class="container py-[48px] lg:py-[128px]">
@@ -19,34 +18,20 @@ const { title, subtitle, description, integratedTechnologyFlow } =
     <article class="space-y-article">
       <H5>{title}</H5>
       <H2>{subtitle}</H2>
-      <IntegratedTechnologyFlow
-        class="block lg:hidden"
-        {integratedTechnologyFlow}
-      />
+      {!!diagram?.length && <Diagram class="block lg:hidden" {diagram} />}
       <Description>
         <PortableText value={description} />
       </Description>
     </article>
 
-    <IntegratedTechnologyFlow
-      class="hidden lg:block"
-      {integratedTechnologyFlow}
-    />
+    {!!diagram?.length && <Diagram class="hidden lg:block" {diagram} />}
   </div>
 
   {
-    !!integratedTechnologyFlow.length && (
+    !!diagram?.length && (
       <>
-        <TechnologyStackDesktopLayout
-          class="hidden lg:block"
-          client:idle
-          {integratedTechnologyFlow}
-        />
-        <TechnologyStackMobileLayout
-          client:idle
-          class="lg:hidden"
-          {integratedTechnologyFlow}
-        />
+        <StackCards class="hidden lg:block" client:idle {solutions} />
+        <Carousel class="lg:hidden" client:idle {solutions} />
       </>
     )
   }

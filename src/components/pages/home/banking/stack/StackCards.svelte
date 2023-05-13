@@ -1,13 +1,11 @@
 <script lang="ts">
-  import type { IntegratedTechnologyFlow } from '@/lib/types/homePage';
-  import Technology from './Technology.svelte';
+  import type { BankingSolution } from '@/lib/types/homePage';
+  import Technology from './Card.svelte';
 
-  export let integratedTechnologyFlow: IntegratedTechnologyFlow[];
+  export let solutions: BankingSolution[];
   let sectionRef: HTMLDivElement;
   let windowHeight = 0;
   let activeItemIndex = 0;
-
-  console.log(integratedTechnologyFlow);
 
   const getActiveItem = () => {
     let itemLength =
@@ -20,10 +18,10 @@
 
     activeItemIndex = Math.min(
       Math.round(
-        (itemLength * integratedTechnologyFlow.length) /
+        (itemLength * solutions.length) /
           (window.innerHeight + sectionRef.offsetHeight)
       ),
-      integratedTechnologyFlow.length - 1
+      solutions.length - 1
     );
   };
 
@@ -36,17 +34,17 @@
 
 <svelte:window bind:innerHeight={windowHeight} on:scroll={windowScrollAction} />
 <div
-  style="height: {integratedTechnologyFlow.length *
-    100}vh; margin-bottom: {integratedTechnologyFlow.length * 100}px"
+  style="height: {solutions.length * 100}vh; margin-bottom: {solutions.length *
+    100}px"
   bind:this={sectionRef}
   class="{$$props.class} relative"
 >
-  {#each integratedTechnologyFlow as technology, index (technology._key)}
+  {#each solutions as technology, index (technology._key)}
     <Technology
       {technology}
       index={index + 1}
       activeItemIndex={activeItemIndex + 1}
-      cardCount={integratedTechnologyFlow.length}
+      cardCount={solutions.length}
     />
   {/each}
 </div>

@@ -24,7 +24,7 @@ const legacyToEfficiency = {
     },
 
     {
-      name: 'flowDiagram',
+      name: 'diagram',
       type: 'array',
 
       validation: (Rule: Rule) =>
@@ -83,7 +83,7 @@ const legacyToEfficiency = {
       ],
     },
     {
-      name: 'businessSolutions',
+      name: 'solutions',
       type: 'array',
       validation: (Rule: Rule) => Rule.required(),
       of: [
