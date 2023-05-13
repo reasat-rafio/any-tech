@@ -25,6 +25,7 @@
     "@sanity/document-internationalization": "2.0.0-studio-v3-plugin-v2.10",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.10.0",
+    "@splidejs/svelte-splide": "^0.2.9",
     "@types/react": "^18.2.2",
     "@types/react-dom": "^18.2.3",
     "astro": "^2.3.4",

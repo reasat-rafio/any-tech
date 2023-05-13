@@ -39,10 +39,11 @@ const { title, subtitle, description, integratedTechnologyFlow } =
       <>
         <TechnologyStackDesktopLayout
           class="hidden lg:block"
-          client:load
+          client:idle
           {integratedTechnologyFlow}
         />
         <TechnologyStackMobileLayout
+          client:idle
           class="lg:hidden"
           {integratedTechnologyFlow}
         />
