@@ -14,7 +14,7 @@
 <div class={$$props.class}>
   <Splide
     options={{ arrows: false, pagination: false, autoplay: true, speed: 1500 }}
-    aria-label="My Favorite Images"
+    aria-label="Integrated Technologies"
   >
     {#each integratedTechnologyFlow as { name, description, platform, link }}
       <SplideSlide>
