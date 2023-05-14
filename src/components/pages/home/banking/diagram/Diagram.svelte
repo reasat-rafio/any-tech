@@ -133,7 +133,7 @@
         {/if}
 
         <object
-          class="w-[15%] -translate-y-[20%] banking-svg-line opacity-0"
+          class="md:w-[15%] w-[35px] -translate-y-[20%] banking-svg-line opacity-0"
           aria-label="bridge"
           type="image/svg+xml"
           data={`/icons/easy-banking/Line4.svg`}
