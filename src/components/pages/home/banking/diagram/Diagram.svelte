@@ -31,7 +31,7 @@
 
     window.requestAnimationFrame(step);
   }
-  $: if (intersecting) animateValue(-50, 50, 4000);
+  $: if (intersecting) animateValue(-100, 100, 3000);
 </script>
 
 <IntersectionObserver {element} bind:intersecting>
