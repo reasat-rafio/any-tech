@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Diagram } from '@/lib/types/homePage';
+  import type { EfficiencyDiagram } from '@/lib/types/homePage';
 
   import TopLine from '/icons/diagram-lines/TopLine.svg';
   import LeftLine from '/icons/diagram-lines/LeftLine.svg';
@@ -10,7 +10,7 @@
   import { timeline, inView } from 'motion';
   import SanityImage from '@/lib/sanity-image.svelte';
 
-  export let diagram: Diagram[];
+  export let diagram: EfficiencyDiagram[];
 
   let containerRef: HTMLDivElement;
   let indicatorLineContainerRef: HTMLDivElement;

@@ -18,13 +18,21 @@ const { title, subtitle, description, diagram, solutions } = Astro.props;
     <article class="space-y-article">
       <H5>{title}</H5>
       <H2>{subtitle}</H2>
-      {!!diagram?.length && <Diagram class="block lg:hidden" {diagram} />}
+      {
+        !!diagram?.length && (
+          <Diagram client:load class="block lg:hidden" {diagram} />
+        )
+      }
       <Description>
         <PortableText value={description} />
       </Description>
     </article>
 
-    {!!diagram?.length && <Diagram class="hidden lg:block" {diagram} />}
+    {
+      !!diagram?.length && (
+        <Diagram client:load class="hidden lg:block" {diagram} />
+      )
+    }
   </div>
 
   {

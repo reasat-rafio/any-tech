@@ -71,6 +71,7 @@ export interface BankingDiagram {
   name: string;
   _key: string;
   platform: string;
+  service: string;
   colors: Colors;
 }
 
