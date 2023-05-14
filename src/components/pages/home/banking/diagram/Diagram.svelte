@@ -3,9 +3,12 @@
   import Technology from './Technology.svelte';
   export let diagram: BankingDiagram[];
   import IntersectionObserver from 'svelte-intersection-observer';
+  import { inView, timeline } from 'motion';
 
   let [firstItem, secondItem, thirdItem, forthItem] = diagram;
-  let element: HTMLElement;
+  let rootElement: HTMLElement;
+  let topBlockRef: HTMLElement;
+  let bottomBlockRef: HTMLElement;
   let intersecting = false;
   $: animValue = 0;
 
@@ -32,15 +35,29 @@
     window.requestAnimationFrame(step);
   }
   $: if (intersecting) animateValue(-100, 100, 3000);
+
+  $: if (topBlockRef && bottomBlockRef) {
+    inView(rootElement, () => {
+      timeline(
+        [
+          [topBlockRef, { background: '#FAFAFA' }],
+          [bottomBlockRef, { background: '#FAFAFA' }],
+          ['.banking-svg-line', { opacity: [0, 1] }],
+        ],
+        { duration: 2 }
+      );
+    });
+  }
 </script>
 
-<IntersectionObserver {element} bind:intersecting>
+<IntersectionObserver element={rootElement} bind:intersecting>
   <section
-    bind:this={element}
+    bind:this={rootElement}
     class="{$$props.class} flex flex-col space-y-[19px] text-center"
   >
     <div
-      class="py-[26px] px-[20px] xl:px-[78px] xl:py-[29px] bg-[#FAFAFA] lg:rounded-[36px] rounded-md relative"
+      bind:this={topBlockRef}
+      class="py-[26px] px-[20px] xl:px-[78px] xl:py-[29px] bg-transparent lg:rounded-[36px] rounded-md relative"
     >
       <div class="mb-[20px] w-fit mx-auto">
         {#if !!firstItem}
@@ -55,14 +72,14 @@
       </div>
 
       <object
-        class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2"
+        class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 banking-svg-line opacity-0"
         aria-label="bridge"
         type="image/svg+xml"
         data={`/icons/easy-banking/Bridge.svg`}
         >Your borwser doesn't support SVG
       </object>
       <object
-        class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 h-[25%]"
+        class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 h-[25%] banking-svg-line opacity-0"
         aria-label="bridge"
         type="image/svg+xml"
         data={`/icons/easy-banking/Line1.svg`}
@@ -71,7 +88,8 @@
     </div>
 
     <div
-      class="flex-1 bg-[#FAFAFA] xl:rounded-[36px] rounded-[16px] py-[26px] px-[20px] xl:px-[78px] xl:py-[29px] flex flex-col justify-center items-center w-full lg:space-y-[40px] space-y-[20px] mt-[20px]"
+      bind:this={bottomBlockRef}
+      class="flex-1 bg-transparent xl:rounded-[36px] rounded-[16px] py-[26px] px-[20px] xl:px-[78px] xl:py-[29px] flex flex-col justify-center items-center w-full lg:space-y-[40px] space-y-[20px] mt-[20px]"
     >
       <div class="relative w-fit overflow-visible">
         {#if secondItem}
@@ -86,14 +104,14 @@
         {/if}
         <div class="absolute top-[35%] left-0 w-full h-[75%] flex">
           <object
-            class="flex-1 -translate-x-1/4 md:-translate-x-1/3"
+            class="flex-1 -translate-x-1/4 md:-translate-x-1/3 banking-svg-line opacity-0"
             aria-label="bridge"
             type="image/svg+xml"
             data={`/icons/easy-banking/Line2.svg`}
             >Your borwser doesn't support SVG
           </object>
           <object
-            class="flex-1 translate-x-1/4 md:translate-x-1/3"
+            class="flex-1 translate-x-1/4 md:translate-x-1/3 banking-svg-line opacity-0"
             aria-label="bridge"
             type="image/svg+xml"
             data={`/icons/easy-banking/Line3.svg`}
@@ -115,7 +133,7 @@
         {/if}
 
         <object
-          class="w-[15%] -translate-y-[20%]"
+          class="w-[15%] -translate-y-[20%] banking-svg-line opacity-0"
           aria-label="bridge"
           type="image/svg+xml"
           data={`/icons/easy-banking/Line4.svg`}
