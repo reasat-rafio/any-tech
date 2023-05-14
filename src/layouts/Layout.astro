@@ -1,15 +1,16 @@
 ---
 import Base from '@/layouts/Base.astro';
-import Header from '@/components/Header.svelte';
+// import Header from '@/components/Header.svelte';
 import Footer from '@/components/Footer.astro';
 import type { SiteLayout } from '@/lib/types/site';
 import { setSanityPictureDefaults } from 'astro-sanity-picture';
 import { imageBuilder } from '@/lib/helpers';
-import { Debug } from 'astro/components';
+// import { Debug } from 'astro/components';
 
 type Props = SiteLayout;
 const { site, seo } = Astro.props;
-const { header, footer } = site;
+// const { header, footer } = site;
+const { footer } = site;
 
 setSanityPictureDefaults({ imageUrlBuilder: imageBuilder });
 ---
