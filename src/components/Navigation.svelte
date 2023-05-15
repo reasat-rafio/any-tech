@@ -10,14 +10,13 @@
 
 <div
   id="main-navigation"
-  class="is-desktop relative flex items-center flex-wrap justify-between max-lg:py-2 px-5 uppercase text-sm text-[#3a3a3a] lg:relative bg-white z-[9999]"
+  class="max-w-[1200px] mx-auto relative flex items-center flex-wrap justify-between lg:relative z-[9999]"
 >
   <h1>
     <a aria-label="Go to home page" href="/" rel="home"
       ><img
         src={urlForSanityImage(logo).url()}
-        width="220px"
-        height="34px"
+        class="w-[100px] h-auto object-contain lg:w-[200px]"
         alt="Home Page"
       />
     </a>

@@ -17,6 +17,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'highlight',
+      title: 'Highlight',
+      type: 'boolean',
+    },
+    {
       name: 'subMenus',
       title: 'Sub Menus',
       type: 'array',
