@@ -32,6 +32,11 @@
           { easing: [0.25, 0.46, 0.45, 0.94] },
         ],
         [
+          '.hero-img',
+          { filter: ['blur(5px)', 'blur(0)'] },
+          { easing: [0.25, 0.46, 0.45, 0.94], at: 0.1 },
+        ],
+        [
           waveLines2Ref,
           { x: ['15%', 0], y: ['-10%', 0], opacity: [0, 1] },
           { at: 0.1, easing: [0.25, 0.46, 0.45, 0.94] },
@@ -107,7 +112,7 @@
       class="absolute top-0 left-[35%] w-[65%] h-full bg-clip-hero-image pointer-events-none"
     >
       <SanityImage
-        class="h-full w-full object-cover ase "
+        class="h-full w-full object-cover hero-img"
         {image}
         maxWidth={2000}
       />

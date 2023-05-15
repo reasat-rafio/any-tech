@@ -17,7 +17,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 71%, 0% 100%);
   }
   .bg-clip-hero-image {
-    clip-path: polygon(72% 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(67% 0, 100% 0, 100% 56%, 67% 100%, 0 100%, 32% 52%);
   }
 
   @media (max-width: 768px) {
