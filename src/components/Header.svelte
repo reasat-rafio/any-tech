@@ -14,11 +14,13 @@
   export let logo: SanityImage, navMenus: NavMenu[];
 </script>
 
-<header class="lg:absolute top-0 w-full text-white pt-[40px] text-lg">
+<header
+  class="lg:absolute top-0 w-full text-white lg:pt-[40px] text-lg bg-blue-primary"
+>
   <Navigation {logo}>
     {#each navMenus as { title, href, highlight, subMenus, _key } (_key)}
       <li
-        class="w-full whitespace-nowrap group py-3 px-6 last:p-0 last:border-none border-b border-white border-opacity-0 hover:border-opacity-100 transition-all duration-500 cursor-pointer"
+        class="w-full whitespace-nowrap group lg:py-3 lg:px-6 lg:last:p-0 last:border-none lg:border-b border-white border-opacity-0 hover:border-opacity-100 transition-all duration-500 cursor-pointer"
       >
         <span class="flex items-center justify-between">
           {#if !highlight}
@@ -32,10 +34,10 @@
               />
             {/if}
           {:else}
-            <span class="bg-[#D9D9D9] w-px h-[33px] mx-8" />
+            <span class="bg-[#D9D9D9] w-px h-[33px] mx-8 max-lg:hidden" />
             <a
               {href}
-              class="border border-white px-6 py-3 rounded-[3px] text-res-link lg:text-link flex items-center group/highlight hover:bg-white hover:text-blue-primary transition-colors shadow-button-primary"
+              class="border max-lg:w-full max-lg:justify-center max-lg:mt-6 border-white px-6 py-3 rounded-[3px] text-res-link lg:text-link flex items-center group/highlight hover:bg-white hover:text-blue-primary transition-colors shadow-button-primary"
             >
               {title}
               <DownArrow
@@ -56,9 +58,6 @@
                 <li class="border-t border-theme-body whitespace-nowrap">
                   <a
                     class="hover:text-theme-primary hover:transition-colors duration-200 py-3 lg:pl-[15px] pl-7 max-lg:pr-5 inline-block"
-                    class:active-sub-menu={currentPathname
-                      .split('/')
-                      .includes(subMenu.href?.replace('/', ''))}
                     href={!href ? subMenu.href : href + subMenu.href}
                   >
                     <span class="flex text-body-p">
@@ -80,13 +79,3 @@
     {/each}
   </Navigation>
 </header>
-
-<style>
-  .active-sub-menu {
-    color: #0a7ebb;
-  }
-  .menu:has(a.active-sub-menu) .main-menu {
-    color: #0a7ebb;
-    fill: #0a7ebb;
-  }
-</style>
