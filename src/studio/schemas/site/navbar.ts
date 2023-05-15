@@ -28,6 +28,7 @@ export default [
     title: 'Nav Menus',
     type: 'array',
     of: [{ type: 'menuItems' }],
+    validation: (Rule: Rule) => Rule.required().min(1),
     group: 'navbar',
   },
 ];

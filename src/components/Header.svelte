@@ -1,6 +1,6 @@
 <script lang="ts">
   import Navigation from './Navigation.svelte';
-  import DownArrow from '../../icons/DownArrow.svelte';
+  import DownArrow from '../icons/DownArrow.svelte';
   import { onMount } from 'svelte';
   import type { NavMenu } from '@/lib/types/site';
 

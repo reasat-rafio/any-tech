@@ -1,6 +1,6 @@
 <script lang="ts">
-  import HamburgerClose from '../../icons/HamburgerClose.svelte';
-  import HamburgerOpen from '../../icons/HamburgerOpen.svelte';
+  import HamburgerClose from '../icons/HamburgerClose.svelte';
+  import HamburgerOpen from '../icons/HamburgerOpen.svelte';
   import { urlForSanityImage } from '@/lib/helpers';
 
   let showMobileMenu = false;

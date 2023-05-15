@@ -1,6 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
-// import Header from '@/components/Header.svelte';
+import Header from '@/components/Header.svelte';
 import Footer from '@/components/Footer.astro';
 import type { SiteLayout } from '@/lib/types/site';
 import { setSanityPictureDefaults } from 'astro-sanity-picture';
@@ -9,19 +9,18 @@ import { imageBuilder } from '@/lib/helpers';
 
 type Props = SiteLayout;
 const { site, seo } = Astro.props;
-// const { header, footer } = site;
-const { footer } = site;
+const { header, footer } = site;
 
 setSanityPictureDefaults({ imageUrlBuilder: imageBuilder });
 ---
 
 <Base favicon={site.seo.favicon} seo={seo}>
-  <!-- <Header
+  <Header
     logo={header.logo}
     navMenus={header.navMenus}
     slot="header"
     client:load
-  /> -->
+  />
   <slot />
   <Footer slot="footer" {...footer} />
 </Base>

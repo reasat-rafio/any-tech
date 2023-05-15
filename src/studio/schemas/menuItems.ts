@@ -1,30 +1,32 @@
-import { MdLink } from "react-icons/md";
+import { MdLink } from 'react-icons/md';
+import type { Rule } from 'sanity';
 
 export default {
-  name: "menuItems",
-  title: "Menu Items",
-  type: "object",
+  name: 'menuItems',
+  title: 'Menu Items',
+  type: 'object',
   fields: [
     {
-      name: "title",
-      type: "string",
+      name: 'title',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: "href",
-      title: "URL",
-      type: "string",
+      name: 'href',
+      title: 'URL',
+      type: 'string',
     },
     {
-      name: "subMenus",
-      title: "Sub Menus",
-      type: "array",
-      of: [{ type: "menuItem" }],
+      name: 'subMenus',
+      title: 'Sub Menus',
+      type: 'array',
+      of: [{ type: 'menuItem' }],
     },
   ],
   preview: {
     select: {
-      title: "title",
-      subtitle: "href",
+      title: 'title',
+      subtitle: 'href',
     },
     prepare({ title, subtitle }: IPrepare) {
       return {
