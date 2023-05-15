@@ -34,4 +34,6 @@ declare global {
     url?: string;
     seoImage?: SanityDimensionedImage;
   }
+
+  type IconVariants = 'ChevronRight';
 }

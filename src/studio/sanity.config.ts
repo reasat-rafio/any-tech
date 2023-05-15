@@ -1,18 +1,19 @@
-import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
-import { visionTool } from "@sanity/vision";
-import { schemaTypes } from "./schemas";
-import { newDeskStructure } from "./utils/deskStructure";
-import { documentInternationalization } from '@sanity/document-internationalization'
+import { defineConfig } from 'sanity';
+import { deskTool } from 'sanity/desk';
+import { visionTool } from '@sanity/vision';
+import { schemaTypes } from './schemas';
+import { newDeskStructure } from './utils/deskStructure';
+import { documentInternationalization } from '@sanity/document-internationalization';
+import { colorInput } from '@sanity/color-input';
 
 export default defineConfig({
-  basePath: "/studio",
-  name: "default",
-  title: "AnyTech",
+  basePath: '/studio',
+  name: 'default',
+  title: 'AnyTech',
   projectId: import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID,
   dataset: import.meta.env.PUBLIC_SANITY_STUDIO_DATASET,
   plugins: [
-		documentInternationalization({
+    documentInternationalization({
       supportedLanguages: [
         {
           title: 'English',
@@ -21,17 +22,15 @@ export default defineConfig({
         {
           title: 'Chinese',
           id: 'zh-SG',
-        }
+        },
       ],
-      schemaTypes: [
-        'site',
-				'homePage'
-      ],
+      schemaTypes: ['site', 'homePage'],
     }),
     deskTool({
       structure: newDeskStructure,
     }),
     visionTool(),
+    colorInput(),
   ],
 
   schema: {

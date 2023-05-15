@@ -4,6 +4,7 @@ import business from './business';
 import homeDocument from './document';
 import hero from './hero';
 import legacyToEfficiency from './legacyToEfficiency';
+import easyBanking from './easyBanking';
 
 export default [
   homeDocument,
@@ -12,4 +13,5 @@ export default [
   business,
   hero,
   legacyToEfficiency,
+  easyBanking,
 ];

@@ -1,34 +1,10 @@
 import type { SanityAsset } from '@sanity/image-url/lib/types/types';
-import type { SanityDimensionedImage } from 'astro-sanity-picture';
 import type { PortableTextBlock } from 'sanity';
-
-interface Content {
-  title: string;
-  description: PortableText[];
-}
-
-export interface Hero {
-  _type: string;
-  title: string;
-  contentList: Content[];
-}
 
 export interface Mission {
   _type: string;
   title: string;
   description: PortableText[];
-}
-
-interface Card {
-  title: string;
-  description: string;
-  logo: SanityDimensionedImage;
-}
-
-export interface WhyKrypton {
-  _type: string;
-  title: string;
-  cards: Card[];
 }
 
 export interface Business {
@@ -37,7 +13,7 @@ export interface Business {
   description: PortableText[];
 }
 
-type Section = Hero | WhyKrypton | Mission | Business;
+type Section = LegacyToEfficiency | EasyBanking;
 
 export interface HomePageData {
   seo: BaseMetaData;
@@ -45,17 +21,17 @@ export interface HomePageData {
   mainBgImage: SanityImage;
 }
 
-export interface LegacyToEfficiencyData {
+export interface LegacyToEfficiency {
   _type: string;
   description: PortableTextBlock;
-  flowDiagram: FlowDiagram[];
+  diagram: EfficiencyDiagram[];
   _key: string;
   title: string;
-  businessSolutions: BusinessSolution[];
+  solutions: EfficiencySolution[];
   subtitle: string;
 }
 
-export interface BusinessSolution {
+export interface EfficiencySolution {
   _type: string;
   _key: string;
   description: PortableTextBlock;
@@ -64,9 +40,68 @@ export interface BusinessSolution {
   link?: Link;
 }
 
-export interface FlowDiagram {
+export interface EfficiencyDiagram {
   _key: string;
   logo: SanityAsset;
   platform: string;
   root: boolean;
+}
+
+export interface EasyBanking {
+  _key: string;
+  _type: string;
+  title: string;
+  subtitle: string;
+  description: PortableTextBlock;
+  diagram: BankingDiagram[];
+  solutions: BankingSolution;
+}
+
+export interface BankingSolution {
+  _type: string;
+  _key: string;
+  description: PortableTextBlock;
+  name: string;
+  platform: string;
+  colors: Colors;
+  link?: Link;
+}
+export interface BankingDiagram {
+  _type: string;
+  name: string;
+  _key: string;
+  platform: string;
+  service: string;
+  colors: Colors;
+}
+
+export interface Colors {
+  from: Color;
+  to: Color;
+}
+
+interface Color {
+  hsv: Hsl;
+  rgb: RGB;
+  hsl: Hsl;
+  alpha: number;
+  _type: string;
+  hex: string;
+}
+
+interface Hsl {
+  h: number;
+  l?: number;
+  a: number;
+  s: number;
+  _type: string;
+  v?: number;
+}
+
+interface RGB {
+  g: number;
+  _type: string;
+  a: number;
+  b: number;
+  r: number;
 }

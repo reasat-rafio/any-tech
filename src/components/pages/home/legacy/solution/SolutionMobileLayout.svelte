@@ -1,15 +1,17 @@
 <script lang="ts">
-  import Icon from '@/components/Icon.svelte';
+  import Description from '@/components/ui/Description.svelte';
+  import Link from '@/components/ui/Link.svelte';
+  import H3 from '@/components/ui/H3.svelte';
   import SanityImage from '@/lib/sanity-image.svelte';
-  import type { BusinessSolution } from '@/lib/types/homePage';
+  import type { EfficiencySolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { animate } from 'motion';
 
-  export let businessSolutions: BusinessSolution[];
-  let selectedSolution = businessSolutions[0];
+  export let solutions: EfficiencySolution[];
+  let selectedSolution = solutions[0];
   let articleContainerRef: HTMLElement;
 
-  const setNewSolution = (solution: BusinessSolution) => {
+  const setNewSolution = (solution: EfficiencySolution) => {
     selectedSolution = solution;
 
     if (articleContainerRef)
@@ -25,7 +27,7 @@
   class="md:hidden block space-y-[24px] pt-[24px] border-t border-lavender"
 >
   <div class="grid grid-cols-3 gap-[9.5px] mb-[24px]">
-    {#each businessSolutions as solution}
+    {#each solutions as solution}
       <button
         on:click={() => setNewSolution(solution)}
         class="{selectedSolution?._key === solution._key
@@ -45,22 +47,17 @@
 
   {#if selectedSolution}
     <article bind:this={articleContainerRef}>
-      <h3 class="text-black text-res-head-3 font-Montserrat mb-[16px]">
+      <H3 class="mb-[16px]">
         {selectedSolution.title}
-      </h3>
-      <div class="text-blue-secondary text-res-body-p mb-[24px]">
+      </H3>
+      <Description class="mb-[24px]">
         <PortableText value={selectedSolution.description} />
-      </div>
+      </Description>
+
       {#if selectedSolution?.link}
-        <a
-          class="text-blue-primary text-res-link flex items-center space-x-[8px]"
-          href={selectedSolution.link.href}
+        <Link icon="ChevronRight" href={selectedSolution.link.href}>
+          {selectedSolution.link.title}</Link
         >
-          <span>
-            {selectedSolution.link.title}
-          </span>
-          <Icon icon="ChevronRight" />
-        </a>
       {/if}
     </article>
   {/if}

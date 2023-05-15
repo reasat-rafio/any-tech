@@ -1,6 +1,6 @@
 <script lang="ts">
-  // update vaiant here
-  export let icon: 'ChevronRight';
+  // update variant here
+  export let icon: IconVariants;
   export let airaLabel = 'icon';
   export let className = '';
 </script>

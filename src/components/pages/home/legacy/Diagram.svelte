@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FlowDiagram } from '@/lib/types/homePage';
+  import type { EfficiencyDiagram } from '@/lib/types/homePage';
 
   import TopLine from '/icons/diagram-lines/TopLine.svg';
   import LeftLine from '/icons/diagram-lines/LeftLine.svg';
@@ -10,14 +10,14 @@
   import { timeline, inView } from 'motion';
   import SanityImage from '@/lib/sanity-image.svelte';
 
-  export let flowDiagram: FlowDiagram[];
+  export let diagram: EfficiencyDiagram[];
 
   let containerRef: HTMLDivElement;
   let indicatorLineContainerRef: HTMLDivElement;
   let bigGradientRef: HTMLDivElement;
   let smallGradientRef: HTMLDivElement;
 
-  const [rootItem, ...rest] = flowDiagram.sort(
+  const [rootItem, ...rest] = diagram.sort(
     (a, b) => Number(b.root === true) - Number(a.root === true)
   );
 

@@ -43,12 +43,9 @@ export default {
       of: [
         { type: 'homePage.hero' },
         { type: 'homePage.legacyToEfficiency' },
-        {
-          type: 'homePage.whyKrypton',
-        },
-        {
-          type: 'homePage.mission',
-        },
+        { type: 'homePage.easyBanking' },
+        { type: 'homePage.whyKrypton' },
+        { type: 'homePage.mission' },
         {
           type: 'homePage.business',
         },

@@ -1,12 +1,12 @@
 ---
 export interface Props {
-  // update vaiant here
-  icon: 'ChevronRight';
+  // update variant here
+  icon: IconVariants;
   airaLabel?: string;
   className?: string;
 }
 
-const { icon, airaLabel = 'icon', className = '' } = Astro.props as Props;
+const { icon, airaLabel = 'icon', className = '' } = Astro.props;
 ---
 
 <object

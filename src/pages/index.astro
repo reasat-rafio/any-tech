@@ -2,8 +2,13 @@
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
 import Hero from '@/components/pages/home/Hero.astro';
-import type { HomePageData } from '@/lib/types/homePage';
+import type {
+  EasyBanking as EasyBankingData,
+  HomePageData,
+  LegacyToEfficiency as LegacyToEfficiencyData,
+} from '@/lib/types/homePage';
 import LegacyToEfficiency from '@/components/pages/home/legacy/LegacyToEfficiency.astro';
+import EasyBanking from '@/components/pages/home/banking/EasyBanking.astro';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
@@ -33,7 +38,11 @@ const { sections, seo } = page;
         case 'homePage.hero':
           return <Hero {...section} />;
         case 'homePage.legacyToEfficiency':
-          return <LegacyToEfficiency {...section} />;
+          return (
+            <LegacyToEfficiency {...(section as LegacyToEfficiencyData)} />
+          );
+        case 'homePage.easyBanking':
+          return <EasyBanking {...(section as EasyBankingData)} />;
         default:
           return null;
       }

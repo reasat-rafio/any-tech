@@ -1,0 +1,40 @@
+---
+import PortableText from '@/components/PortableText.astro';
+import type { EfficiencySolution } from '@/lib/types/homePage';
+import SanityPicture from 'astro-sanity-picture';
+import Link from '@/components/ui/Link.svelte';
+import H3 from '@/components/ui/H3.svelte';
+import Description from '@/components/ui/Description.svelte';
+
+const { solutions } = Astro.props as {
+  solutions: EfficiencySolution[];
+};
+---
+
+<section
+  class="mt-[95px] hidden gap-[30px] md:grid md:grid-cols-2 xl:grid-cols-3"
+>
+  {
+    solutions.map(({ title, logo, description, link }) => (
+      <article>
+        <div class="flex w-fit rounded-md px-[15px] py-[8px] shadow-button-secondary">
+          <SanityPicture
+            class="h-full max-w-[100px] object-contain"
+            img={{ alt: logo.alt }}
+            src={logo}
+          />
+        </div>
+        <H3 class="my-[31px]">{title}</H3>
+        <Description>
+          <PortableText value={description} />
+        </Description>
+
+        {!!link && (
+          <Link class="mt-[26px]" href={link?.href}>
+            {link?.title}
+          </Link>
+        )}
+      </article>
+    ))
+  }
+</section>
