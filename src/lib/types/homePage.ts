@@ -9,13 +9,16 @@ export interface HomePageData {
   mainBgImage: SanityImage;
 }
 
+export interface HeroLink extends Link {
+  variant: 'outline' | 'solid';
+}
 export interface Hero {
   _type: string;
   _key: string;
   subtitle: string;
   title: string;
   image: SanityAsset;
-  links?: Link[];
+  links?: HeroLink[];
 }
 
 export interface LegacyToEfficiency {

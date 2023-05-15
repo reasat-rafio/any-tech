@@ -2,10 +2,13 @@
   import type { SanityAsset } from '@sanity/image-url/lib/types/types';
   import SanityImage from '@/lib/sanity-image.svelte';
   import H1 from '@/components/ui/H1.svelte';
+  import Cta from '@/components/ui/CTA.svelte';
+  import type { HeroLink } from '@/lib/types/homePage';
 
   export let title: string;
   export let subtitle: string;
   export let image: SanityAsset;
+  export let links: HeroLink[] | undefined = undefined;
 </script>
 
 <section
@@ -17,6 +20,14 @@
         <H1>{title}</H1>
         <p class="text-[18px] leading-[28.8px]">{subtitle}</p>
       </header>
+
+      {#if !!links?.length}
+        <div class="flex space-x-[16px] mt-[45px]">
+          {#each links as link}
+            <Cta variant={link.variant} href={link.href} title={link.title} />
+          {/each}
+        </div>
+      {/if}
     </div>
     <div class="flex-1" />
   </div>

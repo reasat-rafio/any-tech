@@ -1,4 +1,4 @@
-import { FcHome } from 'react-icons/fc';
+import { FcHome, FcLink } from 'react-icons/fc';
 import type { Rule } from 'sanity';
 
 const hero = {
@@ -39,7 +39,31 @@ const hero = {
       of: [
         {
           name: 'link',
-          type: 'link',
+          type: 'object',
+          icon: FcLink,
+          fields: [
+            {
+              name: 'title',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'href',
+              title: 'URL',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'variant',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+              options: {
+                list: ['outline', 'solid'],
+                layout: 'radio',
+              },
+              initialValue: 'solid',
+            },
+          ],
         },
       ],
     },
