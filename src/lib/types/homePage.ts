@@ -1,24 +1,21 @@
 import type { SanityAsset } from '@sanity/image-url/lib/types/types';
 import type { PortableTextBlock } from 'sanity';
 
-export interface Mission {
-  _type: string;
-  title: string;
-  description: PortableText[];
-}
-
-export interface Business {
-  _type: 'homePage.business';
-  title: string;
-  description: PortableText[];
-}
-
-type Section = LegacyToEfficiency | EasyBanking;
+type Section = Hero | LegacyToEfficiency | EasyBanking;
 
 export interface HomePageData {
   seo: BaseMetaData;
   sections: Section[];
   mainBgImage: SanityImage;
+}
+
+export interface Hero {
+  _type: string;
+  _key: string;
+  subtitle: string;
+  title: string;
+  image: SanityAsset;
+  links?: Link[];
 }
 
 export interface LegacyToEfficiency {
