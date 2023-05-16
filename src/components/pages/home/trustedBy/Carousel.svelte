@@ -1,0 +1,35 @@
+<script lang="ts">
+  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+  import '@splidejs/svelte-splide/css';
+  import { urlForSanityImage } from '@/lib/helpers';
+
+  export let logos: SanityImage[];
+</script>
+
+<div class={$$props.class}>
+  <div class="w-[140%] -translate-x-[15%]">
+    <Splide
+      options={{
+        arrows: false,
+        pagination: false,
+        autoplay: true,
+        speed: 1500,
+        type: 'loop',
+        gap: '.5rem',
+        perPage: 3,
+        perMove: 1,
+      }}
+      aria-label="Company Logos"
+    >
+      {#each logos as logo}
+        <SplideSlide class="flex items-center">
+          <img
+            src={urlForSanityImage(logo).url()}
+            alt={logo.alt}
+            title={logo.title}
+          />
+        </SplideSlide>
+      {/each}
+    </Splide>
+  </div>
+</div>

@@ -53,8 +53,8 @@ const { sections, seo } = page;
           return (
             <LegacyToEfficiency {...(section as LegacyToEfficiencyData)} />
           );
-        // case 'homePage.easyBanking':
-        //   return <EasyBanking {...(section as EasyBankingData)} />;
+        case 'homePage.easyBanking':
+          return <EasyBanking {...(section as EasyBankingData)} />;
         case 'homePage.trustedBy':
           return <TrustedBy {...(section as TrustedByData)} />;
         default:
