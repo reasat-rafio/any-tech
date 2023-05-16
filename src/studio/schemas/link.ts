@@ -1,9 +1,11 @@
+import { FcLink } from 'react-icons/fc';
 import { MdLink } from 'react-icons/md';
 
 export default {
   name: 'link',
   title: 'Link',
   type: 'object',
+  icon: FcLink,
   fields: [
     {
       name: 'title',
