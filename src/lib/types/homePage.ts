@@ -13,7 +13,21 @@ export interface Business {
   description: PortableText[];
 }
 
-type Section = LegacyToEfficiency | EasyBanking;
+export interface Detail {
+  frontSymbol: string;
+  number: number;
+  backSymbol: string;
+  description: string;
+}
+
+export interface TrustedBy {
+  _type: 'homePage.trustedBy';
+  title: string;
+  details: Detail[];
+  logos: SanityImage[];
+}
+
+type Section = LegacyToEfficiency | EasyBanking | TrustedBy;
 
 export interface HomePageData {
   seo: BaseMetaData;

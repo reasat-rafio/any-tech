@@ -44,10 +44,12 @@ export default {
         { type: 'homePage.hero' },
         { type: 'homePage.legacyToEfficiency' },
         { type: 'homePage.easyBanking' },
-        { type: 'homePage.whyKrypton' },
         { type: 'homePage.mission' },
         {
           type: 'homePage.business',
+        },
+        {
+          type: 'homePage.trustedBy',
         },
       ],
     },

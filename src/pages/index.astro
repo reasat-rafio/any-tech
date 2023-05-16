@@ -6,9 +6,11 @@ import type {
   EasyBanking as EasyBankingData,
   HomePageData,
   LegacyToEfficiency as LegacyToEfficiencyData,
+  TrustedBy as TrustedByData,
 } from '@/lib/types/homePage';
 import LegacyToEfficiency from '@/components/pages/home/legacy/LegacyToEfficiency.astro';
 import EasyBanking from '@/components/pages/home/banking/EasyBanking.astro';
+import TrustedBy from '@/components/pages/home/trustedBy/TrustedBy.astro';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
@@ -20,6 +22,16 @@ const query = `*[_type == 'homePage'][0] {
       root,
       logo
     },
+		logos[]{
+  ...,
+  asset->{
+    ...,
+    metadata {
+      lqip,
+      dimensions
+    }
+  }
+}
   }
 }`;
 
@@ -41,8 +53,10 @@ const { sections, seo } = page;
           return (
             <LegacyToEfficiency {...(section as LegacyToEfficiencyData)} />
           );
-        case 'homePage.easyBanking':
-          return <EasyBanking {...(section as EasyBankingData)} />;
+        // case 'homePage.easyBanking':
+        //   return <EasyBanking {...(section as EasyBankingData)} />;
+        case 'homePage.trustedBy':
+          return <TrustedBy {...(section as TrustedByData)} />;
         default:
           return null;
       }

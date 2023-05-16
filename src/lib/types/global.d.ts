@@ -26,7 +26,7 @@ declare global {
     _key: string;
   }
 
-  type SanityImage = SanityDimensionedImage & { alt?: string };
+  type SanityImage = SanityDimensionedImage & { alt?: string; title?: string };
 
   export interface BaseMetaData {
     title?: string;

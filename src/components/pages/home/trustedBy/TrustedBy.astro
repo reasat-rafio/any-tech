@@ -1,0 +1,31 @@
+---
+import H5 from '@/components/ui/H5.svelte';
+import type { TrustedBy as Props } from '@/lib/types/homePage';
+import Details from './Details.svelte';
+import SanityPicture from 'astro-sanity-picture';
+
+const { title, details, logos } = Astro.props;
+---
+
+<section class="container py-[128px]">
+  <H5 class="border-lavender pb-6 text-center max-lg:border-b lg:pb-5">
+    {title}
+  </H5>
+  <Details client:load {details} />
+  <div class="mt-14 grid grid-cols-5 gap-y-[34px] max-lg:hidden">
+    {
+      logos.map((logo) => (
+        <SanityPicture
+          lqip={{ enabled: false }}
+          class="object-contain"
+          img={{
+            style: { objectFit: 'contain' },
+            alt: logo.alt,
+            title: logo.title,
+          }}
+          src={logo}
+        />
+      ))
+    }
+  </div>
+</section>
