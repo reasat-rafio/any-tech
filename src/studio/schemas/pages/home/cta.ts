@@ -13,8 +13,8 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'description',
-      type: 'blockContent',
+      name: 'subtitle',
+      type: 'text',
     },
     {
       name: 'button',
