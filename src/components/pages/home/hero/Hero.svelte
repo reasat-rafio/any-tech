@@ -5,8 +5,10 @@
   import Cta from '@/components/ui/CTA.svelte';
   import type { HeroLink } from '@/lib/types/homePage';
   import { timeline } from 'motion';
+  import type { Easing } from 'motion';
   import { onMount } from 'svelte';
   import IntersectionObserver from 'svelte-intersection-observer';
+  import Wavelines from './Wavelines.svelte';
 
   export let title: string;
   export let subtitle: string;
@@ -19,42 +21,30 @@
   let waveLines2PositionX = 0;
   let mouseAnimationCanTrigger = false;
   let rootElRef: HTMLElement;
-  let waveLines1Ref: HTMLObjectElement;
-  let waveLinesDesktop2Ref: HTMLObjectElement;
+  let waveLines1DesktopRef: HTMLObjectElement;
+  let waveLines2DesktopRef: HTMLObjectElement;
+  let imageRef: HTMLImageElement;
   const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+  let easing: Easing = [0.25, 0.46, 0.45, 0.94];
 
-  onMount(() => {
-    timeline(
-      [
-        [
-          waveLines1Ref,
-          { x: ['-10%', 0], y: ['-10%', 0] },
-          { easing: [0.25, 0.46, 0.45, 0.94] },
-        ],
-        [
-          '.hero-img',
-          { filter: ['blur(5px)', 'blur(0)'] },
-          { easing: [0.25, 0.46, 0.45, 0.94], at: 0.1 },
-        ],
-        [
-          waveLinesDesktop2Ref,
-          { x: ['15%', 0], y: ['-10%', 0], opacity: [0, 1] },
-          { at: 0.1, easing: [0.25, 0.46, 0.45, 0.94] },
-        ],
-      ],
-      { duration: 2 }
-    );
-    setTimeout(() => {
-      mouseAnimationCanTrigger = true;
-    }, 2000);
-  });
+  const doParallaxAnimation = (
+    el: HTMLElement,
+    { x = 0, y = 0 }: { x?: number; y?: number }
+  ) => {
+    if (el) {
+      el.style.transform = `translate3d(${x}%, ${y}%, 0)`;
+      el.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
+    }
+  };
 
   const windowScrollAction = () => {
-    if (intersecting && waveLinesDesktop2Ref) {
-      waveLinesDesktop2Ref.style.transform = `translate3d(0, ${
-        waveLines2PositionX * 0.01
-      }%, 0)`;
-      waveLinesDesktop2Ref.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
+    if (intersecting) {
+      doParallaxAnimation(waveLines2DesktopRef, {
+        y: waveLines2PositionX * 0.01,
+      });
+      doParallaxAnimation(imageRef, {
+        y: waveLines2PositionX * 0.002,
+      });
     }
   };
 
@@ -66,16 +56,35 @@
     if (mouseAnimationCanTrigger) {
       let mousePositionX = e.clientX / window.innerWidth - 0.5;
       let mousePositionY = e.clientY / window.innerHeight - 0.5;
-      waveLinesDesktop2Ref.style.transform = `translate3d(${
-        mousePositionX * 2.5
-      }%, ${mousePositionY * 2.5}%, 0)`;
-      waveLinesDesktop2Ref.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
-      waveLines1Ref.style.transform = `translate3d(${mousePositionX * -1.5}%, ${
-        mousePositionY * -1.5
-      }%, 0)`;
-      waveLines1Ref.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
+
+      doParallaxAnimation(waveLines1DesktopRef, {
+        x: mousePositionX * -1.5,
+        y: mousePositionY * -1.5,
+      });
+      doParallaxAnimation(waveLines2DesktopRef, {
+        x: mousePositionX * 2.5,
+        y: mousePositionY * 2.5,
+      });
     }
   };
+  onMount(() => {
+    imageRef = document.querySelector('.hero-img') as HTMLImageElement;
+    timeline(
+      [
+        [waveLines1DesktopRef, { x: ['-10%', 0], y: ['-10%', 0] }, { easing }],
+        [imageRef, { x: ['5%', 0] }, { easing, at: 0.1 }],
+        [
+          waveLines2DesktopRef,
+          { x: ['15%', 0], y: ['-10%', 0], opacity: [0, 1] },
+          { at: 0.1, easing },
+        ],
+      ],
+      { duration: 2 }
+    );
+    setTimeout(() => {
+      mouseAnimationCanTrigger = true;
+    }, 2000);
+  });
 </script>
 
 <svelte:window
@@ -107,6 +116,7 @@
           </div>
         {/if}
       </div>
+
       <div class="lg:flex-[35] xl:flex-[50] lg:block hidden" />
     </div>
 
@@ -121,37 +131,21 @@
       <div class="gradient-overlay" />
     </div>
 
-    <!-- <object
-      bind:this={waveLines1Ref}
-      class="absolute top-0 right-0 h-full w-full object-cover"
-      aria-label="background waveforms"
-      type="image/svg+xml"
-      data={`/backgrounds/WaveLinesDesktop1.svg`}
-      >Your borwser doesn't support SVG
-    </object> -->
-    <object
-      bind:this={waveLinesDesktop2Ref}
-      class="lg:block hidden absolute bottom-0 right-0 h-[220%] w-[120%] object-bottom"
-      aria-label="background waveforms"
-      type="image/svg+xml"
-      data={`/backgrounds/WaveLinesDesktop2.svg`}
-      >Your borwser doesn't support SVG
-    </object>
-    <!-- <object
-      class="lg:hidden block absolute bottom-0 right-0 h-full w-full object-bottom"
-      aria-label="background waveforms"
-      type="image/svg+xml"
-      data={`/backgrounds/WaveLinesMobile2.svg`}
-      >Your borwser doesn't support SVG
-    </object> -->
-    <object
-      class="absolute lg:hidden block top-0 right-0 h-full w-full object-coverx translate-y-[-5%]"
-      aria-label="background waveforms"
-      type="image/svg+xml"
-      data={`/backgrounds/WaveLinesMobile1.svg`}
-      >Your borwser doesn't support SVG
-    </object>
+    <Wavelines bind:waveLines1DesktopRef bind:waveLines2DesktopRef />
   </section>
+
+  <div
+    class="lg:hidden relative h-full"
+    style="clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);"
+  >
+    <div
+      class="absolute inset-0 h-full z-10"
+      style="
+      background: linear-gradient(162.22deg, #1F80F0 40px, rgba(31, 128, 240, 0) 100%);
+      clip-path: polygon(0 0, 100% 0%, 100% 5%, 0 20%);"
+    />
+    <SanityImage class="h-full w-full object-cover " {image} maxWidth={2000} />
+  </div>
 </IntersectionObserver>
 
 <style>

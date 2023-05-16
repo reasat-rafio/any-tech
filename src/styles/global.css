@@ -22,7 +22,8 @@
 
   @media (max-width: 1280px) {
     .bg-clip-hero-container {
-      clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
+      clip-path: none;
+      /* clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%); */
     }
   }
   .page-container {
