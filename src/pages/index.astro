@@ -37,7 +37,7 @@ const { sections, seo } = page;
     sections.map((section) => {
       switch (section._type) {
         case 'homePage.hero':
-          return <Hero client:only {...(section as HeroData)} />;
+          return <Hero client:load {...(section as HeroData)} />;
         case 'homePage.legacyToEfficiency':
           return (
             <LegacyToEfficiency {...(section as LegacyToEfficiencyData)} />

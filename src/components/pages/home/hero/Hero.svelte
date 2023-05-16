@@ -94,9 +94,9 @@
   on:mousemove={windowMouseMoveAction}
 />
 <IntersectionObserver element={rootElRef} bind:intersecting>
-  <section bind:this={rootElRef} class="mb-[85px]">
+  <section bind:this={rootElRef} class="mb-[2%]">
     <div
-      class="relative lg:h-[95vh] w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
+      class="relative lg:h-[90vh] w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
     >
       <div
         class="container lg:flex w-full lg:items-center lg:justify-center h-full relative z-10"
