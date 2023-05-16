@@ -7,7 +7,7 @@
 </script>
 
 <a
-  class="md:py-[16px] py-[14px] px-[35px] rounded-xs shadow-button-primary text-link text-white flex items-center space-x-[8px] {variant ===
+  class="md:py-[16px] py-[14px] px-[35px] rounded-xs shadow-button-primary text-link text-white flex items-center justify-center space-x-[8px] {variant ===
     'solid' && 'bg-orange'} {variant === 'outline' && 'border '}"
   {href}
 >

@@ -20,9 +20,9 @@
     clip-path: polygon(67% 0, 100% 0, 100% 56%, 67% 100%, 0 100%, 32% 52%);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1280px) {
     .bg-clip-hero-container {
-      clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
+      clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
     }
   }
   .page-container {
