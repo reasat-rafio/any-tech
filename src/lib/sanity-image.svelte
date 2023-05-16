@@ -15,7 +15,7 @@
       loaded = true;
     };
   });
-  const src: any = urlFor(image).width(maxWidth).fit('fillmax');
+  const src: any = urlFor(image).width(maxWidth).fit('fillmax').auto('format');
 </script>
 
 {#if image}
