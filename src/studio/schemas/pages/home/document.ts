@@ -49,6 +49,9 @@ export default {
         {
           type: 'homePage.business',
         },
+        {
+          type: 'homePage.cta',
+        },
       ],
     },
   ],
