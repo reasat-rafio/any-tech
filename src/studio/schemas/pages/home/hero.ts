@@ -1,56 +1,79 @@
-import { BsFillFileEarmarkTextFill } from "react-icons/bs";
-export default {
-  name: "homePage.hero",
-  type: "object",
-  title: "Hero",
+import { FcHome, FcLink } from 'react-icons/fc';
+import type { Rule } from 'sanity';
+
+const hero = {
+  name: 'homePage.hero',
+  type: 'object',
+  title: 'Hero',
+  icon: FcHome,
   fields: [
     {
-      name: "title",
-      title: "Title",
-      type: "text",
+      name: 'title',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: "contentList",
-      type: "array",
+      name: 'subtitle',
+      type: 'text',
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
+      name: 'image',
+      type: 'image',
+      options: { hotspot: true },
+      validation: (Rule: Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessibility',
+          type: 'string',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
+    },
+    {
+      name: 'links',
+      type: 'array',
+      validation: (Rule: Rule) => Rule.max(2),
       of: [
         {
-          name: "content",
-          type: "object",
+          name: 'link',
+          type: 'object',
+          icon: FcLink,
           fields: [
             {
-              name: "title",
-              type: "string",
+              name: 'title',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
             },
             {
-              name: "description",
-              type: "blockContent",
+              name: 'href',
+              title: 'URL',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+            },
+            {
+              name: 'variant',
+              type: 'string',
+              validation: (Rule: Rule) => Rule.required(),
+              options: {
+                list: ['outline', 'solid'],
+                layout: 'radio',
+              },
+              initialValue: 'solid',
             },
           ],
-          preview: {
-            select: {
-              title: "title",
-            },
-            prepare({ title }: IPrepare) {
-              return {
-                title,
-                media: BsFillFileEarmarkTextFill,
-              };
-            },
-          },
         },
       ],
     },
   ],
   preview: {
     select: {
-      title: "title",
-    },
-    prepare({ title }: IPrepare) {
-      return {
-        title,
-        subtitle: "About Krypton",
-        media: BsFillFileEarmarkTextFill,
-      };
+      title: 'title',
+      subtitle: 'subtitle',
     },
   },
 };
+
+export default hero;

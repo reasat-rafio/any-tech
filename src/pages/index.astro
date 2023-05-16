@@ -1,10 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
-import Hero from '@/components/pages/home/Hero.astro';
+import Hero from '@/components/pages/home/Hero.svelte';
 import type {
-  EasyBanking as EasyBankingData,
   HomePageData,
+  Hero as HeroData,
+  EasyBanking as EasyBankingData,
   LegacyToEfficiency as LegacyToEfficiencyData,
 } from '@/lib/types/homePage';
 import LegacyToEfficiency from '@/components/pages/home/legacy/LegacyToEfficiency.astro';
@@ -36,7 +37,7 @@ const { sections, seo } = page;
     sections.map((section) => {
       switch (section._type) {
         case 'homePage.hero':
-          return <Hero {...section} />;
+          return <Hero client:load {...(section as HeroData)} />;
         case 'homePage.legacyToEfficiency':
           return (
             <LegacyToEfficiency {...(section as LegacyToEfficiencyData)} />

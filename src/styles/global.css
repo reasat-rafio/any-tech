@@ -13,25 +13,16 @@
     @apply space-y-[16px] lg:space-y-[26px];
   }
 
-  .bg-clip-even {
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
+  .bg-clip-hero-container {
+    clip-path: polygon(0 0, 100% 0, 100% 71%, 0% 100%);
   }
-  .bg-clip-odd {
-    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
-  }
-  .bg-clip-solid {
-    clip-path: polygon(0 0, 100% 7%, 100% 100%, 0% 100%);
+  .bg-clip-hero-image {
+    clip-path: polygon(67% 0, 100% 0, 100% 56%, 67% 100%, 0 100%, 32% 52%);
   }
 
   @media (max-width: 768px) {
-    .bg-clip-even {
+    .bg-clip-hero-container {
       clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
-    }
-    .bg-clip-odd {
-      clip-path: polygon(0 0, 100% 3%, 100% 97%, 0 100%);
-    }
-    .bg-clip-solid {
-      clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 100%);
     }
   }
   .page-container {
