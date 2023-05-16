@@ -92,61 +92,72 @@
   on:scroll={windowScrollAction}
   on:mousemove={windowMouseMoveAction}
 />
-<IntersectionObserver element={rootElRef} bind:intersecting>
-  <section
-    bind:this={rootElRef}
-    class="relative lg:h-[95vh] w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[160px] lg:pt-0"
-  >
-    <div
-      class="container lg:flex w-full lg:items-center lg:justify-center h-full relative z-10"
-    >
-      <div class="h-fit lg:flex-[65] xl:flex-[50]">
-        <header class="space-y-[25px] max-w-xl">
-          <H1>{title}</H1>
-          <p class="text-[18px] leading-[28.8px]">{subtitle}</p>
-        </header>
 
-        {#if !!links?.length}
-          <div
-            class="flex lg:flex-row flex-col lg:space-x-[16px] mt-[75px] space-y-4 lg:space-y-0 w-full pb-[220px] lg:pb-0"
-          >
-            {#each links as link}
-              <Cta variant={link.variant} href={link.href} title={link.title} />
-            {/each}
-          </div>
-        {/if}
+<section class="mb-[85px]">
+  <IntersectionObserver element={rootElRef} bind:intersecting>
+    <div
+      bind:this={rootElRef}
+      class="relative lg:h-[95vh] w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
+    >
+      <div
+        class="container lg:flex w-full lg:items-center lg:justify-center h-full relative z-10"
+      >
+        <div class="h-fit lg:flex-[65] xl:flex-[50]">
+          <header class="space-y-[25px] max-w-xl">
+            <H1>{title}</H1>
+            <p class="text-[18px] leading-[28.8px]">{subtitle}</p>
+          </header>
+
+          {#if !!links?.length}
+            <div
+              class="flex lg:flex-row flex-col lg:space-x-[16px] mt-[75px] space-y-4 lg:space-y-0 w-full pb-[220px] lg:pb-0"
+            >
+              {#each links as link}
+                <Cta
+                  variant={link.variant}
+                  href={link.href}
+                  title={link.title}
+                />
+              {/each}
+            </div>
+          {/if}
+        </div>
+
+        <div class="lg:flex-[35] xl:flex-[50] lg:block hidden" />
       </div>
 
-      <div class="lg:flex-[35] xl:flex-[50] lg:block hidden" />
+      <div
+        class="hidden lg:block absolute top-0 xl:left-[35%] xl:w-[65%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
+      >
+        <SanityImage
+          class="h-full w-full object-cover hero-img"
+          {image}
+          maxWidth={2000}
+        />
+        <div class="gradient-overlay" />
+      </div>
+
+      <Wavelines bind:waveLines1DesktopRef bind:waveLines2DesktopRef />
     </div>
 
+    <!-- Mobile Image Block -->
     <div
-      class="hidden lg:block absolute top-0 xl:left-[35%] xl:w-[65%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
+      class="lg:hidden relative h-full"
+      style="clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);"
     >
+      <div
+        class="absolute inset-0 h-full z-10"
+        style="background: linear-gradient(162.22deg, #1F80F0 40px, rgba(31, 128, 240, 0) 100%);
+              clip-path: polygon(0 0, 100% 0%, 100% 5%, 0 20%);"
+      />
       <SanityImage
-        class="h-full w-full object-cover hero-img"
+        class="h-full w-full object-cover "
         {image}
         maxWidth={2000}
       />
-      <div class="gradient-overlay" />
     </div>
-
-    <Wavelines bind:waveLines1DesktopRef bind:waveLines2DesktopRef />
-  </section>
-
-  <div
-    class="lg:hidden relative h-full"
-    style="clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);"
-  >
-    <div
-      class="absolute inset-0 h-full z-10"
-      style="
-      background: linear-gradient(162.22deg, #1F80F0 40px, rgba(31, 128, 240, 0) 100%);
-      clip-path: polygon(0 0, 100% 0%, 100% 5%, 0 20%);"
-    />
-    <SanityImage class="h-full w-full object-cover " {image} maxWidth={2000} />
-  </div>
-</IntersectionObserver>
+  </IntersectionObserver>
+</section>
 
 <style>
   .gradient-overlay {

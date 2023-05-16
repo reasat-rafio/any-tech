@@ -5,7 +5,7 @@
 
 <object
   bind:this={waveLines1DesktopRef}
-  class="absolute top-0 right-0 h-full w-full object-cover"
+  class="lg:block absolute top-0 right-0 h-full w-full object-cover hidden"
   aria-label="background waveforms"
   type="image/svg+xml"
   data={`/backgrounds/WaveLinesDesktop1.svg`}
