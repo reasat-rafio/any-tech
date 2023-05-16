@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Detail } from '@/lib/types/homePage';
+  import CountUp from '../../../CountUp.svelte';
   export let details: Detail[];
 </script>
 
@@ -13,7 +14,7 @@
       <h2
         class="text-[64px] lg:text-[96px] font-Montserrat tracking-[-0.02em] font-semibold text-blue-primary leading-none"
       >
-        {frontSymbol ?? ''}{number}{backSymbol ?? ''}
+        {frontSymbol ?? ''}<CountUp value={number} />{backSymbol ?? ''}
       </h2>
       <p
         class="text-right lg:text-center text-black max-lg:text-res-link lg:text-lg lg:pt-2"
