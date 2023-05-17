@@ -9,6 +9,7 @@
   import { onMount } from 'svelte';
   import IntersectionObserver from 'svelte-intersection-observer';
   import Wavelines from './Wavelines.svelte';
+  import { navbarHeight } from '@/store';
 
   export let title: string;
   export let subtitle: string;
@@ -93,10 +94,12 @@
   on:scroll={windowScrollAction}
   on:mousemove={windowMouseMoveAction}
 />
+<!-- lg:h-[90vh] h-screen -->
 <IntersectionObserver element={rootElRef} bind:intersecting>
-  <section bind:this={rootElRef} class="mb-[2%]">
+  <section bind:this={rootElRef}>
     <div
-      class="relative lg:h-[90vh] w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
+      style="height: calc(100vh - {$navbarHeight}px);"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
     >
       <div
         class="container lg:flex w-full lg:items-center lg:justify-center h-full relative z-10"
@@ -142,19 +145,6 @@
         bind:waveLines1MobileRef
         bind:waveLines2MobileRef
       />
-    </div>
-
-    <!-- Mobile Image Block -->
-    <div
-      class="lg:hidden relative h-full -translate-y-[5%]"
-      style="clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);"
-    >
-      <div
-        class="absolute inset-0 h-full z-10"
-        style="background: linear-gradient(162.22deg, #1F80F0 40px, rgba(31, 128, 240, 0) 100%);
-              clip-path: polygon(0 0, 100% 0%, 100% 5%, 0 20%);"
-      />
-      <SanityImage class="h-full w-full object-cover " {image} maxWidth={450} />
     </div>
   </section>
 </IntersectionObserver>
