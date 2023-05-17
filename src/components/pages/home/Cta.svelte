@@ -65,14 +65,14 @@
   class="relative h-[49vh] w-full bg-blue-primary text-white bg-clip-cta overflow-hidden"
 >
   <div
-    class="container flex w-full items-start justify-end h-full relative z-10 flex-col pb-[90px] lg:pb-[100px]"
+    class="container flex w-full items-start justify-end lg:justify-center h-full relative z-10 flex-col max-lg:pb-[90px] lg:mt-4"
   >
     <h2
       class="font-Montserrat text-res-head-2 text-white lg:text-head-2 font-semibold mb-3"
     >
       {title}
     </h2>
-    <p class="text-[18px] leading-[28.8px] whitespace-pre-line mb-6">
+    <p class="text-lg 2xl:text-xl whitespace-pre-line mb-6">
       {subtitle}
     </p>
 
