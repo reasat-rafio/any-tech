@@ -92,7 +92,7 @@
     class="absolute max-lg:bottom-0 lg:top-0 right-0 h-full w-full object-cover"
     aria-label="background waveforms"
     type="image/svg+xml"
-    data={`/backgrounds/WaveLines1.svg`}
+    data={`/backgrounds/WaveLinesDesktop1.svg`}
     >Your borwser doesn't support SVG
   </object>
   <object
@@ -100,7 +100,7 @@
     class="absolute bottom-0 right-0 h-[220%] w-[120%] object-bottom"
     aria-label="background waveforms"
     type="image/svg+xml"
-    data={`/backgrounds/WaveLines2.svg`}
+    data={`/backgrounds/WaveLinesDesktop2.svg`}
     >Your borwser doesn't support SVG
   </object>
 </section>
