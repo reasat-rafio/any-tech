@@ -94,15 +94,14 @@
   on:scroll={windowScrollAction}
   on:mousemove={windowMouseMoveAction}
 />
-<!-- lg:h-[90vh] h-screen -->
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section bind:this={rootElRef}>
     <div
       style="height: calc(100vh - {$navbarHeight}px);"
-      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[20%] md:pt-[10%] lg:pt-0"
     >
       <div
-        class="container lg:flex w-full lg:items-center lg:justify-center h-full relative z-10"
+        class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
       >
         <div class="h-fit lg:flex-[65] xl:flex-[50]">
           <header class="lg:space-y-[25px] space-y-[11px] max-w-xl">
@@ -112,7 +111,7 @@
 
           {#if !!links?.length}
             <div
-              class="flex lg:flex-row flex-col lg:space-x-[16px] lg:mt-[75px] mt-[26px] space-y-4 lg:space-y-0 w-full pb-[60%] lg:pb-0"
+              class="flex lg:flex-row flex-col lg:space-x-[16px] lg:mt-[75px] mt-[26px] space-y-4 lg:space-y-0 w-full pb-[60%] lg:pb-0 max-w-xl"
             >
               {#each links as link}
                 <Cta
