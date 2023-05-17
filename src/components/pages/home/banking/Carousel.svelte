@@ -13,12 +13,19 @@
 
 <div class={$$props.class}>
   <Splide
-    options={{ arrows: false, pagination: false, autoplay: true, speed: 1500 }}
+    class=""
+    options={{
+      arrows: false,
+      pagination: false,
+      autoplay: true,
+      speed: 1500,
+      gap: '1rem',
+    }}
     aria-label="Integrated Technologies"
   >
     {#each solutions as { name, description, platform, link }}
-      <SplideSlide>
-        <article class="p-[24px] space-y-[24px]">
+      <SplideSlide class="pb-2">
+        <article class="p-[24px] space-y-[24px] shadow-card-light rounded-lg">
           <H5>{name}</H5>
           <H3>{platform}</H3>
           <div
