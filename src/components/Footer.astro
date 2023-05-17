@@ -4,18 +4,19 @@ import type { FooterProps } from '@/lib/types/site';
 
 type Props = FooterProps;
 const {
-  footerContents,
-  logo,
+  // footerContents,
+  // logo,
   footerCopyRight,
-  socialLinks,
+  // socialLinks,
   footerBottomLinks,
 } = Astro.props;
-import SanityPicture from 'astro-sanity-picture';
+// import SanityPicture from 'astro-sanity-picture';
 ---
 
 <footer class="bg-[#103E75]">
-  <div class="py-10 lg:container lg:pb-[33px] lg:pt-[48px]">
-    <div class="grid-cols-[1fr_3fr] gap-[30px] lg:grid">
+  <!-- <div class="py-10 lg:container lg:pb-[33px] lg:pt-[48px]"> -->
+  <div class="py-10 lg:container">
+    <!-- <div class="grid-cols-[1fr_3fr] gap-[30px] lg:grid">
       <div
         class="items-center justify-between border-b border-blue-primary max-lg:container max-lg:mb-7 max-lg:flex max-lg:pb-9 lg:flex-col lg:border-none"
       >
@@ -54,10 +55,13 @@ import SanityPicture from 'astro-sanity-picture';
           ))
         }
       </div>
-    </div>
+    </div> -->
 
-    <div
+    <!-- <div
       class="mt-7 flex flex-col items-center justify-between border-t border-blue-primary font-SansPro text-res-body-p text-blue-primary max-lg:container max-lg:pt-4 lg:mt-9 lg:flex-row lg:border-none lg:text-body-p"
+    > -->
+    <div
+      class="flex flex-col items-center justify-between font-SansPro text-res-body-p text-blue-primary max-lg:container lg:flex-row lg:border-none lg:text-body-p"
     >
       <PortableText value={footerCopyRight} />
       <div class="flex items-center">
