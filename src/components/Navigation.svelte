@@ -1,6 +1,6 @@
 <script lang="ts">
-  import HamburgerClose from '../../icons/HamburgerClose.svelte';
-  import HamburgerOpen from '../../icons/HamburgerOpen.svelte';
+  import HamburgerClose from '../icons/HamburgerClose.svelte';
+  import HamburgerOpen from '../icons/HamburgerOpen.svelte';
   import { urlForSanityImage } from '@/lib/helpers';
 
   let showMobileMenu = false;
@@ -10,19 +10,18 @@
 
 <div
   id="main-navigation"
-  class="is-desktop relative flex items-center flex-wrap justify-between max-lg:py-2 px-5 uppercase text-sm text-[#3a3a3a] lg:relative bg-white z-[9999]"
+  class="max-w-[1200px] mx-auto relative flex items-center flex-wrap justify-between lg:relative z-[9999] max-lg:py-8 max-lg:container"
 >
   <h1>
     <a aria-label="Go to home page" href="/" rel="home"
       ><img
         src={urlForSanityImage(logo).url()}
-        width="220px"
-        height="34px"
+        class="w-[100px] h-auto object-contain lg:w-[200px]"
         alt="Home Page"
       />
     </a>
   </h1>
-  <div class="flex items-center px-2">
+  <div class="flex items-center">
     <nav
       class="desktop-menu max-lg:hidden"
       aria-label="Main navigation desktop"
@@ -36,17 +35,17 @@
       class="cursor-pointer lg:hidden"
     >
       {#if !showMobileMenu}
-        <HamburgerOpen class="h-4 fill-theme-primary" />
+        <HamburgerOpen />
       {:else}
-        <HamburgerClose class="h-4 w-6 fill-theme-primary" />
+        <HamburgerClose />
       {/if}
     </button>
   </div>
   <nav
-    class="mobile-menu absolute top-[100%] inset-x-0 bg-white lg:hidden"
-    class:hidden={!showMobileMenu}
+    class="absolute top-[100%] bg-blue-primary/50 backdrop-blur lg:hidden transition-transform w-full left-0 max-lg:container py-12 -translate-x-full"
+    class:translate-x-0={showMobileMenu}
   >
-    <ul class="flex items-center flex-col">
+    <ul class="flex items-center flex-col space-y-8">
       <slot />
     </ul>
   </nav>

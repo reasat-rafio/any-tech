@@ -1,6 +1,6 @@
 <script lang="ts">
   import Navigation from './Navigation.svelte';
-  import DownArrow from '../../icons/DownArrow.svelte';
+  import DownArrow from '../icons/DownArrow.svelte';
   import { onMount } from 'svelte';
   import type { NavMenu } from '@/lib/types/site';
 
@@ -14,47 +14,42 @@
   export let logo: SanityImage, navMenus: NavMenu[];
 </script>
 
-<header class="border-b-theme-body border-b">
+<header
+  class="lg:absolute top-0 w-full text-white lg:pt-[40px] text-lg bg-blue-primary"
+>
   <Navigation {logo}>
-    {#each navMenus as { title, href, subMenus, _key } (_key)}
+    {#each navMenus as { title, href, highlight, subMenus, _key } (_key)}
       <li
-        class="max-lg:border-t max-lg:border-theme-body w-full whitespace-nowrap group cursor-pointer menu"
+        class="w-full whitespace-nowrap group lg:py-3 lg:px-6 lg:last:p-0 last:border-none lg:border-b border-white border-opacity-0 hover:border-opacity-100 transition-all duration-500 cursor-pointer"
       >
-        <span class="flex items-center justify-between main-menu">
-          {#if href}
-            <a
-              class="group-hover:text-theme-primary hover:transition-colors duration-200 text-body-p py-[15px] lg:py-4 lg:px-[15px] px-5 max-md:w-full"
-              class:text-theme-primary={currentPathname === href}
-              {href}
-            >
+        <span class="flex items-center justify-between">
+          {#if !highlight}
+            <a {href}>
               {title}
             </a>
-          {:else}
-            <div
-              class="group-hover:text-theme-primary hover:transition-colors duration-200 text-body-p py-[15px] lg:py-4 lg:px-[15px] px-5 max-md:w-full"
-              class:text-theme-primary={currentPathname === href}
-            >
-              {title}
-            </div>
-          {/if}
-          {#if subMenus}
-            <button
-              on:click={() =>
-                (activeSubMenuKey = activeSubMenuKey === _key ? '' : _key)}
-              class="cursor-pointer max-md:px-5 max-md:mr-2.5"
-              aria-label="Down Arrow"
-            >
+            {#if subMenus}
               <DownArrow
-                class="lg:w-2 w-4 z-10 group-hover:fill-theme-primary hover:transition-colors duration-200"
+                class="fill-white ml-2 mt-1"
                 expanded={activeSubMenuKey === _key}
               />
-            </button>
+            {/if}
+          {:else}
+            <span class="bg-[#D9D9D9] w-px h-[33px] mx-8 max-lg:hidden" />
+            <a
+              {href}
+              class="border max-lg:w-full max-lg:justify-center max-lg:mt-6 border-white px-6 py-3 rounded-[3px] text-res-link lg:text-link flex items-center group/highlight hover:bg-white hover:text-blue-primary transition-colors shadow-button-primary"
+            >
+              {title}
+              <DownArrow
+                class="fill-white translate-x-2 transition-transform group-hover/highlight:translate-x-3 -rotate-90 group-hover/highlight:fill-blue-primary"
+                expanded={activeSubMenuKey === _key}
+              />
+            </a>
           {/if}
         </span>
-
+        <!-- TODO add dropdown on desktop class:lg:group-hover:block={subMenus} -->
         <span
           class="lg:absolute lg:top-full lg:bg-white lg:w-[240px] relative border-theme-body border-[1px] shadow-menu"
-          class:lg:group-hover:block={subMenus}
           class:hidden={activeSubMenuKey !== _key}
         >
           <ul class="flex flex-col relative -mt-[1px]">
@@ -63,9 +58,6 @@
                 <li class="border-t border-theme-body whitespace-nowrap">
                   <a
                     class="hover:text-theme-primary hover:transition-colors duration-200 py-3 lg:pl-[15px] pl-7 max-lg:pr-5 inline-block"
-                    class:active-sub-menu={currentPathname
-                      .split('/')
-                      .includes(subMenu.href?.replace('/', ''))}
                     href={!href ? subMenu.href : href + subMenu.href}
                   >
                     <span class="flex text-body-p">
@@ -87,13 +79,3 @@
     {/each}
   </Navigation>
 </header>
-
-<style>
-  .active-sub-menu {
-    color: #0a7ebb;
-  }
-  .menu:has(a.active-sub-menu) .main-menu {
-    color: #0a7ebb;
-    fill: #0a7ebb;
-  }
-</style>

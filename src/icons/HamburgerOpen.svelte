@@ -1,14 +1,12 @@
 <svg
   class={$$props.class}
+  width="18"
+  height="16"
+  viewBox="0 0 18 16"
+  fill="none"
   xmlns="http://www.w3.org/2000/svg"
-  shape-rendering="geometricPrecision"
-  text-rendering="geometricPrecision"
-  image-rendering="optimizeQuality"
-  fill-rule="evenodd"
-  clip-rule="evenodd"
-  viewBox="0 0 512 351.67"
-  ><path
-    fill-rule="nonzero"
-    d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z"
-  /></svg
 >
+  <path d="M0 2C0 0.895431 0.895431 0 2 0H18V2H0Z" fill="white" />
+  <rect y="7" width="18" height="2" fill="white" />
+  <path d="M0 14H18V16H2C0.89543 16 0 15.1046 0 14Z" fill="white" />
+</svg>

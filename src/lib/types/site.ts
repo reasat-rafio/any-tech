@@ -18,6 +18,7 @@ export interface SiteLayout {
 export interface NavMenu {
   href: string;
   title: string;
+  highlight: boolean;
   subMenus: Link[];
   _key: string;
 }
