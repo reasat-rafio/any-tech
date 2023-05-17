@@ -20,6 +20,7 @@
   const duration = 500;
   let intersecting = false;
   let scrollY = 0;
+  let windowWidth = 0;
   let mouseAnimationCanTrigger = false;
   let rootElRef: HTMLElement;
   let imageRef: HTMLImageElement;
@@ -29,6 +30,7 @@
   let waveLines2MobileRef: HTMLObjectElement;
   const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
   let easing: Easing = [0.25, 0.46, 0.45, 0.94];
+  $: heroVH = windowWidth >= 1280 ? '90' : windowWidth >= 1024 ? '92' : '100';
 
   const transformAnimation = (
     el: HTMLElement,
@@ -91,13 +93,14 @@
 
 <svelte:window
   bind:scrollY
+  bind:innerWidth={windowWidth}
   on:scroll={windowScrollAction}
   on:mousemove={windowMouseMoveAction}
 />
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section bind:this={rootElRef}>
     <div
-      style="height: calc(100vh - {$navbarHeight}px);"
+      style="height: calc({heroVH}vh - {$navbarHeight}px);"
       class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[20%] md:pt-[10%] lg:pt-0"
     >
       <div
