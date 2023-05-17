@@ -4,11 +4,13 @@ import Hero from '@/components/pages/home/hero/Hero.svelte';
 import LegacyToEfficiency from '@/components/pages/home/legacy/LegacyToEfficiency.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
+import Cta from '@/components/pages/home/Cta.svelte';
 import type {
   EasyBanking as EasyBankingData,
   Hero as HeroData,
   HomePageData,
   LegacyToEfficiency as LegacyToEfficiencyData,
+  Cta as CtaData,
 } from '@/lib/types/homePage';
 
 const query = `*[_type == 'homePage'][0] {
@@ -44,6 +46,8 @@ const { sections, seo } = page;
           );
         case 'homePage.easyBanking':
           return <EasyBanking {...(section as EasyBankingData)} />;
+        case 'homePage.cta':
+          return <Cta client:load {...(section as CtaData)} />;
         default:
           return null;
       }

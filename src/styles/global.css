@@ -19,6 +19,16 @@
     clip-path: none;
   }
 
+  .bg-clip-cta {
+    clip-path: polygon(0 0, 100% 49%, 100% 100%, 0% 100%);
+  }
+
+  @media (max-width: 768px) {
+    .bg-clip-cta {
+      clip-path: polygon(0 0, 100% 14%, 100% 100%, 0% 100%);
+    }
+  }
+
   @media (min-width: 1280px) {
     .bg-clip-hero-container {
       clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);

@@ -1,7 +1,7 @@
 import type { SanityAsset } from '@sanity/image-url/lib/types/types';
 import type { PortableTextBlock } from 'sanity';
 
-type Section = Hero | LegacyToEfficiency | EasyBanking;
+type Section = Hero | LegacyToEfficiency | EasyBanking | Cta;
 
 export interface HomePageData {
   seo: BaseMetaData;
@@ -73,6 +73,13 @@ export interface BankingDiagram {
   platform: string;
   service: string;
   colors: Colors;
+}
+
+export interface Cta {
+  _type: 'homePage.cta';
+  title: string;
+  subtitle: string;
+  button: Link;
 }
 
 export interface Colors {
