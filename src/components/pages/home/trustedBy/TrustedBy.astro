@@ -1,0 +1,37 @@
+---
+import H5 from '@/components/ui/H5.svelte';
+import type { TrustedBy as Props } from '@/lib/types/homePage';
+import Details from './Details.svelte';
+import Carousel from './Carousel.svelte';
+import SanityPicture from 'astro-sanity-picture';
+
+const { title, details, logos } = Astro.props;
+---
+
+<section class="pb-[128px]">
+  <div class="container">
+    <H5 class="border-lavender pb-6 text-center max-lg:border-b lg:pb-5">
+      {title}
+    </H5>
+    <Details client:visible {details} />
+    <div
+      class="mt-14 grid grid-cols-3 gap-y-[34px] max-md:hidden lg:grid-cols-5"
+    >
+      {
+        logos.map((logo) => (
+          <SanityPicture
+            lqip={{ enabled: false }}
+            class="object-contain"
+            img={{
+              style: { objectFit: 'contain' },
+              alt: logo.alt,
+              title: logo.title,
+            }}
+            src={logo}
+          />
+        ))
+      }
+    </div>
+  </div>
+  <Carousel class="overflow-x-hidden md:hidden" client:load {logos} />
+</section>

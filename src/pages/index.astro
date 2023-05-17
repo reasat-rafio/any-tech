@@ -11,7 +11,10 @@ import type {
   HomePageData,
   LegacyToEfficiency as LegacyToEfficiencyData,
   Cta as CtaData,
+  TrustedBy as TrustedByData,
 } from '@/lib/types/homePage';
+
+import TrustedBy from '@/components/pages/home/trustedBy/TrustedBy.astro';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
@@ -23,6 +26,16 @@ const query = `*[_type == 'homePage'][0] {
       root,
       logo
     },
+		logos[]{
+  ...,
+  asset->{
+    ...,
+    metadata {
+      lqip,
+      dimensions
+    }
+  }
+}
   }
 }`;
 
@@ -48,6 +61,8 @@ const { sections, seo } = page;
           return <EasyBanking {...(section as EasyBankingData)} />;
         case 'homePage.cta':
           return <Cta client:load {...(section as CtaData)} />;
+        case 'homePage.trustedBy':
+          return <TrustedBy {...(section as TrustedByData)} />;
         default:
           return null;
       }

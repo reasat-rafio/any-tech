@@ -1,7 +1,32 @@
 import type { SanityAsset } from '@sanity/image-url/lib/types/types';
 import type { PortableTextBlock } from 'sanity';
 
-type Section = Hero | LegacyToEfficiency | EasyBanking | Cta;
+type Section = Hero | LegacyToEfficiency | EasyBanking | Cta | TrustedBy;
+export interface Mission {
+  _type: string;
+  title: string;
+  description: PortableText[];
+}
+
+export interface Business {
+  _type: 'homePage.business';
+  title: string;
+  description: PortableText[];
+}
+
+export interface Detail {
+  frontSymbol: string;
+  number: number;
+  backSymbol: string;
+  description: string;
+}
+
+export interface TrustedBy {
+  _type: 'homePage.trustedBy';
+  title: string;
+  details: Detail[];
+  logos: SanityImage[];
+}
 
 export interface HomePageData {
   seo: BaseMetaData;
