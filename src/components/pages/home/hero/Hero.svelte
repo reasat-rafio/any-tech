@@ -132,7 +132,7 @@
         class="hidden lg:block absolute top-0 xl:left-[35%] xl:w-[65%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
-          class="h-full w-full object-cover hero-img"
+          class="h-full w-full object-cover hero-img translate-x-[5%]"
           {image}
           maxWidth={1000}
         />
