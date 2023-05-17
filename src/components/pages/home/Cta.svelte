@@ -89,7 +89,7 @@
 
   <object
     bind:this={waveLines1Ref}
-    class="absolute max-lg:bottom-0 lg:top-0 right-0 h-full w-full object-cover"
+    class="absolute max-lg:bottom-0 lg:top-0 right-0 h-full w-full object-cover max-lg:hidden"
     aria-label="background waveforms"
     type="image/svg+xml"
     data={`/backgrounds/WaveLinesDesktop1.svg`}
@@ -97,10 +97,17 @@
   </object>
   <object
     bind:this={waveLines2Ref}
-    class="absolute bottom-0 right-0 h-[220%] w-[120%] object-bottom"
+    class="absolute bottom-0 right-0 h-[220%] w-[120%] object-bottom max-lg:hidden"
     aria-label="background waveforms"
     type="image/svg+xml"
     data={`/backgrounds/WaveLinesDesktop2.svg`}
+    >Your borwser doesn't support SVG
+  </object>
+  <object
+    class="absolute max-lg:bottom-0 lg:top-0 right-0 h-full w-full object-bottom lg:hidden"
+    aria-label="background waveforms"
+    type="image/svg+xml"
+    data={`/backgrounds/ctaMobileWaveLines.svg`}
     >Your borwser doesn't support SVG
   </object>
 </section>
