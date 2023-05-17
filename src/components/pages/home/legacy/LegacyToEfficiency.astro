@@ -40,8 +40,8 @@ const { title, subtitle, diagram, description, solutions } = Astro.props;
   {
     !!solutions?.length && (
       <>
-        <SolutionMobileLayout client:load {solutions} />
         <SolutionDesktopLayout {solutions} />
+        <SolutionMobileLayout client:idle {solutions} />
       </>
     )
   }

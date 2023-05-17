@@ -29,8 +29,8 @@ const { solutions } = Astro.props as {
           <PortableText value={description} />
         </Description>
 
-        {!!link && (
-          <Link class="mt-[26px]" href={link?.href}>
+        {!!link?.title && !!link?.href && (
+          <Link client:idle class="mt-[26px] w-fit" href={link?.href}>
             {link?.title}
           </Link>
         )}
