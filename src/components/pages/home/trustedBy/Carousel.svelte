@@ -15,7 +15,7 @@
         autoplay: true,
         speed: 1500,
         type: 'loop',
-        gap: '.5rem',
+        gap: '2rem',
         perPage: 3,
         perMove: 1,
       }}

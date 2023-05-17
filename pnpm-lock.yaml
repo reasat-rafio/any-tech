@@ -94,9 +94,6 @@ dependencies:
   svelte:
     specifier: ^3.58.0
     version: 3.58.0
-  svelte-countup:
-    specifier: ^0.2.6
-    version: 0.2.6(svelte@3.58.0)
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -7399,15 +7396,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /svelte-countup@0.2.6(svelte@3.58.0):
-    resolution: {integrity: sha512-n1jlDN/55O0w3+RTbCCwq02vvyw4DZIL+IcQht/CuZRq/VGceyADYGrH3ANG5U+P8HMqnIWnCn7xiIF7AxUqaA==}
-    dependencies:
-      nanoid: 3.3.6
-      svelte-inview: 3.0.4(svelte@3.58.0)
-    transitivePeerDependencies:
-      - svelte
-    dev: false
-
   /svelte-hmr@0.15.1(svelte@3.58.0):
     resolution: {integrity: sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -7420,14 +7408,6 @@ packages:
   /svelte-intersection-observer@0.10.0:
     resolution: {integrity: sha512-GdOTMSrRpoBciMe+NbocsHOBvqKJ5OiL5H8Jz4mBoDGHba9VOI4oGeXAmMOmh8mi5gq95+0b0DVI+6alcQ7TCA==}
     dev: true
-
-  /svelte-inview@3.0.4(svelte@3.58.0):
-    resolution: {integrity: sha512-dJZMZ7qN+z2lsxHA7mK1vS35qOCfl1BNSs712a2AnulbRm371n2eoaNa5ICVYAViWpj2zCy1XGZllrxJ0Tjp5A==}
-    peerDependencies:
-      svelte: ^3.0.0
-    dependencies:
-      svelte: 3.58.0
-    dev: false
 
   /svelte2tsx@0.5.23(svelte@3.58.0)(typescript@5.0.4):
     resolution: {integrity: sha512-jYFnugTQRFmUpvLXPQrKzVYcW5ErT+0QCxg027Zx9BuvYefMZFuoBSTDYe7viPEFGrPPiLgT2m7f5n9khE7f7Q==}
