@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   import '@splidejs/svelte-splide/css';
-  import { urlForSanityImage } from '@/lib/helpers';
+  import { imageBuilder } from '@/lib/helpers';
 
   export let logos: SanityImage[];
 </script>
@@ -24,7 +24,7 @@
       {#each logos as logo}
         <SplideSlide class="flex items-center">
           <img
-            src={urlForSanityImage(logo).url()}
+            src={imageBuilder.image(logo).width(180).auto('format').url()}
             alt={logo.alt}
             title={logo.title}
           />
