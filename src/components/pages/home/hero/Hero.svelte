@@ -131,7 +131,7 @@
       </div>
 
       <div
-        class="hidden lg:block absolute top-0 xl:left-[45%] xl:w-[55%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
+        class="hidden lg:block absolute top-0 xl:left-[40%] xl:w-[60%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
           class="h-full w-full object-cover hero-img translate-x-[5%]"
