@@ -101,7 +101,7 @@
   <section bind:this={rootElRef}>
     <div
       style="height: calc({heroVH}vh - {$navbarHeight}px);"
-      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] lg:pt-0"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[150px] lg:pt-0"
     >
       <div
         class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"

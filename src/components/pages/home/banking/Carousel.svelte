@@ -3,6 +3,7 @@
   import H3 from '@/components/ui/H3.svelte';
   import H5 from '@/components/ui/H5.svelte';
   import Link from '@/components/ui/Link.svelte';
+  import SanityImage from '@/lib/sanity-image.svelte';
   import type { BankingSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
@@ -23,15 +24,18 @@
     }}
     aria-label="Integrated Technologies"
   >
-    {#each solutions as { name, description, platform, link }}
+    {#each solutions as { name, description, platform, link, image }}
       <SplideSlide class="pb-2">
         <article class="p-[24px] space-y-[24px] shadow-card-light rounded-lg">
           <H5>{name}</H5>
           <H3>{platform}</H3>
-          <div
-            style="background: linear-gradient(38.43deg, #1F80F0 -9.21%, #00E9EA 123.89%);"
-            class="rounded-[8px] w-full min-h-[125px]"
-          />
+          <div class="rounded-[8px] w-full min-h-[125px] overflow-hidden">
+            <SanityImage
+              class="h-full w-full object-cover"
+              {image}
+              maxWidth={200}
+            />
+          </div>
           <Description class="whitespace-pre-line">
             <PortableText value={description} />
           </Description>
