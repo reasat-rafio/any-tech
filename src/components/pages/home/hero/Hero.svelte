@@ -1,7 +1,7 @@
 <script lang="ts">
   import Cta from '@/components/ui/CTA.svelte';
   import H1 from '@/components/ui/H1.svelte';
-  import SanityImage from '@/lib/sanity-image.svelte';
+  import SanityImage from '@/lib/sanity-image';
   import type { HeroLink } from '@/lib/types/homePage';
   import type { SanityAsset } from '@sanity/image-url/lib/types/types';
   import type { Easing } from 'motion';
@@ -9,6 +9,7 @@
   import { onMount } from 'svelte';
   import IntersectionObserver from 'svelte-intersection-observer';
   import Wavelines from './Wavelines.svelte';
+  import { imageBuilder } from '@/lib/helpers';
 
   export let title: string;
   export let subtitle: string;
@@ -129,9 +130,10 @@
         class="hidden lg:block absolute top-0 xl:left-[35%] xl:w-[65%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
+          imageUrlBuilder={imageBuilder}
           class="h-full w-full object-cover hero-img"
-          {image}
-          maxWidth={1000}
+          src={image}
+          sizes="65vw"
         />
         <div class="gradient-overlay" />
       </div>
@@ -154,7 +156,12 @@
         style="background: linear-gradient(162.22deg, #1F80F0 40px, rgba(31, 128, 240, 0) 100%);
               clip-path: polygon(0 0, 100% 0%, 100% 5%, 0 20%);"
       />
-      <SanityImage class="h-full w-full object-cover " {image} maxWidth={450} />
+      <SanityImage
+        imageUrlBuilder={imageBuilder}
+        class="h-full w-full object-cover "
+        src={image}
+        sizes="100vw"
+      />
     </div>
   </section>
 </IntersectionObserver>

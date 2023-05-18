@@ -25,13 +25,13 @@ export interface TrustedBy {
   _type: 'homePage.trustedBy';
   title: string;
   details: Detail[];
-  logos: SanityImage[];
+  logos: SanityTitledImage[];
 }
 
 export interface HomePageData {
   seo: BaseMetaData;
   sections: Section[];
-  mainBgImage: SanityImage;
+  mainBgImage: SanityTitledImage;
 }
 
 export interface HeroLink extends Link {

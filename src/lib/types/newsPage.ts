@@ -1,4 +1,4 @@
-import type { PortableTextObject } from "sanity";
+import type { PortableTextObject } from 'sanity';
 
 export type NavigationNewsType = {
   title: string;
@@ -8,8 +8,8 @@ export interface NewsType {
   content: PortableTextObject;
   title: string;
   description: string;
-  coverImage: SanityImage;
-  coverLogo: SanityImage;
+  coverImage: SanityTitledImage;
+  coverLogo: SanityTitledImage;
   seo: BaseMetaData;
   slug: string;
   next?: NavigationNewsType;
@@ -18,7 +18,7 @@ export interface NewsType {
 export interface NewsCardType {
   title: string;
   description: string;
-  coverImage: SanityImage;
+  coverImage: SanityTitledImage;
   slug: string;
 }
 

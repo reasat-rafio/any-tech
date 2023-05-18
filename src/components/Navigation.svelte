@@ -5,7 +5,7 @@
 
   let showMobileMenu = false;
 
-  export let logo: SanityImage;
+  export let logo: SanityTitledImage;
 </script>
 
 <div

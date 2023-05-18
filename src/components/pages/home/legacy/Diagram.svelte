@@ -8,7 +8,8 @@
 
   import { onMount } from 'svelte';
   import { timeline, inView } from 'motion';
-  import SanityImage from '@/lib/sanity-image.svelte';
+  import SanityImage from '@/lib/sanity-image';
+  import { imageBuilder } from '@/lib/helpers';
 
   export let diagram: EfficiencyDiagram[];
 
@@ -59,10 +60,11 @@
           class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white space-y-1 drop-shadow-ellipse"
         >
           <SanityImage
+            imageUrlBuilder={imageBuilder}
             class="h-[50%] object-contain"
-            image={logo}
+            src={logo}
             alt={logo.alt}
-            maxWidth={50}
+            sizes="(max-width: 1024px) 90px, 150px"
           />
         </div>
         <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
@@ -129,10 +131,11 @@
           class="flex justify-center items-center flex-col rounded-full lg:w-[150px] lg:h-[150px] w-[90px] h-[90px] bg-white z-20 relative drop-shadow-ellipse"
         >
           <SanityImage
+            imageUrlBuilder={imageBuilder}
             class="h-[50%] object-contain"
-            image={rootItem.logo}
+            src={rootItem.logo}
             alt={rootItem.logo.alt}
-            maxWidth={50}
+            sizes="(max-width: 1024px) 90px, 150px"
           />
         </div>
         <!-- ? If mt-[14px] change make sure to also update the calc func for maintain consistent positioning -->
