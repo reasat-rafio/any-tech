@@ -1,7 +1,7 @@
 <script lang="ts">
-  import DownArrow from '@/icons/DownArrow.svelte';
   import { timeline } from 'motion';
   import { onMount } from 'svelte';
+  import CTA from '@/components/ui/CTA.svelte';
 
   export let title: string;
   export let subtitle: string;
@@ -70,16 +70,9 @@
     <p class="text-lg 2xl:text-xl whitespace-pre-line mb-6">
       {subtitle}
     </p>
-
-    <a
-      href={button.href}
-      class=" max-lg:w-full max-lg:justify-center max-lg:mt-6 px-[34px] py-3 rounded-[3px] text-res-link lg:text-link flex items-center hover:bg-orange/95 transition-colors shadow-button-primary bg-orange group"
-    >
-      {button.title}
-      <DownArrow
-        class="fill-white translate-x-2 transition-transform group-hover:translate-x-3 translate-y-0.5 -rotate-90"
-      />
-    </a>
+    <div class="max-lg:w-full">
+      <CTA variant={'solid'} href={button.href} title={button.title} />
+    </div>
   </div>
 
   <object
