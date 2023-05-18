@@ -106,7 +106,7 @@
       <div
         class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
       >
-        <div class="h-fit lg:flex-[65] xl:flex-[50]">
+        <div class="h-fit lg:flex-[65] xl:flex-[75]">
           <header class="lg:space-y-[25px] space-y-[11px]">
             <H1 class="max-w-2xl lg:max-w-max">{title}</H1>
             <p class="text-base lg:text-lg 2xl:text-xl max-w-xl">{subtitle}</p>
