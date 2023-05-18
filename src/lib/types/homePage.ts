@@ -87,10 +87,10 @@ export interface BankingSolution {
   _type: string;
   _key: string;
   description: PortableTextBlock;
-  name: string;
+  name?: string;
   platform: string;
-  colors: Colors;
   link?: Link;
+  image: SanityImage;
 }
 export interface BankingDiagram {
   _type: string;
