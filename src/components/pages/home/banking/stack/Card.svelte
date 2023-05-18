@@ -6,13 +6,15 @@
   import { PortableText } from '@portabletext/svelte';
   import Link from '@/components/ui/Link.svelte';
   import type { BankingSolution } from '@/lib/types/homePage';
+  import SanityImage from '@/lib/sanity-image.svelte';
+  import CustomParagraph from './CustomParagraph.svelte';
 
   export let index: number;
   export let activeItemIndex: number;
   export let cardCount: number;
   export let technology: BankingSolution;
 
-  const { description, name, platform, link } = technology;
+  const { description, name, platform, link, image } = technology;
 
   let spacingFactor = 10;
   let rootRef: HTMLElement;
@@ -66,13 +68,20 @@
 >
   <div
     bind:this={techRef}
-    class="px-[66px] py-[64px] shadow-card-light rounded-lg grid grid-cols-2 gap-[76px] left-0 absolute bg-white"
+    class="xl:px-[66px] xl:py-[64px] px-[46px] py-[44px] shadow-card-light rounded-lg grid grid-cols-12 xl:gap-[76px] gap-[50px] left-0 absolute bg-white xl:h-[550px] h-[480px] overflow-hidden justify-center items-center"
   >
-    <div class="space-y-[26px]">
-      <H5>{name}</H5>
+    <div class="space-y-[26px] xl:col-span-6 col-span-7">
+      {#if !!name}
+        <H5>{name}</H5>
+      {/if}
       <H3>{platform}</H3>
       <Description class="whitespace-pre-line">
-        <PortableText value={description} />
+        <PortableText
+          components={{
+            block: { normal: CustomParagraph },
+          }}
+          value={description}
+        />
       </Description>
 
       {#if !!link?.title}
@@ -81,9 +90,12 @@
         </Link>
       {/if}
     </div>
-    <div
-      style="background: linear-gradient(38.43deg, #1F80F0 -9.21%, #00E9EA 123.89%);"
-      class="h-full w-full rounded-md"
-    />
+    <div class="h-full w-full xl:col-span-6 col-span-5">
+      <SanityImage
+        {image}
+        class="h-full w-full object-cover rounded-md"
+        maxWidth={500}
+      />
+    </div>
   </div>
 </article>
