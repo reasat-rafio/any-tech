@@ -8,7 +8,7 @@
 
   import { onMount } from 'svelte';
   import { timeline, inView } from 'motion';
-  import SanityImage from '@/lib/sanity-image';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import { imageBuilder } from '@/lib/helpers';
 
   export let diagram: EfficiencyDiagram[];

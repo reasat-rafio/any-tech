@@ -52,7 +52,7 @@ export interface LegacyToEfficiency {
   diagram: EfficiencyDiagram[];
   _key: string;
   title: string;
-  image: SanityImage;
+  image: SanityTitledImage;
   solutions: EfficiencySolution[];
   subtitle: string;
 }

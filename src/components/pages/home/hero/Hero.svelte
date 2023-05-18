@@ -1,7 +1,7 @@
 <script lang="ts">
   import Cta from '@/components/ui/CTA.svelte';
   import H1 from '@/components/ui/H1.svelte';
-  import SanityImage from '@/lib/sanity-image';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import type { HeroLink } from '@/lib/types/homePage';
   import type { SanityAsset } from '@sanity/image-url/lib/types/types';
   import type { Easing } from 'motion';

@@ -2,7 +2,7 @@
   import Description from '@/components/ui/Description.svelte';
   import Link from '@/components/ui/Link.svelte';
   import H3 from '@/components/ui/H3.svelte';
-  import SanityImage from '@/lib/sanity-image';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import type { EfficiencySolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { animate } from 'motion';
