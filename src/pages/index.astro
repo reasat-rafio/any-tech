@@ -15,20 +15,18 @@ import type {
 } from '@/lib/types/homePage';
 
 import TrustedBy from '@/components/pages/home/trustedBy/TrustedBy.astro';
-import { asset } from '@/lib/sanity-image';
+import { picture } from 'astro-sanity-picture';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
   sections[]{
     ...,
-    flowDiagram[]{
-      _key,
-      platform,
-      root,
-      logo
+    diagram[]{
+      ...,
+      ${picture('logo')},
     },
-    ${asset('image')},
-		${asset('logos[]', { as: 'logos' })}
+    ${picture('image')},
+		${picture('logos[]', { as: 'logos' })}
   }
 }`;
 

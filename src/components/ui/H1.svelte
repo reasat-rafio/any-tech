@@ -1,3 +1,5 @@
-<h2 class="lg:text-head-1 font-Montserrat text-res-head-1 text-white">
+<h1
+  class="xl:text-head-1 md:text-tab-head-1 font-Montserrat text-res-head-1 text-white"
+>
   <slot />
-</h2>
+</h1>

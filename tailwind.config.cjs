@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     borderRadius: {
-      xs: "3px",
+      xs: '3px',
       sm: '12px',
       md: '16px',
       lg: '24px',
@@ -67,6 +67,19 @@ module.exports = {
         'res-body-p': ['14px', { lineHeight: '22px', fontWeight: '400' }],
         'res-link': ['16px', { lineHeight: '20px', fontWeight: '600' }],
         'res-tiny': ['9px', { lineHeight: '14px', fontWeight: '600' }],
+        'tab-head-1': [
+          '80px',
+          { lineHeight: '87px', letterSpacing: '-0.02em', fontWeight: '600' },
+        ],
+        'tab-head-2': ['52px', { lineHeight: '61.5px', fontWeight: '600' }],
+        'tab-head-3': ['28px', { lineHeight: '34px', fontWeight: '600' }],
+        'tab-head-5': [
+          '20px',
+          { lineHeight: '25px', fontWeight: '700', letterSpacing: '0.16em' },
+        ],
+        'tab-body-p': ['15px', { lineHeight: '24px', fontWeight: '400' }],
+        'tab-link': ['17px', { lineHeight: '21.5px', fontWeight: '600' }],
+        'tab-tiny': ['10.5px', { lineHeight: '16px', fontWeight: '600' }],
       },
       gridTemplateColumns: {
         fluid: 'repeat(auto-fill, minmax(300px, 1fr))',

@@ -4,45 +4,70 @@ import type { LegacyToEfficiency as Props } from '@/lib/types/homePage';
 import H5 from '@/components/ui/H5.svelte';
 import H2 from '@/components/ui/H2.svelte';
 import Description from '@/components/ui/Description.svelte';
-import Diagram from './Diagram.svelte';
-import SolutionMobileLayout from './solution/SolutionMobileLayout.svelte';
-import SolutionDesktopLayout from './solution/SolutionDesktopLayout.astro';
+import SanityPicture from 'astro-sanity-picture';
+// import Diagram from './Diagram.svelte';
+// import SolutionMobileLayout from './solution/SolutionMobileLayout.svelte';
+// import SolutionDesktopLayout from './solution/SolutionDesktopLayout.astro';
 
-const { title, subtitle, diagram, description, solutions } = Astro.props;
+const {
+  title,
+  subtitle,
+  image,
+  // diagram,
+  description,
+  //  solutions
+} = Astro.props;
 ---
 
-<section class="container">
-  <div class="grid grid-cols-1 pb-[24px] lg:grid-cols-2 lg:gap-x-5 lg:pb-0">
+<section class="container mt-[85px]">
+  <div
+    class="grid grid-cols-1 gap-10 pb-[24px] lg:grid-cols-[2fr_1.5fr] lg:pb-0"
+  >
     <article class="space-y-article">
       <H5>{title}</H5>
       <H2>{subtitle}</H2>
-      {
+      <!-- {
         !!diagram?.length && (
           <div class="lg:invisible lg:absolute lg:-top-[10000%] lg:-z-50">
             <Diagram client:load {diagram} />
           </div>
         )
-      }
+      } -->
       <Description>
         <PortableText value={description} />
       </Description>
     </article>
 
     {
+      image && (
+        <SanityPicture
+          lqip={{ enabled: false }}
+          class="object-contain"
+          img={{
+            style: { objectFit: 'contain' },
+            alt: image.alt,
+            title: image.title,
+          }}
+          src={image}
+        />
+      )
+    }
+
+    <!-- {
       !!diagram?.length && (
         <section class="hidden lg:block">
           <Diagram client:load {diagram} />
         </section>
       )
-    }
+    } -->
   </div>
 
-  {
+  <!-- {
     !!solutions?.length && (
       <>
-        <SolutionMobileLayout client:load {solutions} />
         <SolutionDesktopLayout {solutions} />
+        <SolutionMobileLayout client:idle {solutions} />
       </>
     )
-  }
+  } -->
 </section>

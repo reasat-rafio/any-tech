@@ -2,15 +2,16 @@
   import HamburgerClose from '../icons/HamburgerClose.svelte';
   import HamburgerOpen from '../icons/HamburgerOpen.svelte';
   import { urlForSanityImage } from '@/lib/helpers';
-
   let showMobileMenu = false;
+  import { navbarHeight } from '@/store';
 
   export let logo: SanityTitledImage;
 </script>
 
 <div
+  bind:clientHeight={$navbarHeight}
   id="main-navigation"
-  class="max-w-[1200px] mx-auto relative flex items-center flex-wrap justify-between lg:relative z-[9999] max-lg:py-8 max-lg:container"
+  class="max-w-[1200px] mx-auto relative flex items-center flex-wrap justify-between lg:relative z-[9999] max-lg:py-8 max-xl:container"
 >
   <h1>
     <a aria-label="Go to home page" href="/" rel="home"

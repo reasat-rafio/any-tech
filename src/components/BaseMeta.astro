@@ -1,9 +1,10 @@
 ---
-import "@/styles/global.css";
-import {urlForSanityImage} from "@/lib/helpers";
+import '@/styles/global.css';
+import { urlForSanityImage } from '@/lib/helpers';
 type Props = BaseMetaData;
-const { title, description, url, seoImage} = Astro.props;
-const ogImage = seoImage && urlForSanityImage(seoImage).width(600).height(400).url();
+const { title, description, url, seoImage } = Astro.props;
+const ogImage =
+  seoImage && urlForSanityImage(seoImage).width(600).height(400).url();
 ---
 
 <meta charset="utf-8" />
@@ -13,8 +14,8 @@ const ogImage = seoImage && urlForSanityImage(seoImage).width(600).height(400).u
 />
 
 <!-- Primary Meta Tags -->
-<title>{title} | Krypton Fund Services</title>
-<meta name="title" content={`${title} | Krypton Fund Services`} />
+<title>{title} | AnyTech</title>
+<meta name="title" content=`${title} | AnyTech` />
 <meta name="description" content={description} />
 <!-- settingsmap -->
 <link rel="settingsmap" href="/settingsmap.xml" />

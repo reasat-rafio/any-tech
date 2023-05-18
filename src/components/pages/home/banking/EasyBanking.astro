@@ -15,15 +15,15 @@ const { title, subtitle, description, diagram, solutions } = Astro.props;
   <div
     class="grid grid-cols-1 pb-[24px] lg:grid-cols-2 lg:gap-x-[30px] lg:pb-0"
   >
-    <article class="space-y-article">
-      <H5>{title}</H5>
+    <article>
+      <H5 class="mb-[16px]">{title}</H5>
       <H2>{subtitle}</H2>
       {
         !!diagram?.length && (
-          <Diagram client:load class="block lg:hidden" {diagram} />
+          <Diagram client:load class="mt-[32px] block lg:hidden " {diagram} />
         )
       }
-      <Description>
+      <Description class="mt-[32px]">
         <PortableText value={description} />
       </Description>
     </article>

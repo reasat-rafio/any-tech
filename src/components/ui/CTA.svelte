@@ -1,18 +1,36 @@
 <script lang="ts">
+  import { animate, spring } from 'motion';
+  import type { AnimationOptionsWithOverrides } from 'motion';
   export let href: string;
   export let title: string;
   export let variant: 'outline' | 'solid' = 'solid';
+
+  let titleRef: HTMLSpanElement;
+  let iconRef: SVGElement;
+
+  let transitions: AnimationOptionsWithOverrides = {
+    easing: spring({ velocity: 30, damping: 10 }),
+  };
 </script>
 
 <a
-  class="md:py-[16px] py-[14px] px-[35px] rounded-xs shadow-button-primary text-link text-white flex items-center justify-center space-x-[8px] {variant ===
+  on:mouseenter={() => {
+    animate(titleRef, { x: '-2.5px' }, transitions);
+    animate(iconRef, { x: '2.5px' }, transitions);
+  }}
+  on:mouseleave={() => {
+    animate(titleRef, { x: '0px' }, transitions);
+    animate(iconRef, { x: '0px' }, transitions);
+  }}
+  class="md:py-[15.5px] py-[14px] px-[42px] rounded-xs shadow-button-primary text-link text-white flex items-center justify-center space-x-[8px] {variant ===
     'solid' && 'bg-orange'} {variant === 'outline' && 'border '}"
   {href}
 >
-  <span>
+  <span bind:this={titleRef}>
     {title}
   </span>
   <svg
+    bind:this={iconRef}
     width="6"
     height="9"
     viewBox="0 0 6 9"

@@ -16,7 +16,7 @@
     clip-path: polygon(67% 0, 100% 0, 100% 68%, 80% 100%, 0 100%, 32% 51%);
   }
   .bg-clip-hero-container {
-    clip-path: none;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 97%);
   }
 
   .bg-clip-cta {
