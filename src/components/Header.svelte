@@ -23,8 +23,8 @@
         class="w-full whitespace-nowrap group lg:py-3 lg:px-6 lg:last:p-0 last:border-none lg:border-b border-white border-opacity-0 hover:border-opacity-100 transition-all duration-500 cursor-pointer"
       >
         <span class="flex items-center justify-between">
-          {#if !highlight}
-            <a {href}>
+          {#if highlight}
+            <!-- <a {href}>
               {title}
             </a>
             {#if subMenus}
@@ -34,7 +34,7 @@
               />
             {/if}
           {:else}
-            <span class="bg-[#D9D9D9] w-px h-[33px] mx-8 max-lg:hidden" />
+            <span class="bg-[#D9D9D9] w-px h-[33px] mx-8 max-lg:hidden" /> -->
             <a
               {href}
               class="border max-lg:w-full max-lg:justify-center max-lg:mt-6 border-white px-6 py-3 rounded-[3px] text-res-link lg:text-link flex items-center group/highlight hover:bg-white hover:text-blue-primary transition-colors shadow-button-primary"
