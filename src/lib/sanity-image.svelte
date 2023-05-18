@@ -5,8 +5,22 @@
   export let image: SanityAsset;
   export let maxWidth = 600;
   export let alt: string | undefined = undefined;
-  $: dimensions = image?.asset?._ref?.split('-')[2];
-  $: [width, height] = dimensions.split('x').map(Number);
+
+  $: width = 0;
+  $: height = 0;
+
+  $: {
+    if (image?.asset?.metadata?.dimensions) {
+      width = image?.asset?.metadata?.dimensions.width;
+      height = image?.asset?.metadata?.dimensions.height;
+    } else {
+      let dimensions = image?.asset?._ref?.split('-')[2];
+      let [w, h] = dimensions?.split('x').map(Number);
+      width = w;
+      height = h;
+    }
+  }
+
   $: aspectRatio = width / height;
   let imageRef: HTMLImageElement;
   let loaded = false;
@@ -15,6 +29,7 @@
       loaded = true;
     };
   });
+
   const src: any = urlFor(image).width(maxWidth).fit('fillmax').auto('format');
 </script>
 

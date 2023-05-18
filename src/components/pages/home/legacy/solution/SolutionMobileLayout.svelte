@@ -55,7 +55,7 @@
       </Description>
 
       {#if selectedSolution?.link}
-        <Link icon="ChevronRight" href={selectedSolution.link.href}>
+        <Link href={selectedSolution.link.href}>
           {selectedSolution.link.title}</Link
         >
       {/if}

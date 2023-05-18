@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { EfficiencyDiagram } from '@/lib/types/homePage';
 
-  import TopLine from '/icons/diagram-lines/TopLine.svg';
-  import LeftLine from '/icons/diagram-lines/LeftLine.svg';
-  import RightLine from '/icons/diagram-lines/RightLine.svg';
-  import BottomLine from '/icons/diagram-lines/BottomLine.svg';
+  import WaveLinseDesktopTop from '/icons/diagram-lines/WaveLinseDesktopTop.svg';
+  import WaveLinseDesktopBottom from '/icons/diagram-lines/WaveLinseDesktopBottom.svg';
+  import WaveLinseMobileLeft from '/icons/diagram-lines/WaveLinseMobileLeft.svg';
+  import WaveLinseMobileRight from '/icons/diagram-lines/WaveLinseMobileRight.svg';
 
   import { onMount } from 'svelte';
   import { timeline, inView } from 'motion';
@@ -22,24 +22,28 @@
   );
 
   onMount(() => {
-    inView(containerRef, () => {
-      timeline(
-        [
+    inView(
+      containerRef,
+      () => {
+        timeline(
           [
-            smallGradientRef,
-            { x: '50%', opacity: [0, 1], scale: [0, 1.25] },
-            { x: { duration: 0 } },
+            [
+              smallGradientRef,
+              { x: '50%', opacity: [0, 1], scale: [0, 1.25] },
+              { x: { duration: 0 } },
+            ],
+            [
+              bigGradientRef,
+              { x: '50%', scale: [0, 2], opacity: [0, 1] },
+              { x: { duration: 0 } },
+            ],
+            [indicatorLineContainerRef, { opacity: [0, 1] }, { at: 0.5 }],
           ],
-          [
-            bigGradientRef,
-            { x: '50%', scale: [0, 2], opacity: [0, 1] },
-            { x: { duration: 0 } },
-          ],
-          [indicatorLineContainerRef, { opacity: [0, 1] }, { at: 0.5 }],
-        ],
-        { duration: 2 }
-      );
-    });
+          { duration: 2 }
+        );
+      },
+      { margin: '-200px' }
+    );
   });
 </script>
 
@@ -89,7 +93,7 @@
     />
 
     <!-- Indicator lines -->
-    <div bind:this={indicatorLineContainerRef}>
+    <div class="opacity-0" bind:this={indicatorLineContainerRef}>
       <!-- Desktop -->
       <div
         class="lg:block hidden absolute top-1/2 right-1/2 lg:-translate-y-[calc(50%+14px)] w-[60%] space-y-[35%] rotate-0 translate-y-[-20%]"
@@ -97,12 +101,12 @@
         <object
           aria-label="gradient-line"
           type="image/svg+xml"
-          data={TopLine}
+          data={WaveLinseDesktopTop}
         />
         <object
           aria-label="gradient-line"
           type="image/svg+xml"
-          data={BottomLine}
+          data={WaveLinseDesktopBottom}
         />
       </div>
       <!-- Mobile -->
@@ -112,12 +116,12 @@
         <object
           aria-label="gradient-line"
           type="image/svg+xml"
-          data={LeftLine}
+          data={WaveLinseMobileLeft}
         />
         <object
           aria-label="gradient-line"
           type="image/svg+xml"
-          data={RightLine}
+          data={WaveLinseMobileRight}
         />
       </div>
     </div>

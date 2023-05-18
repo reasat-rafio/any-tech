@@ -9,6 +9,7 @@
   import { onMount } from 'svelte';
   import IntersectionObserver from 'svelte-intersection-observer';
   import Wavelines from './Wavelines.svelte';
+  import { navbarHeight } from '@/store';
 
   export let title: string;
   export let subtitle: string;
@@ -19,6 +20,7 @@
   const duration = 500;
   let intersecting = false;
   let scrollY = 0;
+  let windowWidth = 0;
   let mouseAnimationCanTrigger = false;
   let rootElRef: HTMLElement;
   let imageRef: HTMLImageElement;
@@ -28,6 +30,7 @@
   let waveLines2MobileRef: HTMLObjectElement;
   const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
   let easing: Easing = [0.25, 0.46, 0.45, 0.94];
+  $: heroVH = windowWidth >= 1280 ? '90' : windowWidth >= 1024 ? '92' : '100';
 
   const transformAnimation = (
     el: HTMLElement,
@@ -90,16 +93,18 @@
 
 <svelte:window
   bind:scrollY
+  bind:innerWidth={windowWidth}
   on:scroll={windowScrollAction}
   on:mousemove={windowMouseMoveAction}
 />
 <IntersectionObserver element={rootElRef} bind:intersecting>
-  <section bind:this={rootElRef} class="mb-[2%]">
+  <section bind:this={rootElRef}>
     <div
-      class="relative lg:h-[90vh] w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[25%] lg:pt-0"
+      style="height: calc({heroVH}vh - {$navbarHeight}px);"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[20%] md:pt-[10%] lg:pt-0"
     >
       <div
-        class="container lg:flex w-full lg:items-center lg:justify-center h-full relative z-10"
+        class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
       >
         <div class="h-fit lg:flex-[65] xl:flex-[50]">
           <header class="lg:space-y-[25px] space-y-[11px] max-w-xl">
@@ -109,7 +114,7 @@
 
           {#if !!links?.length}
             <div
-              class="flex lg:flex-row flex-col lg:space-x-[16px] lg:mt-[75px] mt-[26px] space-y-4 lg:space-y-0 w-full pb-[60%] lg:pb-0"
+              class="flex lg:flex-row flex-col lg:space-x-[16px] lg:mt-[75px] mt-[26px] space-y-4 lg:space-y-0 w-full pb-[60%] lg:pb-0 max-w-xl"
             >
               {#each links as link}
                 <Cta
@@ -129,7 +134,7 @@
         class="hidden lg:block absolute top-0 xl:left-[35%] xl:w-[65%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
-          class="h-full w-full object-cover hero-img"
+          class="h-full w-full object-cover hero-img translate-x-[5%]"
           {image}
           maxWidth={1000}
         />
@@ -142,19 +147,6 @@
         bind:waveLines1MobileRef
         bind:waveLines2MobileRef
       />
-    </div>
-
-    <!-- Mobile Image Block -->
-    <div
-      class="lg:hidden relative h-full -translate-y-[5%]"
-      style="clip-path: polygon(0 0, 100% 0%, 100% 78%, 0% 100%);"
-    >
-      <div
-        class="absolute inset-0 h-full z-10"
-        style="background: linear-gradient(162.22deg, #1F80F0 40px, rgba(31, 128, 240, 0) 100%);
-              clip-path: polygon(0 0, 100% 0%, 100% 5%, 0 20%);"
-      />
-      <SanityImage class="h-full w-full object-cover " {image} maxWidth={450} />
     </div>
   </section>
 </IntersectionObserver>
