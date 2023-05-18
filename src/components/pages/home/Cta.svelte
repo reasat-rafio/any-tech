@@ -57,10 +57,10 @@
 
 <svelte:window on:mousemove={windowMouseMoveAction} />
 <section
-  class="relative h-[49vh] w-full bg-blue-primary text-white bg-clip-cta overflow-hidden"
+  class="relative h-[60vh] lg:h-[530px] w-full bg-blue-primary text-white bg-clip-cta overflow-hidden"
 >
   <div
-    class="container flex w-full items-start justify-end lg:justify-center h-full relative z-10 flex-col max-lg:pb-[90px] lg:mt-4"
+    class="container flex w-full items-start justify-center h-full relative z-10 flex-col mt-6"
   >
     <h2
       class="font-Montserrat text-res-head-2 text-white lg:text-head-2 font-semibold mb-3"
@@ -92,7 +92,7 @@
     >Your borwser doesn't support SVG
   </object>
   <object
-    class="absolute max-lg:bottom-0 lg:top-0 right-0 h-full w-full object-bottom lg:hidden"
+    class="absolute inset-0 h-full w-full object-bottom lg:hidden"
     aria-label="background waveforms"
     type="image/svg+xml"
     data={`/backgrounds/ctaMobileWaveLines.svg`}
