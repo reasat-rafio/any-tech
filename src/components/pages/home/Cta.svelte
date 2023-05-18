@@ -67,7 +67,7 @@
     >
       {title}
     </h2>
-    <p class="text-lg 2xl:text-xl whitespace-pre-line mb-6">
+    <p class="text-base lg:text-lg 2xl:text-xl whitespace-pre-line mb-6">
       {subtitle}
     </p>
     <div class="max-lg:w-full">

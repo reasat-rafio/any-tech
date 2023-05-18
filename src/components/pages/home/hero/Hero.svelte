@@ -109,7 +109,7 @@
         <div class="h-fit lg:flex-[65] xl:flex-[50]">
           <header class="lg:space-y-[25px] space-y-[11px] max-w-xl">
             <H1>{title}</H1>
-            <p class="text-[18px] leading-[28.8px]">{subtitle}</p>
+            <p class="text-base lg:text-lg 2xl:text-xl">{subtitle}</p>
           </header>
 
           {#if !!links?.length}
