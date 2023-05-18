@@ -27,7 +27,9 @@
     {#each solutions as { name, description, platform, link, image }}
       <SplideSlide class="pb-2">
         <article class="p-[24px] space-y-[24px] shadow-card-light rounded-lg">
-          <H5>{name}</H5>
+          {#if name}
+            <H5>{name}</H5>
+          {/if}
           <H3>{platform}</H3>
           <div class="rounded-[8px] w-full min-h-[125px] overflow-hidden">
             <SanityImage
