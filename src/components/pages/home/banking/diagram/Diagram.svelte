@@ -102,16 +102,16 @@
             {animValue}
           />
         {/if}
-        <div class="absolute top-[35%] left-0 w-full h-[75%] flex">
+        <div class="absolute top-[35%] left-0 w-full h-full grid grid-cols-2">
           <object
-            class="flex-1 -translate-x-1/4 md:-translate-x-1/3 banking-svg-line opacity-0"
+            class="-translate-x-1/4 md:-translate-x-1/3 banking-svg-line opacity-0 lg:h-[80%] h-[60%] mr-auto"
             aria-label="bridge"
             type="image/svg+xml"
             data={`/icons/easy-banking/Line2.svg`}
             >Your borwser doesn't support SVG
           </object>
           <object
-            class="flex-1 translate-x-1/4 md:translate-x-1/3 banking-svg-line opacity-0"
+            class="translate-x-1/4 md:translate-x-1/3 banking-svg-line opacity-0 lg:h-[80%] h-[60%] ml-auto"
             aria-label="bridge"
             type="image/svg+xml"
             data={`/icons/easy-banking/Line3.svg`}
