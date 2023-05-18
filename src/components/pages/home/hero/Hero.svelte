@@ -102,15 +102,15 @@
   <section bind:this={rootElRef}>
     <div
       style="height: calc({heroVH}vh - {$navbarHeight}px);"
-      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[20%] md:pt-[10%] lg:pt-0"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[150px] lg:pt-0"
     >
       <div
         class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
       >
-        <div class="h-fit lg:flex-[65] xl:flex-[50]">
-          <header class="lg:space-y-[25px] space-y-[11px] max-w-xl">
-            <H1>{title}</H1>
-            <p class="text-base lg:text-lg 2xl:text-xl">{subtitle}</p>
+        <div class="h-fit lg:flex-[65] xl:flex-[75]">
+          <header class="lg:space-y-[25px] space-y-[11px]">
+            <H1 class="max-w-2xl lg:max-w-max">{title}</H1>
+            <p class="text-base lg:text-lg 2xl:text-xl max-w-xl">{subtitle}</p>
           </header>
 
           {#if !!links?.length}
@@ -128,11 +128,11 @@
           {/if}
         </div>
 
-        <div class="lg:flex-[35] xl:flex-[50] lg:block hidden" />
+        <div class="lg:flex-[35] xl:flex-[25] lg:block hidden" />
       </div>
 
       <div
-        class="hidden lg:block absolute top-0 xl:left-[35%] xl:w-[65%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
+        class="hidden lg:block absolute top-0 xl:left-[45%] xl:w-[55%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
           imageUrlBuilder={imageBuilder}

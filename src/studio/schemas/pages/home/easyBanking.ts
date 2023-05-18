@@ -48,6 +48,7 @@ const easyBanking = {
               type: 'text',
               validation: (Rule: Rule) => Rule.required(),
             },
+
             {
               name: 'colors',
               type: 'object',
@@ -87,7 +88,6 @@ const easyBanking = {
             {
               name: 'name',
               type: 'string',
-              validation: (Rule: Rule) => Rule.required(),
             },
             {
               name: 'platform',
@@ -103,17 +103,15 @@ const easyBanking = {
             },
             { name: 'link', type: 'link' },
             {
-              name: 'colors',
-              type: 'object',
+              name: 'image',
+              type: 'image',
+              validation: (Rule: Rule) => Rule.required(),
               fields: [
                 {
-                  name: 'from',
-                  type: 'color',
-                  validation: (Rule: Rule) => Rule.required(),
-                },
-                {
-                  name: 'to',
-                  type: 'color',
+                  name: 'alt',
+                  title: 'Alternative Text',
+                  description: 'Important for SEO and accessibility',
+                  type: 'string',
                   validation: (Rule: Rule) => Rule.required(),
                 },
               ],
@@ -123,6 +121,7 @@ const easyBanking = {
             select: {
               title: 'name',
               subtitle: 'platform',
+              media: 'image',
             },
           },
         },
