@@ -26,7 +26,9 @@
   >
     {#each solutions as { name, description, platform, link, image }}
       <SplideSlide class="pb-6 px-2">
-        <article class="p-[24px] space-y-[24px] shadow-card-light rounded-lg">
+        <article
+          class="p-[24px] space-y-[24px] shadow-card-light-sm rounded-lg"
+        >
           {#if name}
             <H5>{name}</H5>
           {/if}
