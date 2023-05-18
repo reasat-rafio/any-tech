@@ -21,7 +21,7 @@ const { title, details, logos } = Astro.props;
         logos.map((logo) => (
           <SanityPicture
             lqip={{ enabled: false }}
-            class="block object-contain"
+            class="object-contain"
             img={{
               style: { objectFit: 'contain' },
               alt: logo.alt,
