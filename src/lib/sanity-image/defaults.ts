@@ -9,7 +9,7 @@ export const defaultSanityImageDefaults: SanityImageDefaults = {
     step: 320,
   },
   autoFormat: true,
-  lqip: { enabled: true, transitionDuration: 350 },
+  lqip: false,
 };
 
 export function setSanityImageDefaults(defaults: Partial<SanityImageDefaults>) {

@@ -4,8 +4,12 @@
     SanityImageSource,
   } from '@sanity/image-url/lib/types/types';
   import { defaultSanityImageDefaults } from './defaults';
-  import { generateWidths, isSanityDimensionedImage } from './fns';
-  import type { AutoWidths, Lqip, SanityImageProps } from './types';
+  import {
+    generateWidths,
+    isSanityDimensionedImage,
+    isSanityImageWithLqip,
+  } from './fns';
+  import type { AutoWidths, SanityImageProps } from './types';
   import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 
   import type { HTMLImgAttributes } from 'svelte/elements';
@@ -20,70 +24,65 @@
     defaults.imageUrlBuilder;
   export let src: SanityImageSource;
   export let widths: number[] | AutoWidths = defaults.autoWidths;
-  export let lqip: Lqip = defaults.lqip;
+  export let lqip: boolean = defaults.lqip;
   export let options: Partial<ImageUrlBuilderOptionsWithAliases> = {};
   export let autoFormat: boolean = defaults.autoFormat;
 
-  const builder = imageUrlBuilder
-    ?.image(src)
-    .withOptions({ auto: autoFormat ? 'format' : undefined });
+  function imgProps() {
+    const builder = imageUrlBuilder
+      ?.image(src)
+      .withOptions({ auto: autoFormat ? 'format' : undefined });
 
-  if (!builder) {
-    throw new Error('No image url builder specified, and no default set!');
+    if (!builder) {
+      throw new Error('No image url builder specified, and no default set!');
+    }
+
+    const determinedWidths = Array.isArray(widths)
+      ? widths
+      : generateWidths(widths ?? defaults.autoWidths, src);
+
+    const determinedLqip = lqip ?? defaults.lqip;
+
+    const [width, height] = isSanityDimensionedImage(src)
+      ? [
+          src.asset.metadata.dimensions.width,
+          src.asset.metadata.dimensions.height,
+        ]
+      : [undefined, undefined];
+
+    const srcset = determinedWidths
+      .map(
+        (w: number) =>
+          `${builder
+            .width(w)
+            .withOptions(options ?? {})
+            .url()} ${w}w`
+      )
+      .join(', ');
+
+    const lqipStyle = `background: ${
+      isSanityImageWithLqip(src)
+        ? `url(${src.asset.metadata.lqip}) no-repeat`
+        : undefined
+    }; background-size: cover; `;
+    let style = (lqip ? lqipStyle : '') + ($$restProps.style ?? '');
+
+    return { builder, determinedLqip, width, height, srcset, style };
   }
-  const determinedWidths = Array.isArray(widths)
-    ? widths
-    : generateWidths(widths ?? defaults.autoWidths, src);
 
-  const determinedLqip = lqip ?? defaults.lqip;
+  let img: HTMLImageElement | undefined;
 
-  const [imgWidth, imgHeight] = isSanityDimensionedImage(src)
-    ? [
-        src.asset.metadata.dimensions.width,
-        src.asset.metadata.dimensions.height,
-      ]
-    : [undefined, undefined];
-
-  const srcset = determinedWidths
-    .map(
-      (w: number) =>
-        `${builder
-          .width(w)
-          .withOptions(options ?? {})
-          .url()} ${w}w`
-    )
-    .join(', ');
+  let props = imgProps();
 </script>
 
+<!-- alt tag will come from parent -->
 <!-- svelte-ignore a11y-missing-attribute -->
 <img
-  src={builder.url()}
-  {srcset}
-  width={imgWidth}
-  height={imgHeight}
-  data-x-lqip={determinedLqip.enabled ? 'true' : 'false'}
-  data-x-lqip-transition-duration={determinedLqip.enabled
-    ? determinedLqip.transitionDuration.toString()
-    : '0'}
+  bind:this={img}
+  src={props.builder.url()}
+  srcset={props.srcset}
+  width={props.width}
+  height={props.height}
+  style={props.style}
   {...$$restProps}
 />
-
-<!-- <script>
-  //
-  const lqipImages = document.querySelectorAll<HTMLImageElement>(
-    'img[data-x-lqip="true"]'
-  );
-
-  // Handle clicks on each button.
-  lqipImages.forEach((img) => {
-    img.addEventListener("load", () => {
-      img.animate([{ opacity: 0 }, { opacity: 1 }], {
-        duration: parseInt(img.dataset["xLqipTransitionDuration"]!),
-        fill: "forwards",
-      });
-    });
-    if (img.complete) {
-      img.style.opacity = "1";
-    }
-  });
-</script> -->

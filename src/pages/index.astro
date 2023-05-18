@@ -15,6 +15,7 @@ import type {
 } from '@/lib/types/homePage';
 
 import TrustedBy from '@/components/pages/home/trustedBy/TrustedBy.astro';
+import { asset } from '@/lib/sanity-image';
 
 const query = `*[_type == 'homePage'][0] {
   ...,
@@ -26,16 +27,8 @@ const query = `*[_type == 'homePage'][0] {
       root,
       logo
     },
-		logos[]{
-  ...,
-  asset->{
-    ...,
-    metadata {
-      lqip,
-      dimensions
-    }
-  }
-}
+    ${asset('image')},
+		${asset('logos[]', { as: 'logos' })}
   }
 }`;
 

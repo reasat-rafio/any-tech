@@ -12,7 +12,7 @@ import type {
 export interface SanityImageDefaults {
   autoWidths: AutoWidths;
   autoFormat: boolean;
-  lqip: Lqip;
+  lqip: boolean;
   imageUrlBuilder?: ImageUrlBuilder;
 }
 
@@ -25,19 +25,6 @@ export interface AutoWidths {
   //The width to jump by each source, unless we would exceed maxDivisions
   step: number;
 }
-
-/**
- * Settings for using low quality placeholder image
- */
-export type Lqip =
-  | {
-      enabled: false;
-    }
-  | {
-      enabled: true;
-      //Transition to loaded image time in ms
-      transitionDuration: number;
-    };
 
 /**
  * An image asset from sanity which has fetched dimension metadata
@@ -73,8 +60,18 @@ export type SanityImageProps = {
    * Specifies how to calculate widths for `<source />` elements. You may either specify a list of widths to use, or a an `AutoWidths` type which declares how to automatically determine the widths.
    */
   widths?: number[] | AutoWidths;
-  lqip?: Lqip;
+  /**
+   * Whether to display low quality placeholder (if fetched in query)
+   */
+  lqip?: boolean;
+  /**
+   * Additional image builder options
+   */
   options?: Partial<ImageUrlBuilderOptionsWithAliases>;
+  /**
+   * Whether to add .auto('format') to image builder, automatically converting to webp when available
+   */
+  autoFormat?: boolean;
 };
 
 declare global {
