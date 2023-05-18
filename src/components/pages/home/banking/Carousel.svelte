@@ -3,7 +3,8 @@
   import H3 from '@/components/ui/H3.svelte';
   import H5 from '@/components/ui/H5.svelte';
   import Link from '@/components/ui/Link.svelte';
-  import SanityImage from '@/lib/sanity-image.svelte';
+  import { imageBuilder } from '@/lib/helpers';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import type { BankingSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
@@ -31,9 +32,10 @@
           <H3>{platform}</H3>
           <div class="rounded-[8px] w-full min-h-[125px] overflow-hidden">
             <SanityImage
+              imageUrlBuilder={imageBuilder}
               class="h-full w-full object-cover"
-              {image}
-              maxWidth={200}
+              src={image}
+              sizes="200px"
             />
           </div>
           <Description class="whitespace-pre-line">

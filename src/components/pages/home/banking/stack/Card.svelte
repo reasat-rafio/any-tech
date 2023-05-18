@@ -6,8 +6,9 @@
   import { PortableText } from '@portabletext/svelte';
   import Link from '@/components/ui/Link.svelte';
   import type { BankingSolution } from '@/lib/types/homePage';
-  import SanityImage from '@/lib/sanity-image.svelte';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import CustomParagraph from './CustomParagraph.svelte';
+  import { imageBuilder } from '@/lib/helpers';
 
   export let index: number;
   export let activeItemIndex: number;
@@ -92,9 +93,10 @@
     </div>
     <div class="h-full w-full xl:col-span-6 col-span-5">
       <SanityImage
-        {image}
+        imageUrlBuilder={imageBuilder}
+        src={image}
         class="h-full w-full object-cover rounded-md"
-        maxWidth={500}
+        sizes="(max-width: 1280px) 90vw, 30vw"
       />
     </div>
   </div>
