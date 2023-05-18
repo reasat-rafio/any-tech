@@ -23,11 +23,13 @@
   >
     <span
       bind:this={titleRef}
-      class="uppercase text-[12px] font-bold tracking-[0.16em]"
+      class="uppercase sm:text-[12px] text-[9px] font-bold tracking-[0.16em]"
     >
       {name}
     </span>
-    <span class="text-blue-secondary text-[24px] font-Montserrat font-semibold">
+    <span
+      class="text-blue-secondary sm:text-[24px] text-[16px] font-Montserrat font-semibold"
+    >
       {platform}
     </span>
   </div>
