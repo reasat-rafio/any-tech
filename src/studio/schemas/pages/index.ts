@@ -1,5 +1,4 @@
-import home from "./home";
+import home from './home';
+import privacyPolicy from './privacy-policy';
 
-export default [
-  ...home,
-];
+export default [...home, privacyPolicy];

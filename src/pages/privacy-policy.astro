@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PortableText from '@/components/PortableText.astro';
+import { getPageData } from '@/lib/helpers';
+
+interface PrivacyPageData {
+  seo: BaseMetaData;
+  description: PortableText[];
+}
+
+const query = `*[_type == 'privacyPolicy'][0]`;
+
+const data = await getPageData<PrivacyPageData>(query, {
+  locale: 'en-SG',
+  defaultLocale: 'en-SG',
+});
+const { page, site } = data;
+const { description, seo } = page;
+---
+
+<Layout seo={seo} site={site}>
+  <section class="container my-[200px]">
+    <PortableText value={description} />
+  </section>
+</Layout>
