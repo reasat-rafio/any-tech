@@ -100,8 +100,10 @@
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section bind:this={rootElRef}>
     <div
-      style="height: calc({heroVH}vh - {$navbarHeight}px);"
-      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[150px] lg:pt-0"
+      style="height: {windowWidth >= 1024
+        ? `calc(${heroVH}vh - ${$navbarHeight}px)`
+        : 'auto'} ;"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[50px] lg:pt-0"
     >
       <div
         class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
