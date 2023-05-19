@@ -9,6 +9,7 @@ const {
   footerCopyRight,
   // socialLinks,
   footerBottomLinks,
+  poweredBy,
 } = Astro.props;
 // import SanityPicture from 'astro-sanity-picture';
 ---
@@ -75,7 +76,7 @@ const {
             </div>
           ))
         }
-        Powered by <a>Otterdev.io</a>
+        <PortableText value={poweredBy} />
       </div>
     </div>
   </div>

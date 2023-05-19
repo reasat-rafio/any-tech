@@ -25,7 +25,8 @@ export const siteQuery = groq`${intlTypeQuery('site')} {
 		footerContents,
     socialLinks,
 		footerCopyRight,
-		footerBottomLinks
+		footerBottomLinks,
+		poweredBy,
   },
 }`;
 export const pageQuery = (query?: string) => groq`{
