@@ -10,7 +10,6 @@
   import IntersectionObserver from 'svelte-intersection-observer';
   import Wavelines from './Wavelines.svelte';
   import { imageBuilder } from '@/lib/helpers';
-  import { navbarHeight } from '@/store';
 
   export let title: string;
   export let subtitle: string;
@@ -31,7 +30,6 @@
   let waveLines2MobileRef: HTMLObjectElement;
   const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
   let easing: Easing = [0.25, 0.46, 0.45, 0.94];
-  $: heroVH = windowWidth >= 1280 ? '90' : windowWidth >= 1024 ? '92' : '100';
 
   const transformAnimation = (
     el: HTMLElement,
@@ -102,7 +100,7 @@
   <section bind:this={rootElRef}>
     <div
       style="height: {windowWidth >= 1024
-        ? `calc(${heroVH}vh - ${$navbarHeight}px)`
+        ? 'max(620px, calc(92vh - 49px))'
         : 'auto'} ;"
       class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[50px] lg:pt-0"
     >
