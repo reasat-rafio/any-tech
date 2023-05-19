@@ -69,7 +69,9 @@ const {
           footerBottomLinks?.map(({ title, href }, index) => (
             <div>
               {index !== 0 && '.'}
-              <a href={href}>{title}</a>
+              <a href={href} class="">
+                {title}
+              </a>
             </div>
           ))
         }

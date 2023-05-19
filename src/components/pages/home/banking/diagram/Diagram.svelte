@@ -4,6 +4,11 @@
   export let diagram: BankingDiagram[];
   import IntersectionObserver from 'svelte-intersection-observer';
   import { inView, timeline } from 'motion';
+  import Bridge from '/icons/easy-banking/Bridge.svg';
+  import Line1 from '/icons/easy-banking/Line1.svg';
+  import Line2 from '/icons/easy-banking/Line2.svg';
+  import Line3 from '/icons/easy-banking/Line3.svg';
+  import Line4 from '/icons/easy-banking/Line4.svg';
 
   let [firstItem, secondItem, thirdItem, forthItem] = diagram;
   let rootElement: HTMLElement;
@@ -75,15 +80,15 @@
         class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 banking-svg-line opacity-0"
         aria-label="bridge"
         type="image/svg+xml"
-        data={`/icons/easy-banking/Bridge.svg`}
-        >Your borwser doesn't support SVG
+        data={Bridge}
+        >Your browser doesn't support SVG
       </object>
       <object
         class="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 h-[25%] banking-svg-line opacity-0"
         aria-label="bridge"
         type="image/svg+xml"
-        data={`/icons/easy-banking/Line1.svg`}
-        >Your borwser doesn't support SVG
+        data={Line1}
+        >Your browser doesn't support SVG
       </object>
     </div>
 
@@ -102,20 +107,20 @@
             {animValue}
           />
         {/if}
-        <div class="absolute top-[35%] left-0 w-full h-[75%] flex">
+        <div class="absolute top-[35%] left-0 w-full h-full grid grid-cols-2">
           <object
-            class="flex-1 -translate-x-1/4 md:-translate-x-1/3 banking-svg-line opacity-0"
+            class="-translate-x-1/4 md:-translate-x-1/3 banking-svg-line opacity-0 lg:h-[80%] h-[60%] mr-auto"
             aria-label="bridge"
             type="image/svg+xml"
-            data={`/icons/easy-banking/Line2.svg`}
-            >Your borwser doesn't support SVG
+            data={Line2}
+            >Your browser doesn't support SVG
           </object>
           <object
-            class="flex-1 translate-x-1/4 md:translate-x-1/3 banking-svg-line opacity-0"
+            class="translate-x-1/4 md:translate-x-1/3 banking-svg-line opacity-0 lg:h-[80%] h-[60%] ml-auto"
             aria-label="bridge"
             type="image/svg+xml"
-            data={`/icons/easy-banking/Line3.svg`}
-            >Your borwser doesn't support SVG
+            data={Line3}
+            >Your browser doesn't support SVG
           </object>
         </div>
       </div>
@@ -136,8 +141,8 @@
           class="md:w-[15%] w-[35px] -translate-y-[20%] banking-svg-line opacity-0"
           aria-label="bridge"
           type="image/svg+xml"
-          data={`/icons/easy-banking/Line4.svg`}
-          >Your borwser doesn't support SVG
+          data={Line4}
+          >Your browser doesn't support SVG
         </object>
         {#if forthItem}
           <Technology
