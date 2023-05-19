@@ -24,7 +24,7 @@ interface ContactDetail {
   title: string;
   description: PortableText[];
   iconDescriptions: {
-    icon: SanityImage;
+    icon: SanityTitledImage;
     description: PortableText[];
   }[];
 }

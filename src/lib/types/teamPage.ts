@@ -1,7 +1,7 @@
 export interface PersonType {
   bio: any;
   email: string;
-  image: SanityImage;
+  image: SanityTitledImage;
   name: string;
   phone: string;
   role: string;

@@ -1,6 +1,6 @@
 export interface ImageDescription {
   description: PortableText[];
-  image: SanityImage;
+  image: SanityTitledImage;
   imageLeft: boolean;
 }
 

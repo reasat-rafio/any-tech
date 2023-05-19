@@ -5,7 +5,7 @@
   let showMobileMenu = false;
   import { navbarHeight } from '@/store';
 
-  export let logo: SanityImage;
+  export let logo: SanityTitledImage;
 </script>
 
 <div

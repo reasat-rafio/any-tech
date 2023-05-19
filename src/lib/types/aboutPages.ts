@@ -1,19 +1,19 @@
-import type { PortableText } from "astro-portabletext";
+import type { PortableText } from 'astro-portabletext';
 export interface AboutPageProps {
   seo: BaseMetaData;
   title: string;
 }
 export interface AboutHeroProps {
-  _type: "about.hero";
+  _type: 'about.hero';
   title: string;
   body: PortableText;
-  image: SanityImage;
+  image: SanityTitledImage;
 }
 
 export interface OurPeoplePerson {
   name: string;
   role: string;
-  image: SanityImage;
+  image: SanityTitledImage;
   slug: string;
 }
 

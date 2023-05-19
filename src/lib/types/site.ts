@@ -33,5 +33,6 @@ export interface FooterProps {
   footerContents: FooterLinks[];
   socialLinks: iconLink[];
   footerCopyRight: PortableText[];
+  poweredBy: PortableText[];
   footerBottomLinks: Link[];
 }

@@ -21,12 +21,15 @@ declare global {
   }
 
   interface iconLink {
-    icon: SanityImage;
+    icon: SanityTitledImage;
     href: string;
     _key: string;
   }
 
-  type SanityImage = SanityDimensionedImage & { alt?: string; title?: string };
+  type SanityTitledImage = SanityDimensionedImage & {
+    alt?: string;
+    title?: string;
+  };
 
   export interface BaseMetaData {
     title?: string;

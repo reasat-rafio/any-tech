@@ -25,16 +25,8 @@ const query = `*[_type == 'homePage'][0] {
       ...,
       ${picture('logo')},
     },
-		logos[]{
-      ...,
-      asset->{
-        ...,
-        metadata {
-          lqip,
-          dimensions
-        }
-      }
-    }
+    ${picture('image')},
+		${picture('logos[]', { as: 'logos' })}
   }
 }`;
 
