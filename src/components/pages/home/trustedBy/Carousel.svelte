@@ -3,7 +3,7 @@
   import '@splidejs/svelte-splide/css';
   import { imageBuilder } from '@/lib/helpers';
 
-  export let logos: SanityImage[];
+  export let logos: SanityTitledImage[];
 </script>
 
 <div class={$$props.class}>

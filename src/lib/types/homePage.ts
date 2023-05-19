@@ -25,13 +25,13 @@ export interface TrustedBy {
   _type: 'homePage.trustedBy';
   title: string;
   details: Detail[];
-  logos: SanityImage[];
+  logos: SanityTitledImage[];
 }
 
 export interface HomePageData {
   seo: BaseMetaData;
   sections: Section[];
-  mainBgImage: SanityImage;
+  mainBgImage: SanityTitledImage;
 }
 
 export interface HeroLink extends Link {
@@ -52,7 +52,7 @@ export interface LegacyToEfficiency {
   diagram: EfficiencyDiagram[];
   _key: string;
   title: string;
-  image: SanityImage;
+  image: SanityTitledImage;
   solutions: EfficiencySolution[];
   subtitle: string;
 }
@@ -90,7 +90,7 @@ export interface BankingSolution {
   name?: string;
   platform: string;
   link?: Link;
-  image: SanityImage;
+  image: SanityTitledImage;
 }
 export interface BankingDiagram {
   _type: string;

@@ -1,13 +1,13 @@
 export interface ServiceSection {
   title: string;
-  image: SanityImage;
+  image: SanityTitledImage;
   service: any[];
   index: number;
-  _type: "service.section";
+  _type: 'service.section';
 }
 
 export interface ServiceContact {
-  _type: "service.contact";
+  _type: 'service.contact';
   title: string;
   description: string;
 }

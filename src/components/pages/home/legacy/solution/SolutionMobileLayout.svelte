@@ -2,10 +2,11 @@
   import Description from '@/components/ui/Description.svelte';
   import Link from '@/components/ui/Link.svelte';
   import H3 from '@/components/ui/H3.svelte';
-  import SanityImage from '@/lib/sanity-image.svelte';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import type { EfficiencySolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { animate } from 'motion';
+  import { imageBuilder } from '@/lib/helpers';
 
   export let solutions: EfficiencySolution[];
   let selectedSolution = solutions[0];
@@ -35,11 +36,12 @@
           : 'bg-white'} rounded-xl flex justify-center items-center py-[8px] px-[15px] shadow-button-secondary"
       >
         <SanityImage
+          imageUrlBuilder={imageBuilder}
           class="{selectedSolution?._key === solution._key &&
             'brightness-0 invert'} h-full w-full object-contain max-w-[80px]"
           alt="{solution.logo.alt} icon"
-          image={solution.logo}
-          maxWidth={20}
+          src={solution.logo}
+          sizes="80px"
         />
       </button>
     {/each}

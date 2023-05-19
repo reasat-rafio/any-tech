@@ -1,7 +1,7 @@
 <script lang="ts">
   import Cta from '@/components/ui/CTA.svelte';
   import H1 from '@/components/ui/H1.svelte';
-  import SanityImage from '@/lib/sanity-image.svelte';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import type { HeroLink } from '@/lib/types/homePage';
   import type { SanityAsset } from '@sanity/image-url/lib/types/types';
   import type { Easing } from 'motion';
@@ -9,6 +9,7 @@
   import { onMount } from 'svelte';
   import IntersectionObserver from 'svelte-intersection-observer';
   import Wavelines from './Wavelines.svelte';
+  import { imageBuilder } from '@/lib/helpers';
   import { navbarHeight } from '@/store';
 
   export let title: string;
@@ -136,10 +137,10 @@
         class="hidden lg:block absolute top-0 xl:left-[40%] xl:w-[60%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
+          imageUrlBuilder={imageBuilder}
           class="h-full w-full object-cover hero-img translate-x-[5%]"
-          {image}
-          lazyLoading={false}
-          maxWidth={2048}
+          src={image}
+          sizes="65vw"
         />
         <div class="gradient-overlay" />
       </div>

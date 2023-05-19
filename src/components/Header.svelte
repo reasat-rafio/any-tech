@@ -11,7 +11,7 @@
     currentPathname = window.location.pathname;
   });
 
-  export let logo: SanityImage, navMenus: NavMenu[];
+  export let logo: SanityTitledImage, navMenus: NavMenu[];
 </script>
 
 <header
