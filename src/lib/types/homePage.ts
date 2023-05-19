@@ -90,7 +90,7 @@ export interface BankingSolution {
   name?: string;
   platform: string;
   link?: Link;
-  image: SanityImage;
+  image: SanityTitledImage;
 }
 export interface BankingDiagram {
   _type: string;
