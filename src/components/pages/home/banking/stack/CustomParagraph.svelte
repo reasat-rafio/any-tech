@@ -5,6 +5,6 @@
 
 <style>
   p:empty {
-    padding-bottom: 16px;
+    margin-bottom: 1em;
   }
 </style>

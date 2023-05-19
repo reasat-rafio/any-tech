@@ -8,6 +8,7 @@
   import type { BankingSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+  import CustomParagraph from './stack/CustomParagraph.svelte';
   import '@splidejs/svelte-splide/css';
 
   export let solutions: BankingSolution[];
@@ -43,7 +44,12 @@
             />
           </div>
           <Description class="whitespace-pre-line">
-            <PortableText value={description} />
+            <PortableText
+              components={{
+                block: { normal: CustomParagraph },
+              }}
+              value={description}
+            />
           </Description>
           {#if !!link?.title}
             <Link href={link?.href}>
