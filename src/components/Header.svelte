@@ -15,7 +15,9 @@
 </script>
 
 <header
-  class="lg:absolute top-0 w-full text-white lg:pt-[40px] text-lg bg-blue-primary"
+  class="lg:absolute top-0 w-full text-white lg:pt-10 text-lg bg-blue-primary"
+  class:lg:pb-10={currentPathname === '/privacy-policy'}
+  class:!relative={currentPathname === '/privacy-policy'}
 >
   <Navigation {logo}>
     {#each navMenus as { title, href, highlight, subMenus, _key } (_key)}

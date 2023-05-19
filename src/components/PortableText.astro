@@ -1,16 +1,16 @@
 ---
-import { PortableText } from "astro-portabletext";
-import Block from "./portabletext/Block.astro";
-import List from "./portabletext/List.astro";
-import ListItem from "./portabletext/ListItem.astro";
-import Mark from "./portabletext/Mark.astro";
-import Type from "./portabletext/Type.astro";
+import { PortableText } from 'astro-portabletext';
+import Block from './portabletext/Block.astro';
+import List from './portabletext/List.astro';
+import ListItem from './portabletext/ListItem.astro';
+import Mark from './portabletext/Mark.astro';
+import Type from './portabletext/Type.astro';
 
 type PortableTextProps = Parameters<typeof PortableText>[0];
 
 export interface Props {
-  value: PortableTextProps["value"];
-  components?: PortableTextProps["components"];
+  value: PortableTextProps['value'];
+  components?: PortableTextProps['components'];
 }
 
 const defaultComponents = {

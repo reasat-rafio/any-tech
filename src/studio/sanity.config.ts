@@ -24,7 +24,7 @@ export default defineConfig({
           id: 'zh-SG',
         },
       ],
-      schemaTypes: ['site', 'homePage'],
+      schemaTypes: ['site', 'homePage', 'privacyPolicy'],
     }),
     deskTool({
       structure: newDeskStructure,
