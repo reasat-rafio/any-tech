@@ -21,11 +21,11 @@
 >
   <Navigation {logo}>
     {#each navMenus as { title, href, highlight, subMenus, _key } (_key)}
-      <li
-        class="w-full whitespace-nowrap group lg:py-3 lg:px-6 lg:last:p-0 last:border-none lg:border-b border-white border-opacity-0 hover:border-opacity-100 transition-all duration-500 cursor-pointer"
-      >
-        <span class="flex items-center justify-between">
-          {#if highlight}
+      {#if highlight}
+        <li
+          class="w-full whitespace-nowrap group lg:py-3 lg:px-6 lg:last:p-0 last:border-none lg:border-b border-white border-opacity-0 hover:border-opacity-100 transition-all duration-500 cursor-pointer"
+        >
+          <span class="flex items-center justify-between">
             <!-- <a {href}>
               {title}
             </a>
@@ -47,37 +47,37 @@
                 expanded={activeSubMenuKey === _key}
               />
             </a>
-          {/if}
-        </span>
-        <!-- TODO add dropdown on desktop class:lg:group-hover:block={subMenus} -->
-        <span
-          class="lg:absolute lg:top-full lg:bg-white lg:w-[240px] relative border-theme-body border-[1px] shadow-menu"
-          class:hidden={activeSubMenuKey !== _key}
-        >
-          <ul class="flex flex-col relative -mt-[1px]">
-            {#if subMenus}
-              {#each subMenus as subMenu (subMenu._key)}
-                <li class="border-t border-theme-body whitespace-nowrap">
-                  <a
-                    class="hover:text-theme-primary hover:transition-colors duration-200 py-3 lg:pl-[15px] pl-7 max-lg:pr-5 inline-block"
-                    href={!href ? subMenu.href : href + subMenu.href}
-                  >
-                    <span class="flex text-body-p">
-                      <DownArrow
-                        class="w-2 -rotate-90 fill-theme-muted mr-2 lg:hidden"
-                        active={currentPathname
-                          .split('/')
-                          .includes(subMenu.href?.replace('/', ''))}
-                      />
-                      {subMenu.title}
-                    </span>
-                  </a>
-                </li>
-              {/each}
-            {/if}
-          </ul>
-        </span>
-      </li>
+          </span>
+          <!-- TODO add dropdown on desktop class:lg:group-hover:block={subMenus} -->
+          <span
+            class="lg:absolute lg:top-full lg:bg-white lg:w-[240px] relative border-theme-body border-[1px] shadow-menu"
+            class:hidden={activeSubMenuKey !== _key}
+          >
+            <ul class="flex flex-col relative -mt-[1px]">
+              {#if subMenus}
+                {#each subMenus as subMenu (subMenu._key)}
+                  <li class="border-t border-theme-body whitespace-nowrap">
+                    <a
+                      class="hover:text-theme-primary hover:transition-colors duration-200 py-3 lg:pl-[15px] pl-7 max-lg:pr-5 inline-block"
+                      href={!href ? subMenu.href : href + subMenu.href}
+                    >
+                      <span class="flex text-body-p">
+                        <DownArrow
+                          class="w-2 -rotate-90 fill-theme-muted mr-2 lg:hidden"
+                          active={currentPathname
+                            .split('/')
+                            .includes(subMenu.href?.replace('/', ''))}
+                        />
+                        {subMenu.title}
+                      </span>
+                    </a>
+                  </li>
+                {/each}
+              {/if}
+            </ul>
+          </span>
+        </li>
+      {/if}
     {/each}
   </Navigation>
 </header>
