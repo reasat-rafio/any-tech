@@ -101,8 +101,10 @@
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section bind:this={rootElRef}>
     <div
-      style="height: calc({heroVH}vh - {$navbarHeight}px);"
-      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[150px] lg:pt-0"
+      style="height: {windowWidth >= 1024
+        ? `calc(${heroVH}vh - ${$navbarHeight}px)`
+        : 'auto'} ;"
+      class="relative w-full bg-blue-primary text-white bg-clip-hero-container overflow-hidden pt-[45px] md:pt-[50px] lg:pt-0"
     >
       <div
         class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
@@ -132,7 +134,7 @@
       </div>
 
       <div
-        class="hidden lg:block absolute top-0 xl:left-[45%] xl:w-[55%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
+        class="hidden lg:block absolute top-0 xl:left-[40%] xl:w-[60%] left-1/2 lg:w-[50%] h-full bg-clip-hero-image pointer-events-none"
       >
         <SanityImage
           imageUrlBuilder={imageBuilder}

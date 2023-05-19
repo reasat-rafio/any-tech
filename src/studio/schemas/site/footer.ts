@@ -69,4 +69,11 @@ export default [
       },
     ],
   },
+  {
+    group: 'footer',
+    type: 'blockContent',
+    name: 'poweredBy',
+    title: 'Powered By Text',
+    validation: (Rule: Rule) => Rule.required(),
+  },
 ];

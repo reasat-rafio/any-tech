@@ -8,14 +8,14 @@ import SanityPicture from 'astro-sanity-picture';
 const { title, details, logos } = Astro.props;
 ---
 
-<section class="pb-[128px]">
+<section class="pb-[100px] lg:pb-[128px]">
   <div class="container">
     <H5 class="border-lavender pb-6 text-center max-lg:border-b lg:pb-5">
       {title}
     </H5>
     <Details client:visible {details} />
     <div
-      class="mt-14 grid grid-cols-3 gap-x-4 gap-y-[34px] max-md:hidden lg:grid-cols-5"
+      class="mt-14 grid grid-cols-3 gap-x-16 gap-y-[34px] max-md:hidden lg:grid-cols-5"
     >
       {
         logos.map((logo) => (
@@ -26,6 +26,7 @@ const { title, details, logos } = Astro.props;
               style: { objectFit: 'contain' },
               alt: logo.alt,
               title: logo.title,
+              sizes: '(min-width: 976px) 170px',
             }}
             src={logo}
           />

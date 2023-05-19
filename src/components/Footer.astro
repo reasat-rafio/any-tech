@@ -9,6 +9,7 @@ const {
   footerCopyRight,
   // socialLinks,
   footerBottomLinks,
+  poweredBy,
 } = Astro.props;
 // import SanityPicture from 'astro-sanity-picture';
 ---
@@ -69,12 +70,13 @@ const {
           footerBottomLinks?.map(({ title, href }, index) => (
             <div>
               {index !== 0 && '.'}
-              <a href={href} class="mr-[14px] pl-[12px]">
+              <a href={href} class="pr-3">
                 {title}
               </a>
             </div>
           ))
         }
+        <PortableText value={poweredBy} />
       </div>
     </div>
   </div>

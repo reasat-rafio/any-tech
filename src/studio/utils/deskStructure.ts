@@ -39,5 +39,10 @@ export function newDeskStructure(S: StructureBuilder) {
         id: 'homePage',
         schemaType: 'homePage',
       }),
+      documentPageItem(S, {
+        title: 'Privacy Policy',
+        id: 'privacyPolicy',
+        schemaType: 'privacyPolicy',
+      }),
     ]);
 }

@@ -93,6 +93,7 @@ module.exports = {
         'button-secondary': '0px 5px 7px rgba(31, 128, 240, 0.18)',
         card: '0px 16px 21px #CFE9F7',
         'card-light': '0px 16px 21px rgba(207, 233, 247, 0.47)',
+        'card-light-sm': '0px 10px 12px rgba(207, 233, 247, 0.47)',
         'res-card': '0px 11.0596px 14.5158px #CFE9F7',
       },
     },

@@ -12,7 +12,7 @@
       class="flex max-lg:justify-between items-center lg:flex-col max-lg:border-b border-lavender border-dashed pb-5"
     >
       <h2
-        class="text-[64px] lg:text-[96px] font-Montserrat tracking-[-0.02em] font-semibold text-blue-primary leading-none"
+        class="max-[280px]:text-[40px] text-[64px] lg:text-[96px] font-Montserrat tracking-[-0.02em] font-semibold text-blue-primary leading-none"
       >
         {frontSymbol ?? ''}<CountUp value={number} />{backSymbol ?? ''}
       </h2>
