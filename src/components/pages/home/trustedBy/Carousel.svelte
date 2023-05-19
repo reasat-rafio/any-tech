@@ -2,6 +2,7 @@
   import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   import '@splidejs/svelte-splide/css';
   import { imageBuilder } from '@/lib/helpers';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
 
   export let logos: SanityTitledImage[];
 </script>
@@ -23,10 +24,10 @@
     >
       {#each logos as logo}
         <SplideSlide class="flex items-center">
-          <img
-            src={imageBuilder.image(logo).width(180).auto('format').url()}
-            alt={logo.alt}
-            title={logo.title}
+          <SanityImage
+            imageUrlBuilder={imageBuilder}
+            src={logo}
+            sizes="170px"
           />
         </SplideSlide>
       {/each}
