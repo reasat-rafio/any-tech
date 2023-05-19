@@ -40,16 +40,18 @@ const {
 
     {
       image && (
-        <SanityPicture
-          lqip={{ enabled: false }}
-          class="object-contain"
-          img={{
-            style: { objectFit: 'contain' },
-            alt: image.alt,
-            title: image.title,
-          }}
-          src={image}
-        />
+        <div class="overflow-hidden rounded-[90px_0]">
+          <SanityPicture
+            lqip={{ enabled: false }}
+            class="h-full object-cover"
+            img={{
+              style: { objectFit: 'cover', height: '100%', width: '100%' },
+              alt: image.alt,
+              title: image.title,
+            }}
+            src={image}
+          />
+        </div>
       )
     }
 

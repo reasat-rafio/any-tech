@@ -138,7 +138,8 @@
         <SanityImage
           class="h-full w-full object-cover hero-img translate-x-[5%]"
           {image}
-          maxWidth={1000}
+          lazyLoading={false}
+          maxWidth={2048}
         />
         <div class="gradient-overlay" />
       </div>

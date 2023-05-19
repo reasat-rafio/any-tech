@@ -5,6 +5,7 @@
   export let image: SanityAsset;
   export let maxWidth = 600;
   export let alt: string | undefined = undefined;
+  export let lazyLoading: boolean = true;
 
   $: width = 0;
   $: height = 0;
@@ -35,7 +36,7 @@
 
 {#if image}
   <img
-    loading="lazy"
+    loading={lazyLoading ? 'lazy' : 'eager'}
     {src}
     alt={alt || image?.alt || 'image'}
     class:loaded

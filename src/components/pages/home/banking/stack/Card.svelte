@@ -94,7 +94,7 @@
       <SanityImage
         {image}
         class="h-full w-full object-cover rounded-md"
-        maxWidth={500}
+        maxWidth={1024}
       />
     </div>
   </div>
