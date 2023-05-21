@@ -7,27 +7,17 @@
   import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import type { BankingSolution } from '@/lib/types/homePage';
   import { PortableText } from '@portabletext/svelte';
-  import { Splide, SplideSlide } from '@splidejs/svelte-splide';
   import CustomParagraph from './stack/CustomParagraph.svelte';
-  import '@splidejs/svelte-splide/css';
+  import { Swiper, SwiperSlide } from 'swiper/svelte';
+  import 'swiper/css';
 
   export let solutions: BankingSolution[];
 </script>
 
 <div class={$$props.class}>
-  <Splide
-    class="mt-20"
-    options={{
-      arrows: false,
-      pagination: false,
-      autoplay: true,
-      speed: 1500,
-      gap: '2rem',
-    }}
-    aria-label="Integrated Technologies"
-  >
+  <Swiper class="mt-20" aria-label="Integrated Technologies">
     {#each solutions as { name, description, platform, link, image }}
-      <SplideSlide class="pb-6 px-2">
+      <SwiperSlide class="pb-6 px-2">
         <article
           class="p-[24px] lg:px-[38px] lg:gap-[40px] lg:py-[43px] xl:px-[48px] xl:gap-[60px] xl:py-[53px] shadow-card-light-sm lg:shadow-card-light rounded-lg grid lg:grid-cols-2 grid-cols-1"
         >
@@ -71,7 +61,7 @@
             />
           </div>
         </article>
-      </SplideSlide>
+      </SwiperSlide>
     {/each}
-  </Splide>
+  </Swiper>
 </div>
