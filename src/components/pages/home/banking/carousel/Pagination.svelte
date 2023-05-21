@@ -9,6 +9,7 @@
     width: auto !important;
     z-index: 20;
   }
+
   :global(#banking-carousel .swiper-pagination-bullet) {
     width: 16px !important;
     height: 16px !important;

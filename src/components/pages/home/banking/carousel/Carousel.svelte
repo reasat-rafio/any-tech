@@ -140,5 +140,5 @@
     {disableNextBtn}
     buttonPosition={navigationButtonPosition}
   />
-  <PaginationBlock class="hidden lg:block" />
+  <PaginationBlock />
 </div>
