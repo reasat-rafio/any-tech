@@ -37,8 +37,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 6px !important;
-    width: 6px !important;
+    height: 6px;
+    width: 6px;
     background: white;
     border-radius: 100%;
     transform: translate(-50%, -50%);
