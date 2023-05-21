@@ -1,4 +1,4 @@
-<div class="swiper-pagination" />
+<div class="swiper-pagination {$$props.class}" />
 
 <style>
   .swiper-pagination {
