@@ -57,7 +57,7 @@
 <div
   bind:this={sectionRef}
   id="banking-carousel"
-  class="{$$props.class} relative lg:pt-[128px] pt-[100px]"
+  class="{$$props.class} relative lg:pt-[85px] pt-[50px]"
 >
   <Swiper
     aria-label="Integrated Technologies"
