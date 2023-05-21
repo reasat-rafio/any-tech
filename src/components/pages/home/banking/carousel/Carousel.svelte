@@ -14,34 +14,42 @@
   import { Swiper, SwiperSlide } from 'swiper/svelte';
   import CustomParagraph from '../stack/CustomParagraph.svelte';
   import NavigationArrow from './Navigation.svelte';
+  import { onMount } from 'svelte';
 
   export let solutions: BankingSolution[];
 
   let sectionRef: HTMLDivElement;
-  let navBtnRef: HTMLButtonElement;
+  let windowWidth = 0;
+  $: posValue = windowWidth >= 1280 ? 56 : 36;
+  $: navigationButtonPosition = -posValue;
+  $: containerSpacing = posValue;
 
   let resizeTimer: string | number | NodeJS.Timeout | undefined;
   let disablePrevBtn = true;
   let disableNextBtn = false;
   const debounceDelay = 250;
 
-  const calcSpace = () => {
-    return (
-      sectionRef?.offsetWidth +
-      sectionRef?.offsetLeft -
-      navBtnRef?.offsetLeft -
-      navBtnRef?.offsetWidth / 2
-    );
-  };
+  function adjustNavigationButtonPosition() {
+    const containerRect = sectionRef.getBoundingClientRect();
+    const availableSpace = containerRect.left - containerSpacing;
+    if (availableSpace >= navigationButtonPosition) {
+      navigationButtonPosition = -posValue;
+    } else {
+      navigationButtonPosition = -containerRect.left;
+    }
+  }
 
-  $: availableSpaceAroundContainer = calcSpace();
+  onMount(() => {
+    adjustNavigationButtonPosition();
+  });
 </script>
 
 <svelte:window
+  bind:innerWidth={windowWidth}
   on:resize={() => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      availableSpaceAroundContainer = calcSpace();
+      adjustNavigationButtonPosition();
     }, debounceDelay);
   }}
 />
@@ -128,10 +136,9 @@
   </Swiper>
   <NavigationArrow
     class="hidden lg:block"
-    bind:navBtnRef
     {disablePrevBtn}
     {disableNextBtn}
-    {availableSpaceAroundContainer}
+    buttonPosition={navigationButtonPosition}
   />
   <div class="swiper-pagination" />
 </div>

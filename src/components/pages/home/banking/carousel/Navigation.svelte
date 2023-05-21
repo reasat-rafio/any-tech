@@ -1,20 +1,13 @@
 <script lang="ts">
   export let disablePrevBtn: boolean;
   export let disableNextBtn: boolean;
-  export let navBtnRef: HTMLButtonElement;
-  export let availableSpaceAroundContainer: number;
-
-  $: {
-    console.log('====================================');
-    console.log(availableSpaceAroundContainer);
-    console.log('====================================');
-  }
+  export let buttonPosition: number;
 </script>
 
 <div class={$$props.class}>
   <button
+    style="left: {buttonPosition}px;"
     id="prev_slide"
-    style="left: {availableSpaceAroundContainer >= 56 ? '-56px' : '0'};"
     class="px-[18px] py-[14px] xl:px-[23px] xl:py-[16px] base-style -translate-x-1/2 {disablePrevBtn
       ? 'bg-[#E9F3FF]'
       : 'bg-[#DBECFF]'}"
@@ -34,8 +27,7 @@
   </button>
   <button
     id="next_slide"
-    style="right: {availableSpaceAroundContainer >= 56 ? '-56px' : '0'};"
-    bind:this={navBtnRef}
+    style="right: {buttonPosition}px;"
     class="px-[18px] py-[14px] xl:px-[23px] xl:py-[16px] base-style translate-x-1/2 {disableNextBtn
       ? 'bg-[#E9F3FF]'
       : 'bg-[#DBECFF]'}"
