@@ -17,6 +17,17 @@
     background: #d9ebff !important;
   }
 
+  @media (max-width: 1024px) {
+    :global(#banking-carousel .swiper-pagination-bullet) {
+      width: 10px !important;
+      height: 10px !important;
+    }
+    :global(#banking-carousel .swiper-pagination-bullet-active::after) {
+      height: 3.75px !important;
+      width: 3.75px !important;
+    }
+  }
+
   :global(#banking-carousel .swiper-pagination-bullet-active) {
     background-color: #1f80f0 !important;
     position: relative;
@@ -26,8 +37,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 6px;
-    width: 6px;
+    height: 6px !important;
+    width: 6px !important;
     background: white;
     border-radius: 100%;
     transform: translate(-50%, -50%);
