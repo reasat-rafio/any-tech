@@ -34,5 +34,5 @@ const { title, details, logos } = Astro.props;
       }
     </div>
   </div>
-  <Carousel class="overflow-x-hidden md:hidden" client:load {logos} />
+  <Carousel class="overflow-x-hidden md:hidden" client:idle {logos} />
 </section>
