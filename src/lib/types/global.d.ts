@@ -38,5 +38,9 @@ declare global {
     seoImage?: SanityDimensionedImage;
   }
 
-  type IconVariants = 'ChevronRight' | 'ChevronRightWhite';
+  type IconVariants =
+    | 'ChevronRight'
+    | 'ChevronRightWhite'
+    | 'CarouselChevronLeft'
+    | 'CarouselChevronRight';
 }

@@ -1,10 +1,9 @@
 <script lang="ts">
   import { afterUpdate } from 'svelte';
 
-  // update variant here
   export let icon: IconVariants;
   export let airaLabel = 'icon';
-  export let className = '';
+  export let className = 'pointer-events-none';
 
   let isSVGReady = false;
 
