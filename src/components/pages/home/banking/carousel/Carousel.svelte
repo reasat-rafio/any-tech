@@ -57,14 +57,13 @@
 <div
   bind:this={sectionRef}
   id="banking-carousel"
-  class={`${$$props.class} relative`}
+  class="{$$props.class} relative lg:pt-[128px] pt-[100px]"
 >
   <Swiper
     aria-label="Integrated Technologies"
     modules={[Navigation, Pagination]}
     spaceBetween={50}
     speed={1000}
-    class="mt-20"
     navigation={{ prevEl: '#prev_slide', nextEl: '#next_slide' }}
     pagination={{
       el: '#banking-carousel .swiper-pagination',
@@ -90,7 +89,7 @@
     {#each solutions as { name, description, platform, link, image }}
       <SwiperSlide class="pb-6 px-2">
         <article
-          class="grid lg:grid-cols-2 grid-cols-1 p-[24px] lg:px-[38px] lg:gap-[40px] lg:py-[43px] xl:px-[48px] xl:gap-[60px] xl:py-[53px] shadow-card-light-sm lg:shadow-card-light rounded-lg"
+          class="grid lg:grid-cols-2 grid-cols-1 p-[24px] lg:px-[38px] lg:gap-[40px] lg:py-[43px] xl:px-[48px] xl:gap-[50px] xl:py-[53px] shadow-card-light-sm lg:shadow-card-light rounded-lg"
         >
           <section class="space-y-[24px] lg:space-y-[26px]">
             {#if name}
