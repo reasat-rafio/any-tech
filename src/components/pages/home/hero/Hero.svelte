@@ -29,7 +29,7 @@
   let waveLines1MobileRef: HTMLObjectElement;
   let waveLines2MobileRef: HTMLObjectElement;
   const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
-  let easing: Easing = [0.25, 0.46, 0.45, 0.94];
+  const easing: Easing = [0.25, 0.46, 0.45, 0.94];
 
   const transformAnimation = (
     el: HTMLElement,
