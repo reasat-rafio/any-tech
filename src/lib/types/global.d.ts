@@ -43,6 +43,7 @@ declare global {
     _type: 'common.hero';
     title: string;
     subtitle: string;
+    headerContainerWidthInPercentage?: number;
   }
 
   type IconVariants =

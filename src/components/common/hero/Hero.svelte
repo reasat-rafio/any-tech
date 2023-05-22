@@ -8,6 +8,7 @@
 
   export let title: string;
   export let subtitle: string;
+  export let headerContainerWidthInPercentage = 75;
 
   const delay = 0;
   let scrollY = 0;
@@ -99,12 +100,19 @@
     <div
       class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
     >
-      <header class="lg:space-y-[25px] space-y-[11px] h-fit lg:flex-[75]">
+      <header
+        id="c-hero-header-container"
+        style:--header-width={`${headerContainerWidthInPercentage}%`}
+        class="lg:space-y-[25px] space-y-[11px] h-fit"
+      >
         <H1 class="max-w-3xl lg:max-w-max">{title}</H1>
         <p class="text-base lg:text-lg 2xl:text-xl max-w-3xl">{subtitle}</p>
       </header>
 
-      <div class="lg:flex-[25] lg:block hidden" />
+      <div
+        style="width: calc({100 - headerContainerWidthInPercentage}%);"
+        class="lg:block hidden"
+      />
     </div>
 
     <Wavelines
@@ -117,10 +125,17 @@
 </IntersectionObserver>
 
 <style>
+  #c-hero-header-container {
+    width: 100%;
+  }
   .bg-clip-hero {
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0 96%);
   }
-
+  @media (min-width: 1024px) {
+    #c-hero-header-container {
+      width: var(--header-width);
+    }
+  }
   @media (min-width: 1024px) and (max-width: 1280px) {
     .bg-clip-hero {
       clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);

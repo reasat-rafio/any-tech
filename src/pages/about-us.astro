@@ -22,7 +22,7 @@ const { sections, seo } = page;
     sections.map((section) => {
       switch (section._type) {
         case 'common.hero':
-          return <Hero client:load {...section} />;
+          return <Hero client:load {...(section as CommonHeroData)} />;
         default:
           return null;
       }
