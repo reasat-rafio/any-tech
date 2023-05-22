@@ -38,6 +38,13 @@ declare global {
     seoImage?: SanityDimensionedImage;
   }
 
+  interface CommonHeroData {
+    _key: string;
+    _type: 'common.hero';
+    title: string;
+    subtitle: string;
+  }
+
   type IconVariants =
     | 'ChevronRight'
     | 'ChevronRightWhite'

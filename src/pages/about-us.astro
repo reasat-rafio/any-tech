@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getPageData } from '@/lib/helpers';
+import type { AboutPageData } from '@/lib/types/aboutPage';
+
+const query = `*[_type == 'aboutPage'][0]{
+    ...,
+}`;
+
+const data = await getPageData<AboutPageData>(query, {
+  locale: 'en-SG',
+  defaultLocale: 'en-SG',
+});
+
+const { page, site } = data;
+const { sections, seo } = page;
+---
+
+<Layout seo={seo} site={site}>
+  {
+    sections.map((section) => {
+      switch (section._type) {
+        case 'common.hero':
+          return '';
+        default:
+          return null;
+      }
+    })
+  }
+</Layout>
