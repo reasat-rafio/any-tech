@@ -14,7 +14,7 @@ export default defineConfig({
   site: 'http://localhost:3000',
   vite: {
     ssr: {
-      noExternal: ['@portabletext/svelte'],
+      noExternal: ['@portabletext/svelte', 'swiper'],
     },
   },
   integrations: [
