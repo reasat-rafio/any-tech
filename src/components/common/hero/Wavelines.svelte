@@ -11,21 +11,21 @@
   class="lg:block absolute top-0 right-0 h-full w-full object-cover hidden"
   aria-label="background waveforms"
   type="image/svg+xml"
-  data="/backgrounds/WaveLinesDesktop1.svg"
+  data="/backgrounds/WaveLinesDesktop4.svg"
   >Your borwser doesn't support SVG
 </object>
 <object
   bind:this={waveLines2DesktopRef}
-  class="lg:block hidden absolute bottom-0 right-0 h-[220%] w-[120%] object-bottom"
+  class="lg:block hidden absolute bottom-0 right-0 h-full w-full object-bottom"
   aria-label="background waveforms"
   type="image/svg+xml"
-  data="/backgrounds/WaveLinesDesktop2.svg"
+  data="/backgrounds/WaveLinesDesktop3.svg"
   >Your borwser doesn't support SVG
 </object>
 <!-- Mobile -->
 <object
   bind:this={waveLines1MobileRef}
-  class="lg:hidden block absolute bottom-0 right-0 h-full w-full object-bottom"
+  class="lg:hidden block absolute bottom-[10%] right-0 h-full w-full object-bottom"
   aria-label="background waveforms"
   type="image/svg+xml"
   data="/backgrounds/WaveLinesMobile2.svg"
@@ -33,7 +33,7 @@
 </object>
 <object
   bind:this={waveLines2MobileRef}
-  class="absolute lg:hidden block top-0 right-0 h-full w-full object-coverx"
+  class="absolute lg:hidden block top-0 right-0 h-full w-full object-cover"
   aria-label="background waveforms"
   type="image/svg+xml"
   data="/backgrounds/WaveLinesMobile1.svg"

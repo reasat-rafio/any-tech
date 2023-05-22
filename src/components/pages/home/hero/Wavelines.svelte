@@ -25,7 +25,7 @@
 <!-- Mobile -->
 <object
   bind:this={waveLines1MobileRef}
-  class="lg:hidden block absolute bottom-0 right-0 h-full w-full object-bottom"
+  class="lg:hidden block absolute bottom-[10%] right-0 h-full w-full object-bottom"
   aria-label="background waveforms"
   type="image/svg+xml"
   data="/backgrounds/WaveLinesMobile2.svg"
@@ -33,7 +33,7 @@
 </object>
 <object
   bind:this={waveLines2MobileRef}
-  class="absolute lg:hidden block top-0 right-0 h-full w-full object-coverx"
+  class="absolute lg:hidden block top-0 right-0 h-full w-full object-cover"
   aria-label="background waveforms"
   type="image/svg+xml"
   data="/backgrounds/WaveLinesMobile1.svg"

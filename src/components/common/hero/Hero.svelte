@@ -118,7 +118,7 @@
 
 <style>
   .bg-clip-hero {
-    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 87%, 0 96%);
   }
 
   @media (min-width: 1024px) and (max-width: 1280px) {
