@@ -32,7 +32,7 @@ const { sections, seo } = page;
         case 'common.featured':
           return (
             <FeaturedContent
-              client:load
+              client:idle
               {...(section as CommonFeaturedContentData)}
             />
           );
