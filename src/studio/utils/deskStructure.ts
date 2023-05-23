@@ -40,6 +40,11 @@ export function newDeskStructure(S: StructureBuilder) {
         schemaType: 'homePage',
       }),
       documentPageItem(S, {
+        title: 'About',
+        id: 'aboutPage',
+        schemaType: 'aboutPage',
+      }),
+      documentPageItem(S, {
         title: 'Privacy Policy',
         id: 'privacyPolicy',
         schemaType: 'privacyPolicy',
