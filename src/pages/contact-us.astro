@@ -1,0 +1,128 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PortableText from '@/components/PortableText.astro';
+import { getPageData } from '@/lib/helpers';
+import type { ContactUsData } from '@/lib/types/otherPages';
+import H1 from '@/components/ui/H1.svelte';
+import H3 from '@/components/ui/H3.svelte';
+import Description from '@/components/ui/Description.svelte';
+import DownArrow from '@/icons/DownArrow.svelte';
+
+const query = `*[_type == 'contactUs'][0]`;
+
+const data = await getPageData<ContactUsData>(query, {
+  locale: 'en-SG',
+  defaultLocale: 'en-SG',
+});
+const { page, site } = data;
+const { title, subtitle, formTitle, formText, seo } = page;
+---
+
+<Layout seo={seo} site={site}>
+  <div class="absolute inset-0 z-0 h-[600px] bg-blue-primary"></div>
+  <section class="relative z-10 mt-10 lg:container lg:mt-[200px]">
+    <div class="max-lg:container">
+      <H1>{title}</H1>
+      <Description class="mt-2.5 text-white">{subtitle}</Description>
+    </div>
+    <div class="mb-7 mt-11 !px-4 text-blue-secondary max-lg:container">
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        class="grid grid-cols-2 gap-x-4 gap-y-5 rounded-[18px] bg-white p-4 text-body-p2 shadow-card-light"
+      >
+        <H3 class="col-span-2 text-blue-primary">{formTitle}</H3>
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <div class="grid gap-3">
+          <label class="flex justify-between" for="firstName"
+            ><span>First Name</span><span class="text-blue-primary">*</span>
+          </label>
+          <input
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            required
+          />
+        </div>
+        <div class="grid gap-3">
+          <label class="flex justify-between" for="lastName"
+            ><span>Last Name</span><span class="font-bold text-blue-primary"
+              >*</span
+            >
+          </label>
+          <input
+            placeholder="Last Name"
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            type="text"
+            name="lastName"
+            required
+          />
+        </div>
+        <div class="grid gap-3">
+          <label class="flex justify-between" for="jobTitle"
+            ><span>Job Title</span><span class="text-blue-primary">*</span>
+          </label>
+          <input
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            type="text"
+            name="jobTitle"
+            placeholder="Job Title"
+            required
+          />
+        </div>
+        <div class="grid gap-3">
+          <label class="flex justify-between" for="companyName"
+            ><span>Company Name</span><span class="font-bold text-blue-primary"
+              >*</span
+            >
+          </label>
+          <input
+            placeholder="Company Name"
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            type="text"
+            name="companyName"
+            required
+          />
+        </div>
+        <div class="col-span-2 grid gap-3">
+          <label class="flex justify-between" for="email"
+            ><span>Email</span><span class="text-blue-primary">*</span>
+          </label>
+          <input
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="col-span-2 grid gap-3">
+          <label class="flex justify-between" for="message"
+            ><span>Message</span><span class="font-bold text-blue-primary"
+              >*</span
+            >
+          </label>
+          <textarea
+            placeholder="Let us know how we can help you!"
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            rows="3"
+            name="message"
+            required></textarea>
+        </div>
+        <div class="col-span-2 mt-4 text-body-p">
+          <PortableText value={formText} />
+        </div>
+        <button
+          type="submit"
+          class="group mb-7 mt-4 flex items-center rounded-xs bg-teal px-3 py-3 text-res-link text-blue-primary max-lg:justify-center lg:text-link"
+        >
+          Submit Form
+          <DownArrow
+            class="mt-1 translate-x-2 -rotate-90 fill-blue-primary transition-transform group-hover:translate-x-3"
+          />
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>
