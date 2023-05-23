@@ -40,7 +40,7 @@
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section
     bind:this={rootElRef}
-    class="{$$props.class} container mt-28 overflow-x-hidden"
+    class="{$$props.class} container pt-[85px] lg:pt-[128px] overflow-x-hidden lg:overflow-x-visible"
   >
     <article
       class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
