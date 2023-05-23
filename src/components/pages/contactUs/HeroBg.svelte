@@ -5,8 +5,6 @@
   import IntersectionObserver from 'svelte-intersection-observer';
   import Wavelines from '@/components/common/hero/Wavelines.svelte';
 
-  export let headerContainerWidthInPercentage = 75;
-
   const delay = 0;
   let scrollY = 0;
   let windowWidth = 0;
@@ -95,21 +93,6 @@
     class="absolute top-0 left-0 right-0 w-full bg-blue-primary text-white bg-clip-hero overflow-hidden pt-[45px] pb-[150px] md:pt-[50px] lg:pt-0 lg:pb-0"
     bind:this={rootElRef}
   >
-    <div
-      class="container md:flex w-full md:items-center md:justify-center h-full relative z-10"
-    >
-      <header
-        id="c-hero-header-container"
-        style:--header-width={`${headerContainerWidthInPercentage}%`}
-        class="lg:space-y-[25px] space-y-[11px] h-fit"
-      />
-
-      <div
-        style="width: calc({100 - headerContainerWidthInPercentage}%);"
-        class="lg:block hidden"
-      />
-    </div>
-
     <Wavelines
       bind:waveLines1DesktopRef
       bind:waveLines2DesktopRef
@@ -120,17 +103,10 @@
 </IntersectionObserver>
 
 <style>
-  #c-hero-header-container {
-    width: 100%;
-  }
   .bg-clip-hero {
     clip-path: polygon(0 0, 100% 0, 100% 87%, 0 96%);
   }
-  @media (min-width: 1024px) {
-    #c-hero-header-container {
-      width: var(--header-width);
-    }
-  }
+
   @media (min-width: 1024px) and (max-width: 1280px) {
     .bg-clip-hero {
       clip-path: polygon(0 0, 100% 0, 100% 76%, 0% 100%);
