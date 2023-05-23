@@ -1,11 +1,17 @@
 ---
+import FeaturedContent from '@/components/common/FeaturedContent.svelte';
 import Hero from '@/components/common/hero/Hero.svelte';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
 import type { AboutPageData } from '@/lib/types/aboutPage';
+import { picture } from 'astro-sanity-picture';
 
 const query = `*[_type == 'aboutPage'][0]{
     ...,
+    sections[]{
+      ...,
+      ${picture('image')},
+    }
 }`;
 
 const data = await getPageData<AboutPageData>(query, {
@@ -23,6 +29,13 @@ const { sections, seo } = page;
       switch (section._type) {
         case 'common.hero':
           return <Hero client:load {...(section as CommonHeroData)} />;
+        case 'common.featured':
+          return (
+            <FeaturedContent
+              client:load
+              {...(section as CommonFeaturedContentData)}
+            />
+          );
         default:
           return null;
       }

@@ -1,0 +1,69 @@
+<script lang="ts">
+  import type { SanityAsset } from '@sanity/image-url/lib/types/types';
+  import type { PortableTextBlock } from 'sanity';
+  import H2 from '@/components/ui/H2.svelte';
+  import H5 from '@/components/ui/H5.svelte';
+  import Description from '@/components/ui/Description.svelte';
+  import { PortableText } from '@portabletext/svelte';
+  import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
+  import { imageBuilder } from '@/lib/helpers';
+  import IntersectionObserver from 'svelte-intersection-observer';
+
+  export let title: string;
+  export let subtitle: string;
+  export let description: PortableTextBlock;
+  export let image: SanityAsset;
+
+  const delay = 0;
+  const duration = 500;
+  let textContainerInnerHeight = 0;
+  let intersecting = false;
+  let scrollY = 0;
+  let rootElRef: HTMLElement;
+  let imageFrameRef: HTMLImageElement;
+  const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+
+  const windowScrollAction = () => {
+    if (intersecting) {
+      imageFrameRef.style.transform = `translate3d(0%, ${scrollY * 0.003}%, 0)`;
+      imageFrameRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
+    }
+  };
+</script>
+
+<svelte:window bind:scrollY on:scroll={windowScrollAction} />
+<IntersectionObserver element={rootElRef} bind:intersecting>
+  <section bind:this={rootElRef} class="{$$props.class} container mt-28">
+    <article
+      class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
+    >
+      <div bind:clientHeight={textContainerInnerHeight}>
+        <H5 class="mb-[16px]">{title}</H5>
+        <H2>{subtitle}</H2>
+
+        <Description class="mt-[32px]">
+          <PortableText value={description} />
+        </Description>
+      </div>
+      <div
+        class="relative overflow-visible"
+        style="max-height: {textContainerInnerHeight}px;"
+      >
+        <img
+          bind:this={imageFrameRef}
+          class="absolute h-full w-full top-0 left-0 pointer-events-none"
+          src="/frames/content-image-1.png"
+          alt="frame"
+          loading="lazy"
+        />
+        <SanityImage
+          imageUrlBuilder={imageBuilder}
+          class="h-full w-[80%] object-cover mx-auto"
+          src={image}
+          width="450px"
+          alt={image?.alt}
+        />
+      </div>
+    </article>
+  </section>
+</IntersectionObserver>
