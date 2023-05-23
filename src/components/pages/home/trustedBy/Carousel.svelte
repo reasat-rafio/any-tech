@@ -24,7 +24,7 @@
     aria-label="Company Logos"
   >
     {#each logos as logo}
-      <SwiperSlide class="flex items-center my-auto w-[170px]">
+      <SwiperSlide class="flex items-center my-auto !w-[170px]">
         <SanityImage imageUrlBuilder={imageBuilder} src={logo} sizes="170px" />
       </SwiperSlide>
     {/each}
