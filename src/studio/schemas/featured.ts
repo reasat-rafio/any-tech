@@ -34,6 +34,11 @@ const commonFeatured = {
           description: 'Important for SEO and accessibility',
           validation: (Rule: Rule) => Rule.required(),
         },
+        {
+          name: 'title',
+          type: 'string',
+          description: 'Will be displayed below the image as a title.',
+        },
       ],
     },
   ],

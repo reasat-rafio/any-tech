@@ -24,21 +24,24 @@ const { sections, seo } = page;
 ---
 
 <Layout seo={seo} site={site}>
-  {
-    sections.map((section) => {
-      switch (section._type) {
-        case 'common.hero':
-          return <Hero client:load {...(section as CommonHeroData)} />;
-        case 'common.featured':
-          return (
-            <FeaturedContent
-              client:idle
-              {...(section as CommonFeaturedContentData)}
-            />
-          );
-        default:
-          return null;
-      }
-    })
-  }
+  <!-- TODO remove the div later -->
+  <div class="pb-60">
+    {
+      sections.map((section) => {
+        switch (section._type) {
+          case 'common.hero':
+            return <Hero client:load {...(section as CommonHeroData)} />;
+          case 'common.featured':
+            return (
+              <FeaturedContent
+                client:idle
+                {...(section as CommonFeaturedContentData)}
+              />
+            );
+          default:
+            return null;
+        }
+      })
+    }
+  </div>
 </Layout>

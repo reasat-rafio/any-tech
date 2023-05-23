@@ -26,10 +26,10 @@
 
   const windowScrollAction = () => {
     if (intersecting) {
-      imageFrameRef.style.transform = `translate3d(0%, ${scrollY * 0.003}%, 0)`;
+      imageFrameRef.style.transform = `translate3d(0%, ${scrollY * 0.009}%, 0)`;
       imageFrameRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
       imageFrameMobileRef.style.transform = `translate3d(0%, ${
-        scrollY * 0.002
+        scrollY * 0.005
       }%, 0) scaleX(1.25)`;
       imageFrameMobileRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
     }
@@ -64,6 +64,13 @@
             width="250px"
             alt={image?.alt}
           />
+          {#if image?.title}
+            <div
+              class="ml-auto block w-fit mr-[10%] font-bold text-[12px] tacking-[0.16em] uppercase text-white relative z-10 pt-[24px]"
+            >
+              {image.title}
+            </div>
+          {/if}
         </div>
 
         <Description class="lg:mt-[32px] mt-[52px]">
@@ -88,6 +95,13 @@
           width="450px"
           alt={image?.alt}
         />
+        {#if image?.title}
+          <div
+            class="ml-auto block w-fit mr-[20%] font-bold text-[16px] tacking-[0.16em] uppercase text-white relative z-10 pt-[24px]"
+          >
+            {image.title}
+          </div>
+        {/if}
       </div>
     </article>
   </section>
