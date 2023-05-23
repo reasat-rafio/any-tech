@@ -21,19 +21,27 @@
   let scrollY = 0;
   let rootElRef: HTMLElement;
   let imageFrameRef: HTMLImageElement;
+  let imageFrameMobileRef: HTMLImageElement;
   const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
 
   const windowScrollAction = () => {
     if (intersecting) {
       imageFrameRef.style.transform = `translate3d(0%, ${scrollY * 0.003}%, 0)`;
       imageFrameRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
+      imageFrameMobileRef.style.transform = `translate3d(0%, ${
+        scrollY * 0.002
+      }%, 0) scaleX(1.25)`;
+      imageFrameMobileRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
     }
   };
 </script>
 
 <svelte:window bind:scrollY on:scroll={windowScrollAction} />
 <IntersectionObserver element={rootElRef} bind:intersecting>
-  <section bind:this={rootElRef} class="{$$props.class} container mt-28">
+  <section
+    bind:this={rootElRef}
+    class="{$$props.class} container mt-28 overflow-x-hidden"
+  >
     <article
       class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
     >
@@ -41,12 +49,29 @@
         <H5 class="mb-[16px]">{title}</H5>
         <H2>{subtitle}</H2>
 
-        <Description class="mt-[32px]">
+        <div class="mt-[32px] relative overflow-visible lg:hidden">
+          <img
+            bind:this={imageFrameMobileRef}
+            class="absolute h-full w-full top-0 left-0 pointer-events-none scale-x-125"
+            src="/frames/content-image-1.png"
+            alt="frame"
+            loading="lazy"
+          />
+          <SanityImage
+            imageUrlBuilder={imageBuilder}
+            class="h-full w-full object-cover mx-auto"
+            src={image}
+            width="250px"
+            alt={image?.alt}
+          />
+        </div>
+
+        <Description class="lg:mt-[32px] mt-[52px]">
           <PortableText value={description} />
         </Description>
       </div>
       <div
-        class="relative overflow-visible"
+        class="relative overflow-visible lg:block hidden"
         style="max-height: {textContainerInnerHeight}px;"
       >
         <img
