@@ -11,7 +11,7 @@
 <div
   bind:clientHeight={$navbarHeight}
   id="main-navigation"
-  class="max-w-[1200px] mx-auto relative flex items-center flex-wrap justify-between lg:relative z-[9999] max-lg:py-8 max-xl:px-[1.938rem]"
+  class="max-w-[1200px] mx-auto relative flex items-center flex-wrap justify-between lg:relative max-lg:py-8 max-xl:px-[1.938rem] z-[9999]"
 >
   <h1>
     <a aria-label="Go to home page" href="/" rel="home"

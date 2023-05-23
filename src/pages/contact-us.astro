@@ -7,6 +7,7 @@ import H1 from '@/components/ui/H1.svelte';
 import H3 from '@/components/ui/H3.svelte';
 import Description from '@/components/ui/Description.svelte';
 import DownArrow from '@/icons/DownArrow.svelte';
+import HeroBg from '@/components/pages/contactUs/HeroBg.svelte';
 
 const query = `*[_type == 'contactUs'][0]`;
 
@@ -19,23 +20,42 @@ const { title, subtitle, formTitle, formText, seo } = page;
 ---
 
 <Layout seo={seo} site={site}>
-  <div class="absolute inset-0 z-0 h-[600px] bg-blue-primary"></div>
-  <section class="relative z-10 mt-10 lg:container lg:mt-[200px]">
-    <div class="max-lg:container">
+  <HeroBg client:load />
+  <section
+    class="relative z-10 mt-10 grid-cols-[5fr_7fr] gap-5 lg:container lg:mb-[176px] lg:mt-[200px] lg:grid"
+  >
+    <div class="max-lg:container lg:mt-5">
       <H1>{title}</H1>
-      <Description class="mt-2.5 text-white">{subtitle}</Description>
+      <Description class="mt-2.5 text-white lg:whitespace-pre-line">
+        {subtitle}
+      </Description>
     </div>
-    <div class="mb-7 mt-11 !px-4 text-blue-secondary max-lg:container">
+    <div
+      class="mb-7 text-blue-secondary max-lg:container max-lg:mt-11 max-lg:!px-4"
+    >
       <form
+        id="contact-us-form"
         action="https://api.web3forms.com/submit"
         method="POST"
-        class="grid grid-cols-2 gap-x-4 gap-y-5 rounded-[18px] bg-white p-4 text-body-p2 shadow-card-light"
+        class="grid grid-cols-2 gap-x-4 gap-y-5 rounded-[18px] bg-white p-4 text-body-p2 shadow-card-light lg:p-10"
       >
         <H3 class="col-span-2 text-blue-primary">{formTitle}</H3>
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <div class="col-span-2 text-head-5" id="result"></div>
+        <input
+          type="hidden"
+          name="access_key"
+          value={import.meta.env.PUBLIC_FORM_ACCESS_KEY}
+        />
+        <input type="hidden" name="from_name" value="AnyTech Website" />
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="hidden"
+          style="display: none;"
+        />
         <div class="grid gap-3">
           <label class="flex justify-between" for="firstName"
-            ><span>First Name</span><span class="text-blue-primary">*</span>
+            >First Name<span class="text-blue-primary">*</span>
           </label>
           <input
             class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
@@ -47,9 +67,7 @@ const { title, subtitle, formTitle, formText, seo } = page;
         </div>
         <div class="grid gap-3">
           <label class="flex justify-between" for="lastName"
-            ><span>Last Name</span><span class="font-bold text-blue-primary"
-              >*</span
-            >
+            >Last Name<span class="font-bold text-blue-primary">*</span>
           </label>
           <input
             placeholder="Last Name"
@@ -61,7 +79,7 @@ const { title, subtitle, formTitle, formText, seo } = page;
         </div>
         <div class="grid gap-3">
           <label class="flex justify-between" for="jobTitle"
-            ><span>Job Title</span><span class="text-blue-primary">*</span>
+            >Job Title<span class="text-blue-primary">*</span>
           </label>
           <input
             class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
@@ -73,9 +91,7 @@ const { title, subtitle, formTitle, formText, seo } = page;
         </div>
         <div class="grid gap-3">
           <label class="flex justify-between" for="companyName"
-            ><span>Company Name</span><span class="font-bold text-blue-primary"
-              >*</span
-            >
+            >Company Name<span class="font-bold text-blue-primary">*</span>
           </label>
           <input
             placeholder="Company Name"
@@ -87,7 +103,7 @@ const { title, subtitle, formTitle, formText, seo } = page;
         </div>
         <div class="col-span-2 grid gap-3">
           <label class="flex justify-between" for="email"
-            ><span>Email</span><span class="text-blue-primary">*</span>
+            >Email<span class="text-blue-primary">*</span>
           </label>
           <input
             class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
@@ -98,31 +114,67 @@ const { title, subtitle, formTitle, formText, seo } = page;
           />
         </div>
         <div class="col-span-2 grid gap-3">
-          <label class="flex justify-between" for="message"
-            ><span>Message</span><span class="font-bold text-blue-primary"
-              >*</span
-            >
-          </label>
+          <label class="flex justify-between" for="message">Message</label>
           <textarea
             placeholder="Let us know how we can help you!"
-            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current"
+            class="min-w-full border border-blue-secondary px-4 py-[15px] outline-current lg:h-44"
             rows="3"
-            name="message"
-            required></textarea>
+            name="message"></textarea>
         </div>
         <div class="col-span-2 mt-4 text-body-p">
           <PortableText value={formText} />
         </div>
         <button
           type="submit"
-          class="group mb-7 mt-4 flex items-center rounded-xs bg-teal px-3 py-3 text-res-link text-blue-primary max-lg:justify-center lg:text-link"
+          class="group mt-4 flex w-[163px] items-center justify-center rounded-xs bg-teal px-3 py-3 text-res-link text-blue-primary max-lg:mb-7 max-lg:justify-center lg:text-link"
         >
           Submit Form
           <DownArrow
-            class="mt-1 translate-x-2 -rotate-90 fill-blue-primary transition-transform group-hover:translate-x-3"
+            class="mt-0.5 translate-x-2 -rotate-90 fill-blue-primary transition-transform group-hover:translate-x-3"
           />
         </button>
       </form>
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-us-form');
+  const result = document.getElementById('result');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    result.innerHTML = 'Please wait...';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = json.message;
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = 'Something went wrong!';
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = 'none';
+        }, 3000);
+      });
+  });
+</script>
