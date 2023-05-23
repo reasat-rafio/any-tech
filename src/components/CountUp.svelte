@@ -12,7 +12,7 @@
         clearInterval(counter);
       }
     }
-  }, 60);
+  }, 50);
 </script>
 
 <IntersectionObserver {element} bind:intersecting>

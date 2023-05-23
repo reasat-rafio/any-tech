@@ -7,6 +7,7 @@ import menuItem from './menuItem';
 import menuItems from './menuItems';
 import seo from './seo';
 import site from './site/index';
+import commonHero from './hero';
 
 export const schemaTypes = [
   ...pages,
@@ -17,5 +18,6 @@ export const schemaTypes = [
   seo,
   site,
   iconLink,
+  commonHero,
   //   ...documents
 ];
