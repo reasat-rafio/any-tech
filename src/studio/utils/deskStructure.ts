@@ -49,5 +49,10 @@ export function newDeskStructure(S: StructureBuilder) {
         id: 'privacyPolicy',
         schemaType: 'privacyPolicy',
       }),
+      documentPageItem(S, {
+        title: 'Contact Us',
+        id: 'contactUs',
+        schemaType: 'contactUs',
+      }),
     ]);
 }

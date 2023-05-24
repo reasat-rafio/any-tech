@@ -12,7 +12,7 @@ module.exports = {
         sm: '480px',
         md: '768px',
         lg: '976px',
-        xl: '1170px',
+        xl: '1200px',
       },
     },
     borderRadius: {
