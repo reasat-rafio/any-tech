@@ -21,7 +21,11 @@ const aboutDocument = {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'common.hero' }, { type: 'common.featured' }],
+      of: [
+        { type: 'common.hero' },
+        { type: 'common.featured' },
+        { type: 'aboutPage.values' },
+      ],
     },
   ],
   preview: {
