@@ -25,6 +25,7 @@ const aboutDocument = {
         { type: 'common.hero' },
         { type: 'common.featured' },
         { type: 'aboutPage.mission' },
+        { type: 'aboutPage.values' },
       ],
     },
   ],
