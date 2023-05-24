@@ -51,7 +51,7 @@ declare global {
   }
 
   export interface CTAData {
-    _type: 'homePage.cta';
+    _type: 'common.cta';
     title: string;
     subtitle: string;
     links: CTALink[];
