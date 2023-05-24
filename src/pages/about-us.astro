@@ -1,6 +1,7 @@
 ---
 import FeaturedContent from '@/components/FeaturedContent.svelte';
 import Hero from '@/components/hero/Hero.svelte';
+import Mission from '@/components/pages/about/mission/Mission.svelte';
 import Values from '@/components/pages/about/values/Values.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
@@ -12,6 +13,10 @@ const query = `*[_type == 'aboutPage'][0]{
     sections[]{
       ...,
       ${picture('image')},
+      missions[]{
+        ...,
+        ${picture('image')}
+      },
       values[]{
         ...,
         ${picture('image')},
@@ -45,6 +50,8 @@ const { sections, seo } = page;
             );
           case 'aboutPage.values':
             return <Values {...(section as ValuesData)} />;
+          case 'aboutPage.mission':
+            return <Mission client:idle {...section} />;
           default:
             return null;
         }
