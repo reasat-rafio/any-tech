@@ -17,7 +17,7 @@ const mission = {
           fields: [
             {
               name: 'title',
-              type: 'string',
+              type: 'text',
               validation: (Rule: Rule) => Rule.required(),
             },
             {

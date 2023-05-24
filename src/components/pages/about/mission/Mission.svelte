@@ -84,28 +84,55 @@
           <article
             class="grid lg:grid-cols-2 grid-cols-1 p-[24px] lg:px-[38px] lg:gap-[40px] lg:py-[43px] xl:px-[48px] xl:gap-[50px] xl:py-[53px] shadow-card-light-sm lg:shadow-card-light rounded-lg"
           >
-            <section class="space-y-[24px] lg:space-y-[32px] my-auto">
-              <H2 class="text-blue-primary">{title}</H2>
-              <p class="text-[24px] leading-[160%] text-blue-secondary">
+            <section class="space-y-[32px] my-auto">
+              <H2 class="text-blue-primary whitespace-pre-wrap">{title}</H2>
+              <p
+                class="lg:text-[24px] text-[16px] lg:leading-[160%] leading-[20px] text-blue-secondary lg:font-normal font-semibold"
+              >
                 {description}
               </p>
               <div
-                class="rounded-[8px] w-full min-h-[125px] overflow-hidden lg:hidden"
+                class="relative w-full min-h-[125px] overflow-hidden lg:hidden max-h-[400px] flex justify-center items-center"
               >
+                <img
+                  class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain"
+                  src="/frames/carousel-image-frame-2.png"
+                  alt="frame"
+                  loading="lazy"
+                />
+                <img
+                  class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain -z-10 scale-110"
+                  src="/frames/carousel-image-frame-1.svg"
+                  alt="frame"
+                  loading="lazy"
+                />
                 <SanityImage
                   imageUrlBuilder={imageBuilder}
-                  class="h-full w-full object-cover max-h-[400px]"
+                  class="h-[80%] w-[80%] object-cover"
                   src={image}
                   sizes="200px"
                 />
               </div>
             </section>
             <div
-              class="rounded-md w-full min-h-[220px] overflow-hidden lg:block hidden"
+              class="relative w-full min-h-[220px] overflow-hidden lg:flex justify-center items-center hidden xl:min-h-[450px]"
             >
+              <img
+                class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain"
+                src="/frames/carousel-image-frame-2.png"
+                alt="frame"
+                loading="lazy"
+              />
+              <img
+                class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain -z-10 scale-110"
+                src="/frames/carousel-image-frame-1.svg"
+                alt="frame"
+                loading="lazy"
+              />
+
               <SanityImage
                 imageUrlBuilder={imageBuilder}
-                class="h-full w-full object-cover aspect-square xl:min-h-[450px]"
+                class="h-[80%] w-[80%] object-cover aspect-square"
                 src={image}
                 sizes="500px"
               />
