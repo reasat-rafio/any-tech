@@ -52,7 +52,7 @@ export default {
           type: 'homePage.trustedBy',
         },
         {
-          type: 'homePage.cta',
+          type: 'common.cta',
         },
       ],
     },

@@ -2,7 +2,6 @@
   import Cta from '@/components/ui/CTA.svelte';
   import H1 from '@/components/ui/H1.svelte';
   import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
-  import type { HeroLink } from '@/lib/types/homePage';
   import type { SanityAsset } from '@sanity/image-url/lib/types/types';
   import type { Easing } from 'motion';
   import { timeline } from 'motion';
@@ -14,7 +13,7 @@
   export let title: string;
   export let subtitle: string;
   export let image: SanityAsset;
-  export let links: HeroLink[] | undefined = undefined;
+  export let links: CTALink[] | undefined = undefined;
 
   const delay = 0;
   const duration = 500;

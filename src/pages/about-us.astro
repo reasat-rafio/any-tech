@@ -3,6 +3,7 @@ import Hero from '@/components/common/hero/Hero.svelte';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
 import type { AboutPageData } from '@/lib/types/aboutPage';
+import Cta from '@/components/Cta.svelte';
 
 const query = `*[_type == 'aboutPage'][0]{
     ...,
@@ -23,6 +24,8 @@ const { sections, seo } = page;
       switch (section._type) {
         case 'common.hero':
           return <Hero client:load {...(section as CommonHeroData)} />;
+        case 'common.cta':
+          return <Cta client:visible {...(section as CTAData)} />;
         default:
           return null;
       }

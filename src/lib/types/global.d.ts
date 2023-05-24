@@ -46,6 +46,17 @@ declare global {
     headerContainerWidthInPercentage?: number;
   }
 
+  export interface CTALink extends Link {
+    variant: 'outline' | 'solid';
+  }
+
+  export interface CTAData {
+    _type: 'homePage.cta';
+    title: string;
+    subtitle: string;
+    links: CTALink[];
+  }
+
   type IconVariants =
     | 'ChevronRight'
     | 'ChevronRightWhite'

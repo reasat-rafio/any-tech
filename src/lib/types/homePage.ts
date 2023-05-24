@@ -1,7 +1,7 @@
 import type { SanityAsset } from '@sanity/image-url/lib/types/types';
 import type { PortableTextBlock } from 'sanity';
 
-type Section = Hero | LegacyToEfficiency | EasyBanking | Cta | TrustedBy;
+type Section = Hero | LegacyToEfficiency | EasyBanking | CTAData | TrustedBy;
 export interface Mission {
   _type: string;
   title: string;
@@ -33,17 +33,13 @@ export interface HomePageData {
   sections: Section[];
   mainBgImage: SanityTitledImage;
 }
-
-export interface HeroLink extends Link {
-  variant: 'outline' | 'solid';
-}
 export interface Hero {
   _type: string;
   _key: string;
   subtitle: string;
   title: string;
   image: SanityAsset;
-  links?: HeroLink[];
+  links?: CTALink[];
 }
 
 export interface LegacyToEfficiency {
@@ -99,13 +95,6 @@ export interface BankingDiagram {
   platform: string;
   service: string;
   colors: Colors;
-}
-
-export interface Cta {
-  _type: 'homePage.cta';
-  title: string;
-  subtitle: string;
-  button: Link;
 }
 
 export interface Colors {
