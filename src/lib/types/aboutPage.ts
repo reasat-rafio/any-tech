@@ -1,4 +1,4 @@
-type Section = CommonHeroData | CTAData;
+type Section = CommonHeroData | CTAData | CommonFeaturedContentData;
 
 export interface AboutPageData {
   seo: BaseMetaData;
