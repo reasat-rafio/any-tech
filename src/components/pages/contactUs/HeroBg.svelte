@@ -3,7 +3,7 @@
   import type { Easing } from 'motion';
   import { onMount } from 'svelte';
   import IntersectionObserver from 'svelte-intersection-observer';
-  import Wavelines from '@/components/common/hero/Wavelines.svelte';
+  import Wavelines from '@/components/hero/Wavelines.svelte';
 
   const delay = 0;
   let scrollY = 0;
