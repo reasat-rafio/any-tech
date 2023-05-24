@@ -1,0 +1,29 @@
+---
+import H2 from '@/components/ui/H2.svelte';
+import H5 from '@/components/ui/H5.svelte';
+import type { ValuesData as Props } from '@/lib/types/aboutPage';
+import Card from './Card.svelte';
+import Carousel from './Carousel.svelte';
+
+const { subtitle, title, values } = Astro.props;
+---
+
+<section class="container mt-[200px] text-center">
+  <header class="space-y-[24px]">
+    {!!title && <H5>{title}</H5>}
+    {!!subtitle && <H2>{subtitle}</H2>}
+  </header>
+
+  {
+    !!values?.length && (
+      <div class="md:mt-[64px] mt-[40px]">
+        <ul class="hidden gap-[30px] md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {values.map(({ description, image, title }) => (
+            <Card {description} {image} {title} />
+          ))}
+        </ul>
+        <Carousel client:idle class="md:hidden" {values} />
+      </div>
+    )
+  }
+</section>
