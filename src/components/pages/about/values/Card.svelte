@@ -15,7 +15,8 @@
       imageUrlBuilder={imageBuilder}
       src={image}
       class="mx-auto h-[155px] w-[155px] overflow-hidden rounded-full border-[8.5px] border-white object-cover drop-shadow-ellipse"
-      sizes="170px"
+      sizes="30px"
+      alt={image.alt}
     />
   </div>
 
