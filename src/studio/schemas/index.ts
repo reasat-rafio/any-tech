@@ -1,13 +1,14 @@
 // import documents from './documents'
-import pages from './pages';
 import editor from './editor';
-import link from './link';
+import commonFeatured from './featured';
+import commonHero from './hero';
 import iconLink from './iconLink';
+import link from './link';
 import menuItem from './menuItem';
 import menuItems from './menuItems';
+import pages from './pages';
 import seo from './seo';
 import site from './site/index';
-import commonHero from './hero';
 
 export const schemaTypes = [
   ...pages,
@@ -19,5 +20,6 @@ export const schemaTypes = [
   site,
   iconLink,
   commonHero,
+  commonFeatured,
   //   ...documents
 ];

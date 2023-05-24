@@ -1,9 +1,11 @@
 import {
+  SanityAsset,
   SanityImageDimensions,
   SanityImageWithAssetStub,
   SanityReference,
 } from '@sanity/image-url/lib/types/types';
 import type { SanityDimensionedImage } from 'astro-sanity-picture/src/types';
+import type { PortableTextBlock } from 'sanity';
 
 declare global {
   interface PortableText {
@@ -44,6 +46,14 @@ declare global {
     title: string;
     subtitle: string;
     headerContainerWidthInPercentage?: number;
+  }
+  interface CommonFeaturedContentData {
+    _key: string;
+    _type: 'common.featured';
+    title: string;
+    subtitle: string;
+    description: PortableTextBlock;
+    image: SanityImageDimensions;
   }
 
   type IconVariants =
