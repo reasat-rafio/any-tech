@@ -1,3 +1,4 @@
 import aboutDocument from './document';
+import values from './values';
 
-export default [aboutDocument];
+export default [aboutDocument, values];
