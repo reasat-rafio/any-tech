@@ -1,6 +1,7 @@
 import type { SanityAsset } from '@sanity/image-url/lib/types/types';
 
-type Section = CommonHeroData | CommonFeaturedContentData | ValuesData;
+type Section = CommonHeroData | CommonFeaturedContentData | ValuesData | CTAData;
+
 
 export interface AboutPageData {
   seo: BaseMetaData;

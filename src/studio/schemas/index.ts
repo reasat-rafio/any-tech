@@ -9,6 +9,7 @@ import menuItems from './menuItems';
 import pages from './pages';
 import seo from './seo';
 import site from './site/index';
+import commonCta from './cta';
 
 export const schemaTypes = [
   ...pages,
@@ -20,6 +21,7 @@ export const schemaTypes = [
   site,
   iconLink,
   commonHero,
+  commonCta,
   commonFeatured,
   //   ...documents
 ];
