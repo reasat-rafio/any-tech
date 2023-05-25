@@ -16,7 +16,6 @@
   export let description: PortableTextBlock;
   export let image: SanityAsset;
 
-  let textContainerInnerHeight = 0;
   let intersecting = false;
   let scrollY = 0;
   let windowWidth = 0;
@@ -42,12 +41,15 @@
     <article
       class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
     >
-      <div bind:clientHeight={textContainerInnerHeight}>
+      <div>
         <H5 class="mb-[16px]">{title}</H5>
         <H2>{subtitle}</H2>
 
         <div class="mt-[32px] relative overflow-visible lg:hidden">
-          <MobileImgFrame {offsetYVal} {intersecting} />
+          {#if windowWidth < 1028}
+            <MobileImgFrame {offsetYVal} {intersecting} />
+          {/if}
+
           <SanityImage
             id="aboutpage-mobile-story-image"
             imageUrlBuilder={imageBuilder}
