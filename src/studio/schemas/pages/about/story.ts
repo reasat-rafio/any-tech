@@ -1,10 +1,10 @@
 import { MdOutlineFeaturedPlayList } from 'react-icons/md';
 import type { Rule } from 'sanity';
 
-const commonFeatured = {
-  name: 'common.featured',
+const story = {
+  name: 'aboutPage.story',
   type: 'object',
-  title: 'Featured Content',
+  title: 'Our story',
   icon: MdOutlineFeaturedPlayList,
   fields: [
     {
@@ -42,30 +42,6 @@ const commonFeatured = {
         },
       ],
     },
-    {
-      name: 'frame',
-      type: 'image',
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-          description: 'Important for SEO and accessibility',
-        },
-      ],
-    },
-    {
-      name: 'mobileImgPosition',
-      type: 'string',
-      description:
-        'This value will be used to position the image on mobile screens.',
-      options: {
-        list: ['top', 'bottom'],
-        layout: 'radio',
-      },
-      initialValue: 'top',
-      validation: (Rule: Rule) => Rule.required(),
-    },
   ],
   preview: {
     select: {
@@ -76,4 +52,4 @@ const commonFeatured = {
   },
 };
 
-export default commonFeatured;
+export default story;
