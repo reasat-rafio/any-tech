@@ -19,12 +19,17 @@
   let textContainerInnerHeight = 0;
   let intersecting = false;
   let scrollY = 0;
+  let windowWidth = 0;
   let windowHeight = 0;
   let rootElRef: HTMLElement;
   let positionFromTop = 0;
   $: if (rootElRef)
     positionFromTop = rootElRef.getBoundingClientRect().top + scrollY;
-  $: offsetYVal = Math.min(positionFromTop - scrollY - windowHeight, 13);
+  $: multiplyVal = windowWidth >= 1024 ? -0.015 : -0.005;
+  $: offsetYVal = Math.min(
+    (positionFromTop - scrollY - windowHeight) * multiplyVal,
+    13
+  );
 
   let imageFrameRef: HTMLImageElement;
   let imageFrameMobileRef: HTMLImageElement;
@@ -32,13 +37,9 @@
 
   const windowScrollAction = () => {
     if (intersecting) {
-      imageFrameRef.style.transform = `translate3d(0%, ${
-        offsetYVal * -0.015
-      }%, 0)`;
+      imageFrameRef.style.transform = `translate3d(0%, ${offsetYVal}%, 0)`;
       imageFrameRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
-      imageFrameMobileRef.style.transform = `translate3d(0%, ${
-        offsetYVal * -0.005
-      }%, 0) scaleX(1.25)`;
+      imageFrameMobileRef.style.transform = `translate3d(0%, ${offsetYVal}%, 0) scaleX(1.25)`;
       imageFrameMobileRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
     }
   };
@@ -47,6 +48,7 @@
 <svelte:window
   bind:scrollY
   bind:innerHeight={windowHeight}
+  bind:innerWidth={windowWidth}
   on:scroll={windowScrollAction}
   on:resize={() => (positionFromTop = rootElRef?.getBoundingClientRect().top)}
 />

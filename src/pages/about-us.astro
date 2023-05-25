@@ -37,29 +37,27 @@ const { sections, seo } = page;
 
 <Layout seo={seo} site={site}>
   <!-- TODO remove the div later -->
-  <div class="pb-60">
-    {
-      sections.map((section) => {
-        switch (section._type) {
-          case 'common.hero':
-            return <Hero client:load {...(section as CommonHeroData)} />;
-          case 'common.featured':
-            return (
-              <FeaturedContent
-                client:idle
-                {...(section as CommonFeaturedContentData)}
-              />
-            );
-          case 'aboutPage.values':
-            return <Values {...(section as ValuesData)} />;
-          case 'aboutPage.mission':
-            return <Mission client:idle {...section} />;
-          case 'common.cta':
-            return <Cta client:visible {...(section as CTAData)} />;
-          default:
-            return null;
-        }
-      })
-    }
-  </div>
+  {
+    sections.map((section) => {
+      switch (section._type) {
+        case 'common.hero':
+          return <Hero client:load {...(section as CommonHeroData)} />;
+        case 'common.featured':
+          return (
+            <FeaturedContent
+              client:idle
+              {...(section as CommonFeaturedContentData)}
+            />
+          );
+        case 'aboutPage.values':
+          return <Values {...(section as ValuesData)} />;
+        case 'aboutPage.mission':
+          return <Mission client:idle {...section} />;
+        case 'common.cta':
+          return <Cta client:visible {...(section as CTAData)} />;
+        default:
+          return null;
+      }
+    })
+  }
 </Layout>
