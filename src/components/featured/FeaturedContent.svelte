@@ -8,11 +8,13 @@
   import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import { imageBuilder } from '@/lib/helpers';
   import IntersectionObserver from 'svelte-intersection-observer';
+  import MobileImage from './MobileImage.svelte';
 
   export let title: string;
   export let subtitle: string;
   export let description: PortableTextBlock;
   export let image: SanityAsset;
+  export let mobileImgPosition: 'top' | 'bottom';
 
   const delay = 0;
   const duration = 1000;
@@ -64,33 +66,20 @@
         <H5 class="mb-[16px]">{title}</H5>
         <H2>{subtitle}</H2>
 
-        <div class="mt-[32px] relative overflow-visible lg:hidden">
-          <img
-            bind:this={imageFrameMobileRef}
-            class="absolute h-full w-full top-0 left-0 pointer-events-none scale-x-125 object-fill"
-            src="/frames/content-image-1.png"
-            alt="frame"
-            loading="lazy"
-          />
-          <SanityImage
-            imageUrlBuilder={imageBuilder}
-            class="h-full w-full object-cover mx-auto max-h-[500px]"
-            src={image}
-            width="250px"
-            alt={image?.alt}
-          />
-          {#if image?.title}
-            <div
-              class="ml-auto block w-fit mr-[10%] font-bold text-[12px] tacking-[0.16em] uppercase text-white relative z-10 pt-[24px]"
-            >
-              {image.title}
-            </div>
-          {/if}
-        </div>
+        {#if mobileImgPosition === 'top'}
+          <MobileImage bind:imageFrameMobileRef {image} />
+        {/if}
 
-        <Description class="lg:mt-[32px] mt-[52px]">
+        <Description
+          class={`${
+            mobileImgPosition === 'top' ? ' mt-[52px]' : 'mt-[22px]'
+          } lg:mt-[32px]`}
+        >
           <PortableText value={description} />
         </Description>
+        {#if mobileImgPosition === 'bottom'}
+          <MobileImage bind:imageFrameMobileRef {image} />
+        {/if}
       </div>
       <div
         class="relative overflow-visible lg:block hidden"

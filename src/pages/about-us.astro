@@ -1,5 +1,4 @@
 ---
-import FeaturedContent from '@/components/FeaturedContent.svelte';
 import Hero from '@/components/hero/Hero.svelte';
 import Mission from '@/components/pages/about/mission/Mission.svelte';
 import Values from '@/components/pages/about/values/Values.astro';
@@ -9,6 +8,7 @@ import Cta from '@/components/Cta.svelte';
 import type { AboutPageData, ValuesData } from '@/lib/types/aboutPage';
 
 import { picture } from 'astro-sanity-picture';
+import FeaturedContent from '@/components/featured/FeaturedContent.svelte';
 
 const query = `*[_type == 'aboutPage'][0]{
     ...,

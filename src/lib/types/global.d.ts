@@ -54,6 +54,7 @@ declare global {
     subtitle: string;
     description: PortableTextBlock;
     image: SanityImageDimensions;
+    mobileImgPosition: 'top' | 'bottom';
   }
 
   export interface CTALink extends Link {
