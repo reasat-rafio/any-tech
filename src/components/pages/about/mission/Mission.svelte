@@ -51,7 +51,7 @@
   <section
     id="mission-carousel"
     bind:this={sectionRef}
-    class="container xl:pt-[85px] pt-[50px]"
+    class="container xl:pb-[210px] pb-[110px]"
   >
     <div class="relative">
       <Swiper
@@ -135,7 +135,7 @@
                   imageUrlBuilder={imageBuilder}
                   class="h-[80%] w-[80%] object-cover aspect-square"
                   src={image}
-                  sizes="300px"
+                  sizes="400px"
                 />
               </div>
             </article>

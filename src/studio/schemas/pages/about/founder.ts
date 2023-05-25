@@ -1,11 +1,11 @@
-import { MdOutlineFeaturedPlayList } from 'react-icons/md';
+import { BsPersonVcard } from 'react-icons/bs';
 import type { Rule } from 'sanity';
 
-const commonFeatured = {
-  name: 'common.featured',
+const founder = {
+  name: 'aboutPage.founder',
   type: 'object',
-  title: 'Featured Content',
-  icon: MdOutlineFeaturedPlayList,
+  title: 'Our Founder',
+  icon: BsPersonVcard,
   fields: [
     {
       name: 'title',
@@ -28,16 +28,16 @@ const commonFeatured = {
       validation: (Rule: Rule) => Rule.required(),
       fields: [
         {
+          name: 'title',
+          type: 'string',
+          description: 'Will be displayed below the image as a title.',
+        },
+        {
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
           description: 'Important for SEO and accessibility',
           validation: (Rule: Rule) => Rule.required(),
-        },
-        {
-          name: 'title',
-          type: 'string',
-          description: 'Will be displayed below the image as a title.',
         },
       ],
     },
@@ -51,4 +51,4 @@ const commonFeatured = {
   },
 };
 
-export default commonFeatured;
+export default founder;

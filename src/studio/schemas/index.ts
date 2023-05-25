@@ -1,6 +1,5 @@
 // import documents from './documents'
 import editor from './editor';
-import commonFeatured from './featured';
 import commonHero from './hero';
 import iconLink from './iconLink';
 import link from './link';
@@ -22,6 +21,5 @@ export const schemaTypes = [
   iconLink,
   commonHero,
   commonCta,
-  commonFeatured,
   //   ...documents
 ];

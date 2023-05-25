@@ -47,14 +47,6 @@ declare global {
     subtitle: string;
     headerContainerWidthInPercentage?: number;
   }
-  interface CommonFeaturedContentData {
-    _key: string;
-    _type: 'common.featured';
-    title: string;
-    subtitle: string;
-    description: PortableTextBlock;
-    image: SanityImageDimensions;
-  }
 
   export interface CTALink extends Link {
     variant: 'outline' | 'solid';

@@ -1,13 +1,16 @@
-import type { SanityAsset } from '@sanity/image-url/lib/types/types';
-
+import type {
+  SanityAsset,
+  SanityImageDimensions,
+} from '@sanity/image-url/lib/types/types';
+import type { PortableTextBlock } from 'sanity';
 
 type Section =
   | CommonHeroData
-  | CommonFeaturedContentData
+  | StoryData
   | ValuesData
   | MissionData
-  | CTAData
-;
+  | FounderData
+  | CTAData;
 
 export interface AboutPageData {
   seo: BaseMetaData;
@@ -20,6 +23,23 @@ export interface ValuesData {
   title?: string;
   subtitle?: string;
   values?: ValueData[];
+}
+
+export interface StoryData {
+  _key: string;
+  _type: 'aboutPage.story';
+  title: string;
+  subtitle: string;
+  description: PortableTextBlock;
+  image: SanityImageDimensions;
+}
+export interface FounderData {
+  _key: string;
+  _type: 'aboutPage.founder';
+  title: string;
+  subtitle: string;
+  description: PortableTextBlock;
+  image: SanityImageDimensions;
 }
 
 export interface MissionData {

@@ -8,58 +8,52 @@
   import SanityImage from '@/lib/sanity-image/sanity-image.svelte';
   import { imageBuilder } from '@/lib/helpers';
   import IntersectionObserver from 'svelte-intersection-observer';
+  import DesktopImgFrame from './DesktopImgFrame.svelte';
+  import MobileImgFrame from './MobileImgFrame.svelte';
 
   export let title: string;
   export let subtitle: string;
   export let description: PortableTextBlock;
   export let image: SanityAsset;
 
-  const delay = 0;
-  const duration = 500;
-  let textContainerInnerHeight = 0;
   let intersecting = false;
   let scrollY = 0;
+  let windowWidth = 0;
+  let windowHeight = 0;
   let rootElRef: HTMLElement;
-  let imageFrameRef: HTMLImageElement;
-  let imageFrameMobileRef: HTMLImageElement;
-  const springEasing = `cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
 
-  const windowScrollAction = () => {
-    if (intersecting) {
-      imageFrameRef.style.transform = `translate3d(0%, ${scrollY * 0.009}%, 0)`;
-      imageFrameRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
-      imageFrameMobileRef.style.transform = `translate3d(0%, ${
-        scrollY * 0.005
-      }%, 0) scaleX(1.25)`;
-      imageFrameMobileRef.style.transition = `transform ${duration}ms ${springEasing} ${delay}ms`;
-    }
-  };
+  let positionFromTop = 0;
+  $: positionFromTop = rootElRef?.getBoundingClientRect().top + scrollY;
+  $: offsetYVal = positionFromTop - scrollY - windowHeight;
 </script>
 
-<svelte:window bind:scrollY on:scroll={windowScrollAction} />
+<svelte:window
+  bind:scrollY
+  bind:innerHeight={windowHeight}
+  bind:innerWidth={windowWidth}
+  on:resize={() => (positionFromTop = rootElRef?.getBoundingClientRect().top)}
+/>
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section
     bind:this={rootElRef}
-    class="{$$props.class} container pt-[85px] lg:pt-[128px] overflow-x-hidden lg:overflow-x-visible"
+    class="{$$props.class} container pt-[25px] pb-[50px] lg:pb-[150px] overflow-x-hidden lg:overflow-x-visible"
   >
     <article
       class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
     >
-      <div bind:clientHeight={textContainerInnerHeight}>
+      <div>
         <H5 class="mb-[16px]">{title}</H5>
         <H2>{subtitle}</H2>
 
         <div class="mt-[32px] relative overflow-visible lg:hidden">
-          <img
-            bind:this={imageFrameMobileRef}
-            class="absolute h-full w-full top-0 left-0 pointer-events-none scale-x-125"
-            src="/frames/content-image-1.png"
-            alt="frame"
-            loading="lazy"
-          />
+          {#if windowWidth < 1028}
+            <MobileImgFrame {offsetYVal} {intersecting} />
+          {/if}
+
           <SanityImage
+            id="aboutpage-mobile-story-image"
             imageUrlBuilder={imageBuilder}
-            class="h-full w-full object-cover mx-auto"
+            class="h-full w-full object-cover mx-auto max-h-[500px]"
             src={image}
             width="250px"
             alt={image?.alt}
@@ -77,22 +71,17 @@
           <PortableText value={description} />
         </Description>
       </div>
-      <div
-        class="relative overflow-visible lg:block hidden"
-        style="max-height: {textContainerInnerHeight}px;"
-      >
-        <img
-          bind:this={imageFrameRef}
-          class="absolute h-full w-full top-0 left-0 pointer-events-none"
-          src="/frames/content-image-1.png"
-          alt="frame"
-          loading="lazy"
-        />
+      <div class="relative overflow-visible lg:block hidden">
+        {#if windowWidth >= 1028}
+          <DesktopImgFrame {offsetYVal} {intersecting} />
+        {/if}
+
         <SanityImage
+          id="aboutpage-desktop-story-image"
           imageUrlBuilder={imageBuilder}
-          class="h-full w-[80%] object-cover mx-auto"
+          class="h-min w-[80%] object-cover mx-auto"
           src={image}
-          width="450px"
+          width="200px"
           alt={image?.alt}
         />
         {#if image?.title}

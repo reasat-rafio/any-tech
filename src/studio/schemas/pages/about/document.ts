@@ -23,9 +23,10 @@ const aboutDocument = {
       type: 'array',
       of: [
         { type: 'common.hero' },
-        { type: 'common.featured' },
+        { type: 'aboutPage.story' },
         { type: 'aboutPage.mission' },
         { type: 'aboutPage.values' },
+        { type: 'aboutPage.founder' },
         { type: 'common.cta' },
       ],
     },
