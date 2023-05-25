@@ -15,7 +15,7 @@
   export let image: SanityAsset;
 
   const delay = 0;
-  const duration = 500;
+  const duration = 1000;
   let textContainerInnerHeight = 0;
   let intersecting = false;
   let scrollY = 0;
@@ -55,7 +55,7 @@
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section
     bind:this={rootElRef}
-    class="{$$props.class} container pb-[50px] lg:pb-[150px] overflow-x-hidden lg:overflow-x-visible"
+    class="{$$props.class} container pt-[25px] pb-[50px] lg:pb-[150px] overflow-x-hidden lg:overflow-x-visible"
   >
     <article
       class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
@@ -67,14 +67,14 @@
         <div class="mt-[32px] relative overflow-visible lg:hidden">
           <img
             bind:this={imageFrameMobileRef}
-            class="absolute h-full w-full top-0 left-0 pointer-events-none scale-x-125"
+            class="absolute h-full w-full top-0 left-0 pointer-events-none scale-x-125 object-fill"
             src="/frames/content-image-1.png"
             alt="frame"
             loading="lazy"
           />
           <SanityImage
             imageUrlBuilder={imageBuilder}
-            class="h-full w-full object-cover mx-auto"
+            class="h-full w-full object-cover mx-auto max-h-[500px]"
             src={image}
             width="250px"
             alt={image?.alt}
@@ -94,7 +94,7 @@
       </div>
       <div
         class="relative overflow-visible lg:block hidden"
-        style="max-height: {textContainerInnerHeight}px;"
+        style="max-height: {textContainerInnerHeight - 50}px;"
       >
         <img
           bind:this={imageFrameRef}
@@ -107,7 +107,7 @@
           imageUrlBuilder={imageBuilder}
           class="h-full w-[80%] object-cover mx-auto"
           src={image}
-          width="450px"
+          width="400px"
           alt={image?.alt}
         />
         {#if image?.title}

@@ -135,7 +135,7 @@
                   imageUrlBuilder={imageBuilder}
                   class="h-[80%] w-[80%] object-cover aspect-square"
                   src={image}
-                  sizes="300px"
+                  sizes="400px"
                 />
               </div>
             </article>
