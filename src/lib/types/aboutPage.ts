@@ -7,7 +7,6 @@ import type { PortableTextBlock } from 'sanity';
 type Section =
   | CommonHeroData
   | StoryData
-  | CommonFeaturedContentData
   | ValuesData
   | MissionData
   | FounderData

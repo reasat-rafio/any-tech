@@ -1,15 +1,14 @@
 ---
+import Cta from '@/components/Cta.svelte';
 import Hero from '@/components/hero/Hero.svelte';
+import Founder from '@/components/pages/about/Founder.svelte';
 import Mission from '@/components/pages/about/mission/Mission.svelte';
+import Story from '@/components/pages/about/story/Story.svelte';
 import Values from '@/components/pages/about/values/Values.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
-import Cta from '@/components/Cta.svelte';
 import type { AboutPageData } from '@/lib/types/aboutPage';
-
 import { picture } from 'astro-sanity-picture';
-import Story from '@/components/pages/about/Story.svelte';
-import Founder from '@/components/pages/about/Founder.svelte';
 
 const query = `*[_type == 'aboutPage'][0]{
     ...,
@@ -43,7 +42,7 @@ const { sections, seo } = page;
         case 'common.hero':
           return <Hero client:load {...section} />;
         case 'aboutPage.story':
-          return <Story client:visible {...section} />;
+          return <Story client:load {...section} />;
         case 'aboutPage.values':
           return <Values {...section} />;
         case 'aboutPage.mission':
