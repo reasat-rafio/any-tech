@@ -51,48 +51,72 @@
   <section
     id="mission-carousel"
     bind:this={sectionRef}
-    class="container lg:pt-[85px] pt-[50px] relative"
+    class="container xl:pt-[85px] pt-[50px]"
   >
-    <Swiper
-      modules={[Navigation, Pagination]}
-      spaceBetween={50}
-      speed={1000}
-      navigation={{ prevEl: '#prev_slide', nextEl: '#next_slide' }}
-      pagination={{
-        el: '#mission-carousel .swiper-pagination',
-        clickable: true,
-        renderBullet: function (_, className) {
-          return `<span class="${className}"></span>`;
-        },
-      }}
-      on:slideChange={(swiper) => {
-        let activeIndex = swiper.detail[0].activeIndex;
-        if (activeIndex === 0) {
-          disablePrevBtn = true;
-          disableNextBtn = false;
-        } else if (activeIndex === missions.length - 1) {
-          disablePrevBtn = false;
-          disableNextBtn = true;
-        } else {
-          disablePrevBtn = false;
-          disableNextBtn = false;
-        }
-      }}
-    >
-      {#each missions as { description, image, title }}
-        <SwiperSlide class="pb-6 px-2">
-          <article
-            class="grid lg:grid-cols-2 grid-cols-1 p-[24px] lg:px-[38px] lg:gap-[40px] lg:py-[43px] xl:px-[48px] xl:gap-[50px] xl:py-[53px] shadow-card-light-sm lg:shadow-card-light rounded-lg"
-          >
-            <section class="space-y-[32px] my-auto">
-              <H2 class="text-blue-primary whitespace-pre-wrap">{title}</H2>
-              <p
-                class="lg:text-[24px] text-[16px] lg:leading-[160%] leading-[20px] text-blue-secondary lg:font-normal font-semibold"
-              >
-                {description}
-              </p>
+    <div class="relative">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={50}
+        speed={1000}
+        navigation={{ prevEl: '#prev_slide', nextEl: '#next_slide' }}
+        pagination={{
+          el: '#mission-carousel .swiper-pagination',
+          clickable: true,
+          renderBullet: function (_, className) {
+            return `<span class="${className}"></span>`;
+          },
+        }}
+        on:slideChange={(swiper) => {
+          let activeIndex = swiper.detail[0].activeIndex;
+          if (activeIndex === 0) {
+            disablePrevBtn = true;
+            disableNextBtn = false;
+          } else if (activeIndex === missions.length - 1) {
+            disablePrevBtn = false;
+            disableNextBtn = true;
+          } else {
+            disablePrevBtn = false;
+            disableNextBtn = false;
+          }
+        }}
+      >
+        {#each missions as { description, image, title }}
+          <SwiperSlide class="pb-6 px-2">
+            <article
+              class="grid md:grid-cols-2 grid-cols-1 p-[24px] md:px-[38px] md:gap-[40px] md:py-[43px] xl:px-[48px] xl:gap-[50px] xl:py-[53px] shadow-card-light-sm md:shadow-card-light rounded-lg"
+            >
+              <section class="space-y-[32px] my-auto">
+                <H2 class="text-blue-primary whitespace-pre-wrap">{title}</H2>
+                <p
+                  class="md:text-[24px] text-[16px] md:leading-[160%] leading-[20px] text-blue-secondary md:font-normal font-semibold"
+                >
+                  {description}
+                </p>
+                <div
+                  class="relative w-full md:hidden flex justify-center items-center py-[60px]"
+                >
+                  <img
+                    class="absolute h-full w-full top-0 left-0 pointer-events-none object-contain"
+                    src="/frames/carousel-image-frame-2.png"
+                    alt="frame"
+                    loading="lazy"
+                  />
+                  <img
+                    class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain scale-110 -z-10"
+                    src="/frames/carousel-image-frame-1.svg"
+                    alt="frame"
+                    loading="lazy"
+                  />
+                  <SanityImage
+                    imageUrlBuilder={imageBuilder}
+                    class="h-[80%] w-[80%] object-cover aspect-square"
+                    src={image}
+                    sizes="200px"
+                  />
+                </div>
+              </section>
               <div
-                class="relative w-full min-h-[125px] overflow-hidden lg:hidden max-h-[400px] flex justify-center items-center"
+                class="relative w-full min-h-[220px] md:flex justify-center items-center hidden xl:min-h-[450px]"
               >
                 <img
                   class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain"
@@ -106,47 +130,25 @@
                   alt="frame"
                   loading="lazy"
                 />
+
                 <SanityImage
                   imageUrlBuilder={imageBuilder}
-                  class="h-[80%] w-[80%] object-cover"
+                  class="h-[80%] w-[80%] object-cover aspect-square"
                   src={image}
-                  sizes="200px"
+                  sizes="300px"
                 />
               </div>
-            </section>
-            <div
-              class="relative w-full min-h-[220px] overflow-hidden lg:flex justify-center items-center hidden xl:min-h-[450px]"
-            >
-              <img
-                class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain"
-                src="/frames/carousel-image-frame-2.png"
-                alt="frame"
-                loading="lazy"
-              />
-              <img
-                class="absolute h-full w-full top-0 left-0 pointer-events-none object-center object-contain -z-10 scale-110"
-                src="/frames/carousel-image-frame-1.svg"
-                alt="frame"
-                loading="lazy"
-              />
-
-              <SanityImage
-                imageUrlBuilder={imageBuilder}
-                class="h-[80%] w-[80%] object-cover aspect-square"
-                src={image}
-                sizes="500px"
-              />
-            </div>
-          </article>
-        </SwiperSlide>
-      {/each}
-    </Swiper>
-    <NavigationArrow
-      class="hidden lg:block"
-      {disablePrevBtn}
-      {disableNextBtn}
-      buttonPosition={navigationButtonPosition}
-    />
-    <PaginationBlock />
+            </article>
+          </SwiperSlide>
+        {/each}
+      </Swiper>
+      <NavigationArrow
+        class="hidden md:block w-full"
+        {disablePrevBtn}
+        {disableNextBtn}
+        buttonPosition={navigationButtonPosition}
+      />
+      <PaginationBlock />
+    </div>
   </section>
 {/if}

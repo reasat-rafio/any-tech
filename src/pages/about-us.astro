@@ -41,13 +41,13 @@ const { sections, seo } = page;
         switch (section._type) {
           case 'common.hero':
             return <Hero client:load {...(section as CommonHeroData)} />;
-          case 'common.featured':
-            return (
-              <FeaturedContent
-                client:idle
-                {...(section as CommonFeaturedContentData)}
-              />
-            );
+          // case 'common.featured':
+          //   return (
+          //     <FeaturedContent
+          //       client:idle
+          //       {...(section as CommonFeaturedContentData)}
+          //     />
+          //   );
           case 'aboutPage.values':
             return <Values {...(section as ValuesData)} />;
           case 'aboutPage.mission':
