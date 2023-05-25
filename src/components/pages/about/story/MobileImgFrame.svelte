@@ -61,7 +61,7 @@
   <div class="relative h-full w-full">
     <img
       bind:this={frame1Ref}
-      class="absolute top-[10%] -left-[10%] w-[30%]"
+      class="absolute top-[10%] -left-[10%] w-[40%]"
       src="/frames/story/1.png"
       alt="frame"
       loading="lazy"

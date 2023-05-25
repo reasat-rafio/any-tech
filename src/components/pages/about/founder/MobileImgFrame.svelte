@@ -28,7 +28,7 @@
 
   const windowScrollAction = () => {
     if (intersecting) {
-      doAnimation(frame1Ref, -0.02);
+      doAnimation(frame1Ref, -0.01);
       doAnimation(frame2Ref, -0.05);
       doAnimation(frame3Ref, -0.04, 25);
     }
@@ -61,7 +61,7 @@
   <div class="relative h-full w-full">
     <img
       bind:this={frame1Ref}
-      class="absolute top-[10%] -left-[10%] max-w-[60%]"
+      class="absolute top-[10%] -left-[10%] sm:max-w-[50%] max-w-[60%]"
       src="/frames/founder/1.png"
       alt="frame"
       loading="lazy"

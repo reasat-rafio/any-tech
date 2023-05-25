@@ -36,7 +36,7 @@
 <IntersectionObserver element={rootElRef} bind:intersecting>
   <section
     bind:this={rootElRef}
-    class="{$$props.class} container pt-[25px] pb-[50px] lg:pb-[150px] overflow-x-hidden lg:overflow-x-visible"
+    class="{$$props.class} container pt-[25px] pb-[50px] lg:pb-[150px]"
   >
     <article
       class="grid grid-cols-1 lg:grid-cols-2 pb-[24px] lg:pb-0 lg:gap-x-[30px]"
