@@ -12,6 +12,7 @@ const commonFeatured = {
       type: 'string',
       validation: (Rule: Rule) => Rule.required(),
     },
+
     {
       name: 'subtitle',
       type: 'text',
@@ -40,6 +41,18 @@ const commonFeatured = {
           description: 'Will be displayed below the image as a title.',
         },
       ],
+    },
+    {
+      name: 'mobileImgPosition',
+      type: 'string',
+      description:
+        'This value will be used to position the image on mobile screens.',
+      options: {
+        list: ['top', 'bottom'],
+        layout: 'radio',
+      },
+      initialValue: 'top',
+      validation: (Rule: Rule) => Rule.required(),
     },
   ],
   preview: {
