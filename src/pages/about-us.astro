@@ -5,7 +5,9 @@ import Mission from '@/components/pages/about/mission/Mission.svelte';
 import Values from '@/components/pages/about/values/Values.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
+import Cta from '@/components/Cta.svelte';
 import type { AboutPageData, ValuesData } from '@/lib/types/aboutPage';
+
 import { picture } from 'astro-sanity-picture';
 
 const query = `*[_type == 'aboutPage'][0]{
@@ -52,6 +54,8 @@ const { sections, seo } = page;
             return <Values {...(section as ValuesData)} />;
           case 'aboutPage.mission':
             return <Mission client:idle {...section} />;
+          case 'common.cta':
+            return <Cta client:visible {...(section as CTAData)} />;
           default:
             return null;
         }

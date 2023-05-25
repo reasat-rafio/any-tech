@@ -5,7 +5,6 @@ import homeDocument from './document';
 import hero from './hero';
 import legacyToEfficiency from './legacyToEfficiency';
 import easyBanking from './easyBanking';
-import cta from './cta';
 import trustedBy from './trustedBy';
 
 export default [
@@ -16,6 +15,5 @@ export default [
   hero,
   legacyToEfficiency,
   easyBanking,
-  cta,
   trustedBy,
 ];

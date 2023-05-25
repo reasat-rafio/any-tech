@@ -1,11 +1,11 @@
 <script lang="ts">
   import { timeline } from 'motion';
   import { onMount } from 'svelte';
-  import CTA from '@/components/ui/CTA.svelte';
+  import Cta from '@/components/ui/CTA.svelte';
 
   export let title: string;
   export let subtitle: string;
-  export let button: Link;
+  export let links: CTALink[] | undefined = undefined;
 
   const delay = 0;
   const duration = 500;
@@ -57,7 +57,7 @@
 
 <svelte:window on:mousemove={windowMouseMoveAction} />
 <section
-  class="relative h-[60vh] lg:h-[530px] w-full bg-blue-primary text-white bg-clip-cta overflow-hidden"
+  class="relative h-[60vh] lg:h-[530px] w-full bg-blue-primary text-white bg-clip-cta overflow-hidden bg-[url('/backgrounds/ctaMobileWaveLines.svg')] bg-no-repeat bg-cover"
 >
   <div
     class="container flex w-full items-start justify-center h-full relative z-10 flex-col mt-6"
@@ -70,9 +70,15 @@
     <p class="text-base lg:text-lg 2xl:text-xl lg:whitespace-pre-line mb-6">
       {subtitle}
     </p>
-    <div class="max-lg:w-full">
-      <CTA variant={'solid'} href={button.href} title={button.title} />
-    </div>
+    {#if !!links?.length}
+      <div
+        class="flex lg:flex-row flex-col lg:space-x-[16px] lg:mt-2.5 space-y-4 lg:space-y-0 w-full"
+      >
+        {#each links as link}
+          <Cta variant={link.variant} href={link.href} title={link.title} />
+        {/each}
+      </div>
+    {/if}
   </div>
 
   <object
@@ -89,13 +95,6 @@
     aria-label="background waveforms"
     type="image/svg+xml"
     data={`/backgrounds/WaveLinesDesktop2.svg`}
-    >Your borwser doesn't support SVG
-  </object>
-  <object
-    class="absolute inset-0 h-full w-full object-bottom lg:hidden"
-    aria-label="background waveforms"
-    type="image/svg+xml"
-    data={`/backgrounds/ctaMobileWaveLines.svg`}
     >Your borwser doesn't support SVG
   </object>
 </section>

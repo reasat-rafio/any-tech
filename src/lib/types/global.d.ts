@@ -56,6 +56,17 @@ declare global {
     image: SanityImageDimensions;
   }
 
+  export interface CTALink extends Link {
+    variant: 'outline' | 'solid';
+  }
+
+  export interface CTAData {
+    _type: 'common.cta';
+    title: string;
+    subtitle: string;
+    links: CTALink[];
+  }
+
   type IconVariants =
     | 'ChevronRight'
     | 'ChevronRightWhite'

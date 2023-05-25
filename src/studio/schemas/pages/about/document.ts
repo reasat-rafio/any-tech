@@ -26,6 +26,7 @@ const aboutDocument = {
         { type: 'common.featured' },
         { type: 'aboutPage.mission' },
         { type: 'aboutPage.values' },
+        { type: 'common.cta' },
       ],
     },
   ],
