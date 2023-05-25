@@ -51,7 +51,7 @@
   <section
     id="mission-carousel"
     bind:this={sectionRef}
-    class="container xl:pt-[85px] pt-[50px]"
+    class="container xl:pb-[210px] pb-[110px]"
   >
     <div class="relative">
       <Swiper
