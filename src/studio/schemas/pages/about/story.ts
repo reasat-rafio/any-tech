@@ -1,11 +1,11 @@
-import { MdOutlineFeaturedPlayList } from 'react-icons/md';
+import { MdHistory } from 'react-icons/md';
 import type { Rule } from 'sanity';
 
 const story = {
   name: 'aboutPage.story',
   type: 'object',
   title: 'Our story',
-  icon: MdOutlineFeaturedPlayList,
+  icon: MdHistory,
   fields: [
     {
       name: 'title',

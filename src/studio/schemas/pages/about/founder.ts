@@ -1,11 +1,11 @@
-import { MdOutlineFeaturedPlayList } from 'react-icons/md';
+import { BsPersonVcard } from 'react-icons/bs';
 import type { Rule } from 'sanity';
 
 const founder = {
   name: 'aboutPage.founder',
   type: 'object',
   title: 'Our Founder',
-  icon: MdOutlineFeaturedPlayList,
+  icon: BsPersonVcard,
   fields: [
     {
       name: 'title',
