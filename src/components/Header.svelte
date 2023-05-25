@@ -15,7 +15,7 @@
 </script>
 
 <header
-  class="lg:absolute top-0 w-full text-white lg:pt-10 text-lg bg-blue-primary"
+  class="lg:absolute top-0 w-full text-white lg:pt-10 text-lg bg-blue-primary max-lg:z-[9999] relative"
   class:lg:pb-10={currentPathname === '/privacy-policy'}
   class:!relative={currentPathname === '/privacy-policy'}
 >

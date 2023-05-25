@@ -1,10 +1,12 @@
 ---
 import FeaturedContent from '@/components/FeaturedContent.svelte';
 import Hero from '@/components/hero/Hero.svelte';
+import Values from '@/components/pages/about/values/Values.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getPageData } from '@/lib/helpers';
-import type { AboutPageData } from '@/lib/types/aboutPage';
 import Cta from '@/components/Cta.svelte';
+import type { AboutPageData, ValuesData } from '@/lib/types/aboutPage';
+
 import { picture } from 'astro-sanity-picture';
 
 const query = `*[_type == 'aboutPage'][0]{
@@ -12,6 +14,10 @@ const query = `*[_type == 'aboutPage'][0]{
     sections[]{
       ...,
       ${picture('image')},
+      values[]{
+        ...,
+        ${picture('image')},
+      }
     }
 }`;
 
@@ -25,23 +31,28 @@ const { sections, seo } = page;
 ---
 
 <Layout seo={seo} site={site}>
-  {
-    sections.map((section) => {
-      switch (section._type) {
-        case 'common.hero':
-          return <Hero client:load {...(section as CommonHeroData)} />;
-        case 'common.featured':
-          return (
-            <FeaturedContent
-              client:idle
-              {...(section as CommonFeaturedContentData)}
-            />
-          );
-        case 'common.cta':
-          return <Cta client:visible {...(section as CTAData)} />;
-        default:
-          return null;
-      }
-    })
-  }
+  <!-- TODO remove the div later -->
+  <div class="pb-60">
+    {
+      sections.map((section) => {
+        switch (section._type) {
+          case 'common.hero':
+            return <Hero client:load {...(section as CommonHeroData)} />;
+          case 'common.featured':
+            return (
+              <FeaturedContent
+                client:idle
+                {...(section as CommonFeaturedContentData)}
+              />
+            );
+          case 'aboutPage.values':
+            return <Values {...(section as ValuesData)} />;
+          case 'common.cta':
+            return <Cta client:visible {...(section as CTAData)} />;
+          default:
+            return null;
+        }
+      })
+    }
+  </div>
 </Layout>
