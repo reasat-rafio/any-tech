@@ -3,14 +3,16 @@ import groq from 'groq';
 import { picture } from 'astro-sanity-picture';
 
 export const intlTypeQuery = (
-  schemaType: string | [string],
+  schemaType: string | [string, string],
   filters: string | boolean = true
 ) => {
   if (Array.isArray(schemaType)) {
+    const [type, range] = schemaType;
+
     return groq`[
-      ...*[_type == "${schemaType}" && language == $locale && ${filters}],
-      ...*[_type == "${schemaType}" && ${filters}] //fallback query
-    ]`;
+      ...*[_type == "${type}" && language == $locale && ${filters}],
+      ...*[_type == "${type}" && ${filters}] //fallback query
+    ]${range}`;
   } else {
     return groq`coalesce(
 		*[_type == "${schemaType}" && language == $locale && ${filters}][0],
