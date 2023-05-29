@@ -19,10 +19,6 @@ export const intlTypeQuery = (
 	)`;
   }
 };
-export const intlArrTypeQuery = (
-  schemaType: string,
-  filters: string | boolean = true
-) => groq`*[_type == "${schemaType}" && language == $locale && ${filters}]`;
 
 export const siteQuery = groq`${intlTypeQuery('site')} {
   "seo" : {
